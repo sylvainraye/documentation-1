@@ -3,66 +3,66 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://php-etl.github.io/installation/bare-metal/</loc>
+    <loc>https://php-etl.github.io/documentation/installation/bare-metal/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/components/</loc>
+    <loc>https://php-etl.github.io/documentation/components/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/components/contracts/</loc>
+    <loc>https://php-etl.github.io/documentation/components/contracts/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/components/discovery/</loc>
+    <loc>https://php-etl.github.io/documentation/components/discovery/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/components/fast-map/</loc>
+    <loc>https://php-etl.github.io/documentation/components/fast-map/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/installation/</loc>
+    <loc>https://php-etl.github.io/documentation/installation/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/</loc>
+    <loc>https://php-etl.github.io/documentation/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/components/pipeline/</loc>
+    <loc>https://php-etl.github.io/documentation/components/pipeline/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/components/satellite/</loc>
+    <loc>https://php-etl.github.io/documentation/components/satellite/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/system-requirements/</loc>
+    <loc>https://php-etl.github.io/documentation/system-requirements/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/lorem/</loc>
+    <loc>https://php-etl.github.io/documentation/lorem/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/categories/</loc>
+    <loc>https://php-etl.github.io/documentation/categories/</loc>
   </url>
   
   <url>
-    <loc>http://php-etl.github.io/tags/</loc>
+    <loc>https://php-etl.github.io/documentation/tags/</loc>
   </url>
   
 </urlset>

@@ -11,16 +11,16 @@
   
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="http://php-etl.github.io/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.css">
 
   <!-- themefy-icon -->
-  <link rel="stylesheet" href="http://php-etl.github.io/plugins/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/themify-icons/themify-icons.css">
 
   <!-- highlight -->
-  <link rel="stylesheet" href="http://php-etl.github.io/plugins/highlight/hybrid.css">
+  <link rel="stylesheet" href="https://php-etl.github.io/documentation/plugins/highlight/hybrid.css">
 
   <!--Favicon-->
-  <link rel="icon" href="http://php-etl.github.io/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://php-etl.github.io/documentation/images/favicon.png" type="image/x-icon">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -39,22 +39,22 @@
 
 <!-- Main Stylesheet -->
 
-<link href="http://php-etl.github.io/css/style.min.css" rel="stylesheet" media="screen"/>
+<link href="https://php-etl.github.io/documentation/css/style.min.css" rel="stylesheet" media="screen"/>
 
 <!-- jquiry -->
-<script src="http://php-etl.github.io/plugins/jquery/jquery-1.12.4.js"></script>
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-1.12.4.js"></script>
 
 <!-- jquary ui -->
-<script src="http://php-etl.github.io/plugins/jquery/jquery-ui.js"></script>
+<script src="https://php-etl.github.io/documentation/plugins/jquery/jquery-ui.js"></script>
 
 <!-- Bootstrap JS -->
-<script src="http://php-etl.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://php-etl.github.io/documentation/plugins/bootstrap/bootstrap.min.js"></script>
 
 <!-- match-height JS -->
-<script src="http://php-etl.github.io/plugins/match-height/jquery.matchHeight-min.js"></script>
+<script src="https://php-etl.github.io/documentation/plugins/match-height/jquery.matchHeight-min.js"></script>
 
 <!-- highlight -->
-<script src="http://php-etl.github.io/plugins/highlight/highlight.pack.js"></script>
+<script src="https://php-etl.github.io/documentation/plugins/highlight/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -64,16 +64,16 @@
   <body>
     
     <!-- header -->
-    <header class="banner bg-white" data-background="http://php-etl.github.io/">
+    <header class="banner bg-white" data-background="https://php-etl.github.io/documentation/">
       <nav class="navbar navbar-expand-md navbar-dark">
   <div class="container">
-    <a class="navbar-brand px-2" href="/">
+    <a class="navbar-brand px-2" href="/documentation">
       
       
       
       
       <div class="navbar-brand">
-        <img class="img-fluid" src="http://php-etl.github.io/logo-web.svg "
+        <img class="img-fluid" src="https://php-etl.github.io/documentation/logo-web.svg "
           alt="Middleware">
       </div>
       
@@ -87,12 +87,12 @@
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link text-dark" href="/">Home</a>
+          <a class="nav-link text-dark" href="/documentation">Home</a>
         </li>
         
         
         <li class="nav-item">
-          <a class="nav-link text-dark" href="/system-requirements">System Requirements</a>
+          <a class="nav-link text-dark" href="/documentation/system-requirements">System Requirements</a>
         </li>
         
         
@@ -104,11 +104,11 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/installation/bare-metal">Bare metal</a>
+            <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
-            <a class="dropdown-item" href="/installation/symfony">Symfony</a>
+            <a class="dropdown-item" href="/documentation/installation/symfony">Symfony</a>
             
-            <a class="dropdown-item" href="/installation/laravel">Laravel</a>
+            <a class="dropdown-item" href="/documentation/installation/laravel">Laravel</a>
             
           </div>
         </li>
@@ -122,15 +122,15 @@
           </a>
           <div class="dropdown-menu">
             
-            <a class="dropdown-item" href="/components/contracts">Contracts</a>
+            <a class="dropdown-item" href="/documentation/components/contracts">Contracts</a>
             
-            <a class="dropdown-item" href="/components/pipeline">Pipeline</a>
+            <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
             
-            <a class="dropdown-item" href="/components/fast-map">Fast Map</a>
+            <a class="dropdown-item" href="/documentation/components/fast-map">Fast Map</a>
             
-            <a class="dropdown-item" href="/components/promise">Promise</a>
+            <a class="dropdown-item" href="/documentation/components/promise">Promise</a>
             
-            <a class="dropdown-item" href="/components/satellite">Satellite</a>
+            <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
           </div>
         </li>
@@ -161,79 +161,79 @@
 						{
 							value: "Bare-metal Installation",
 							label: "<p>Contents of this documentation What we will consider as a bare-metal installation, is an installation of at least one component of the middleware in a vanilla PHP application, without the use of a specific framework.\nThis process will make use of the Composer command all along. Even if Composer is a de-facto standard, please make sure your application can work with composer.\nPrerequisites Please check page of System Requirements and ensure your system can work with Middleware. This page will help you install Logstash, ElasticSearch and Kibana in a quick walkthrough.\nPHP dependencies We will use the Symfony Console and Monolog as a base for our application.\nIn your project directory run the following:\ncomposer require symfony\/console monolog\/monolog\nThis command will check out the most appropriate versions of both components.\nPrepare your executable Create a bin\/middleware file with the execution permission and the following contents:\n#!\/usr\/bin\/env php \u0026lt;?php require __DIR__ . \u0026#39;\/..\/vendor\/autoload.php\u0026#39;; use MyMiddleware\\Console\\Command; use Symfony\\Component\\Console\\Application; use Symfony\\Component\\Console\\Input\\ArgvInput; use Symfony\\Component\\Console\\Output\\ConsoleOutput; $app = new Application(\u0026#39;Pipelines Runner\u0026#39;); $app-\u0026gt;addCommands([ new Command\\FastMap\\CompileCommand( Command\\FastMap\\CompileCommand::$defaultName ), new Command\\Pipeline\\CustomersRunCommand( Command\\Pipeline\\CustomersRunCommand::$defaultName ), ]); $app-\u0026gt;run(new ArgvInput($argv), new ConsoleOutput()); Now that you have your executable, file, we will need to\n</p>",
-							url:"http:\/\/php-etl.github.io\/installation\/bare-metal\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/installation\/bare-metal\/"
 						},
 						
 						{
 							value: "Components",
 							label: "<p></p>",
-							url:"http:\/\/php-etl.github.io\/components\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/components\/"
 						},
 						
 						{
 							value: "Contracts",
 							label: "<p>Code contracts Introduction Code contracts are a set of abstraction interfaces made to help you build compatible code between all your pipelines, using common semantics.\nInstallation Contracts are provided as separate packages, so you can install only the ones your projects really need:\ncomposer require php-etl\/discovery-contracts composer require php-etl\/lambda-contracts composer require php-etl\/mapping-contracts composer require php-etl\/messenger-contracts composer require php-etl\/pipeline-contracts Usage The abstractions in those packages are useful to achieve loose coupling and interoperability. By using the provided interfaces as type hints, you are able to build any implementations that match the contracts. It could be a native Middleware component, or another package provided by the PHP community at large.\nDesign principles  Contracts are split by domain, each into their own sub-namespaces Contracts are small and consistent sets of PHP interfaces  </p>",
-							url:"http:\/\/php-etl.github.io\/components\/contracts\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/components\/contracts\/"
 						},
 						
 						{
 							value: "Discovery",
 							label: "<p>Definition of a Pipeline </p>",
-							url:"http:\/\/php-etl.github.io\/components\/discovery\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/components\/discovery\/"
 						},
 						
 						{
 							value: "Fast Map",
 							label: "<p>Definition of a Mapping A mapping is an operation that associates each element of a source of data into a new format of the same data. By this operation, it is possible to transform the way the data is represented.\nThe Abstract Mapping Tree The abstract mapping tree is a representation of the mapping to apply to your data, in order to transform its representation. It is an internal representation build for a computer to understand how it will have to change the data representation during the mapping operation.\nComponents included The php-etl\/fast-map component This component is in charge of representing the Abstract Mapping Tree, and transforming it into compiled PHP code. This compiled PHP code is the actual code that will do the mapping, in an optimized way.\n###php-etl\/fast-map-config\n</p>",
-							url:"http:\/\/php-etl.github.io\/components\/fast-map\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/components\/fast-map\/"
 						},
 						
 						{
 							value: "Installations",
 							label: "<p></p>",
-							url:"http:\/\/php-etl.github.io\/installation\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/installation\/"
 						},
 						
 						{
 							value: "Middleware",
 							label: "<p></p>",
-							url:"http:\/\/php-etl.github.io\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/"
 						},
 						
 						{
 							value: "Pipeline",
 							label: "<p>Definition of a Pipeline </p>",
-							url:"http:\/\/php-etl.github.io\/components\/pipeline\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/components\/pipeline\/"
 						},
 						
 						{
 							value: "Satellite",
 							label: "<p>Definition of a Satellite A satellite is a micro-service running in the cloud, packaged as a docker image. It can be deployed in any Docker infrastructure, including Kubernetes clusters.\nThere is 3 types of runtimes, depending on your needs:\n http-api: the micro-service will be operating an API, on which several URL routes can be registered http-hook: the micro-service will be operating an API on a single URL route pipeline: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job  Building your own satellite We will build your satellite micro-service in a few steps. In this example, we will use the pipeline runtime.\nFirst of all, let\u0026rsquo;s declare the base image on which we want to buyild our micro-service.\nYAML  satellite: image: kiboko\/php:7.4-fpm  Here, we chose to use the kiboko\/php:7.4-fpm base image on which our code will be executed. You could use any docker image of your choice, however you will need to have a PHP runtime available, in a compatible version.\nNext, as a second step, we need to declare the dependencies our microservice will have. We will require them through composer, and we need to declare the dependencies.\nYAML  satellite: #... composer: require: - \u0026#34;php-etl\/pipeline:@dev\u0026#34; - \u0026#34;php-etl\/fast-map:@dev\u0026#34;  Now that we have a fully-functioning environment prepared for our satellite, we will declare the way we want our pipeline to handle our data flows.\nConfiguration format The image field In this field you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux, the ones in kiboko\/php or any of your custom brewed image.\nThe composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.\nThe runtime section The http-api runtime The http-hook runtime The pipeline runtime Examples YAML PHP satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-hook path: \/bar\/hello function: hello.php satellite: image: kiboko\/php:7.4-cli composer: # from-local: true autoload: psr-4: \u0026#34;Pipeline\\\\\u0026#34;: \u0026#34;\u0026#34; require: - \u0026#34;php-etl\/pipeline:@dev\u0026#34; - \u0026#34;php-etl\/fast-map:@dev\u0026#34; runtime: type: pipeline steps: - extract: Pipeline\\FooExtractor - transform: Pipeline\\FastMapTransformer array: - field: \u0026#39;[sku]\u0026#39; copy: \u0026#39;[sku]\u0026#39; - field: \u0026#39;[title]\u0026#39; expression: \u0026#39;input[\u0026#34;sku\u0026#34;] ~\u0026#34; | \u0026#34;~ input[\u0026#34;name\u0026#34;]\u0026#39; - field: \u0026#39;[name]\u0026#39; copy: \u0026#39;[name]\u0026#39; - field: \u0026#39;[staticValue]\u0026#39; constant: \u0026#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.\u0026#39; - field: \u0026#39;[descriptions]\u0026#39; class: \u0026#39;Pipeline\\\\Usage\u0026#39; expression: \u0026#39;input\u0026#39; object: - field: \u0026#39;usage\u0026#39; expression: \u0026#39;\u0026#34;Usage: \u0026#34; ~ input[\u0026#34;usage\u0026#34;]\u0026#39; - field: \u0026#39;warning\u0026#39; copy: \u0026#39;[warning]\u0026#39; - field: \u0026#39;notice\u0026#39; copy: \u0026#39;[notice]\u0026#39; - load: Pipeline\\BarLoader </p>",
-							url:"http:\/\/php-etl.github.io\/components\/satellite\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/components\/satellite\/"
 						},
 						
 						{
 							value: "System Requirements",
 							label: "<p>Contents of this documentation In this documentation, we will make sure all your system and application dependencies are correct, before you start using Middleware.\nPrepare your dependencies in Docker We will use Logstash, Elasticsearch and Kibana as a logging platform.\nAs those systems are complex to instakll and out-of-scope of this documentation, we will use Docker to start those services.\nLogstash Logstash is a tool whose primary goal is to consume logging from other applications, optionally apply transformations to it and then transfer it to a log storage.\nIn your project, create a file named .docker\/logstash\/logstash.yml with the following contents:\npipeline: batch: delay: 50 size: 125 To configure a logging pipeline for logstash, we will create a second file named .docker\/logstash\/pipeline\/tcp.conf with the following content:\ninput { tcp { port =\u0026gt; 5044 host =\u0026gt; \u0026quot;0.0.0.0\u0026quot; codec =\u0026gt; json } } filter { date { match =\u0026gt; [ \u0026quot;timeMillis\u0026quot;, \u0026quot;UNIX_MS\u0026quot; ] } } output { elasticsearch { hosts =\u0026gt; \u0026quot;elasticsearch:9200\u0026quot; } } Now, you will need to add a new logstash service in your docker-compose.yaml file:\nservices: logstash: image: docker.elastic.co\/logstash\/logstash-oss:7.8.0 volumes: - .\/.docker\/logstash\/logstash.yml:\/usr\/share\/logstash\/config\/logstash.yml - .\/.docker\/logstash\/pipeline:\/usr\/share\/logstash\/pipeline\/ ElasticSearch ElasticSearch is a Document oriented database, whose main usage are logs storage and search indexation. We will use if for both.\nIn your project, create a file named .docker\/elasticsearch\/elasticsearch.yml with the following contents:\ncluster.name: \u0026#39;middleware-cluster\u0026#39; bootstrap.memory_lock: true discovery.type: \u0026#39;single-node\u0026#39; http.host: \u0026#39;0.0.0.0\u0026#39; http.port: 9200 # Uncomment the following lines for a production cluster deployment #transport.host: 0.0.0.0 #discovery.zen.minimum_master_nodes: 1 http.cors.enabled : true http.cors.allow-headers: \u0026#39;X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization\u0026#39; # Uncomment the following if you wish to open access to a 3rd-party application, like Dejavu. #http.cors.allow-origin: \u0026#34;http:\/\/localhost:1234,http:\/\/127.0.0.1:1234\u0026#34; http.cors.allow-credentials: true http.cors.allow-methods : \u0026#39;OPTIONS, HEAD, GET, POST, PUT, DELETE\u0026#39; cluster.routing.allocation.disk.threshold_enabled: false Now, you will need to add a new elasticsearch service and a dedicated volume in your docker-compose.yaml file:\nservices: elasticsearch: image: docker.elastic.co\/elasticsearch\/elasticsearch-oss:7.8.0 ports: - ${ELASTICSEARCH_PORT}:9200 environment: - \u0026#34;ES_JAVA_OPTS=-Xms512m -Xmx512m\u0026#34; volumes: - elasticsearch:\/usr\/share\/elasticsearch\/data - .\/.docker\/elasticsearch\/elasticsearch.yml:\/usr\/share\/elasticsearch\/config\/elasticsearch.yml volumes: elasticsearch: driver: local Kibana Kibana is web interface for ElasticSearch storage, capable of building graphic representations of aggregation searches.\nIn your project, create a file named .docker\/kibana\/kibana.yml with the following contents:\nserver.port: 5601 server.host: \u0026#34;0.0.0.0\u0026#34; elasticsearch.hosts: \u0026#34;http:\/\/elasticsearch:9200\u0026#34; Now, you will need to add a new kibana service in your docker-compose.yaml file:\nservices: kibana: image: docker.elastic.co\/kibana\/kibana-oss:7.8.0 ports: - ${KIBANA_PORT}:5601 environment: - monitoring.elasticsearch.hosts=http:\/\/elasticsearch:9200 volumes: - .\/.docker\/kibana\/kibana.yml:\/usr\/share\/kibana\/config\/kibana.yml </p>",
-							url:"http:\/\/php-etl.github.io\/system-requirements\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/system-requirements\/"
 						},
 						
 						{
 							value: "",
 							label: "<p>Middleware Documentation Hello world\n (documentation\/pipeline.md)[Pipelines]  </p>",
-							url:"http:\/\/php-etl.github.io\/lorem\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/lorem\/"
 						},
 						
 						{
 							value: "Categories",
 							label: "<p></p>",
-							url:"http:\/\/php-etl.github.io\/categories\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/categories\/"
 						},
 						
 						{
 							value: "Tags",
 							label: "<p></p>",
-							url:"http:\/\/php-etl.github.io\/tags\/"
+							url:"https:\/\/php-etl.github.io\/documentation\/tags\/"
 						},
 						
 					];
@@ -267,7 +267,7 @@
         <!-- topic-item -->
         
         <div class="col-lg-4 col-sm-6 mb-4">
-          <a href="http://php-etl.github.io/components/contracts/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+          <a href="https://php-etl.github.io/documentation/components/contracts/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             <i class="ti-medall icon text-primary d-block mb-4"></i>
             <h3 class="mb-3 mt-0">Contracts</h3>
             <p class="mb-0">Code contracts for building compatible pipelines in the middleware</p>
@@ -275,7 +275,7 @@
         </div>
         
         <div class="col-lg-4 col-sm-6 mb-4">
-          <a href="http://php-etl.github.io/components/discovery/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+          <a href="https://php-etl.github.io/documentation/components/discovery/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             <i class="ti-search icon text-primary d-block mb-4"></i>
             <h3 class="mb-3 mt-0">Discovery</h3>
             <p class="mb-0">API discovery, with data modeling and structure metadata</p>
@@ -283,7 +283,7 @@
         </div>
         
         <div class="col-lg-4 col-sm-6 mb-4">
-          <a href="http://php-etl.github.io/components/fast-map/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+          <a href="https://php-etl.github.io/documentation/components/fast-map/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             <i class="ti-package icon text-primary d-block mb-4"></i>
             <h3 class="mb-3 mt-0">Fast Map</h3>
             <p class="mb-0">Data transformation and serialization, with compiled and static mappers</p>
@@ -291,7 +291,7 @@
         </div>
         
         <div class="col-lg-4 col-sm-6 mb-4">
-          <a href="http://php-etl.github.io/components/pipeline/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+          <a href="https://php-etl.github.io/documentation/components/pipeline/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             <i class="ti-plug icon text-primary d-block mb-4"></i>
             <h3 class="mb-3 mt-0">Pipeline</h3>
             <p class="mb-0">Data stream processing at high rate and low memory consuming</p>
@@ -299,7 +299,7 @@
         </div>
         
         <div class="col-lg-4 col-sm-6 mb-4">
-          <a href="http://php-etl.github.io/components/satellite/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+          <a href="https://php-etl.github.io/documentation/components/satellite/" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             <i class="ti-cloud icon text-primary d-block mb-4"></i>
             <h3 class="mb-3 mt-0">Satellite</h3>
             <p class="mb-0">Generated micro-services for data stream processing in the cloud</p>
@@ -323,7 +323,7 @@
           <p class="mb-4">Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam.</p>
           
           
-          <a href="/contact" class="btn btn-primary">contact us</a>
+          <a href="/documentation/contact" class="btn btn-primary">contact us</a>
           
           
           </div>
@@ -355,7 +355,7 @@
 
 <!-- Main Script -->
 
-<script src="http://php-etl.github.io/js/script.min.js"></script>
+<script src="https://php-etl.github.io/documentation/js/script.min.js"></script>
   </body>
 
 </html>

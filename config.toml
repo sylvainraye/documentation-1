@@ -1,4 +1,4 @@
-baseURL = "http://php-etl.github.io/"
+baseURL = "https://php-etl.github.io/documentation/"
 languageCode = "en-us"
 # theme
 theme = "dot"
