@@ -1,0 +1,112 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+# theme
+theme = "dot"
+# site title
+title = "Middleware"
+# disable language
+disableLanguages = []
+# google analytics
+googleAnalytics = "" # paste your analytics ID here. (Ex: UA-123-45)
+
+
+[[menu.main]]
+name = "System Requirements"
+url = "system-requirements"
+weight = 1
+
+[[menu.main]]
+name = "Installation"
+url = "installation"
+weight = 2
+hasChildren = true
+
+  [[menu.main]]
+  parent = "Installation"
+  name = "Bare metal"
+  url = "installation/bare-metal"
+  weight = 1
+
+  [[menu.main]]
+  parent = "Installation"
+  name = "Symfony"
+  url = "installation/symfony"
+  weight = 2
+
+  [[menu.main]]
+  parent = "Installation"
+  name = "Laravel"
+  url = "installation/laravel"
+  weight = 3
+
+[[menu.main]]
+weight = 3
+name = "Documentation"
+hasChildren = true
+
+  [[menu.main]]
+  parent = "Documentation"
+  name = "Contracts"
+  url = "components/contracts"
+  weight = 1
+
+  [[menu.main]]
+  parent = "Documentation"
+  name = "Pipeline"
+  url = "components/pipeline"
+  weight = 2
+
+  [[menu.main]]
+  parent = "Documentation"
+  name = "Fast Map"
+  url = "components/fast-map"
+  weight = 3
+
+  [[menu.main]]
+  parent = "Documentation"
+  name = "Promise"
+  url = "components/promise"
+  weight = 4
+
+  [[menu.main]]
+  parent = "Documentation"
+  name = "Satellite"
+  url = "components/satellite"
+  weight = 5
+
+[params]
+logo = "logo-web.svg"
+logo_white = "logo-web.svg"
+primary_color = "#22014f"
+light_color = "#fe8507"
+dark_color = "#22014f"
+body_color = "#ddd"
+text_color = "#666"
+text_color_dark = "#333"
+white_color = "#eee"
+font_family = "lato"
+
+################################ English Language ######################
+[Languages.en]
+languageName = "English"
+languageCode = "en-us"
+weight = 1
+home = "Home"
+copyright = "The Hugo Documents are copyright © [gethugothemes](https://gethugothemes.com/) 2020."
+
+# banner
+[Languages.en.params.banner]
+title = "Middleware Documentation"
+subtitle = "Browse the documentation and knowledge base to start quickly with Middleware"
+placeholder = "Have a question? Just ask here or enter terms"
+
+# call to action
+[Languages.en.params.cta]
+enable = true
+title = "Didn't find an answer to your question?"
+content = "Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam."
+# call to action button
+[Languages.en.params.cta.button]
+enable = true
+label = "contact us"
+link = "contact"
