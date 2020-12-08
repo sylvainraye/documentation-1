@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <title>Satellite</title>
+
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="http://php-etl.github.io/plugins/bootstrap/bootstrap.min.css">
+
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="http://php-etl.github.io/plugins/themify-icons/themify-icons.css">
+
+  <!-- highlight -->
+  <link rel="stylesheet" href="http://php-etl.github.io/plugins/highlight/hybrid.css">
+
+  <!--Favicon-->
+  <link rel="icon" href="http://php-etl.github.io/images/favicon.png" type="image/x-icon">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  
+  <style>
+  :root{
+    --primary-color: #22014f;
+    --body-color:#ddd;
+    --text-color:#666;
+    --text-color-dark:#333;
+    --white-color:#eee;
+    --light-color:#fe8507;
+    --font-family:Lato;
+  }
+  </style>
+
+<!-- Main Stylesheet -->
+
+<link href="http://php-etl.github.io/css/style.min.css" rel="stylesheet" media="screen"/>
+
+<!-- jquiry -->
+<script src="http://php-etl.github.io/plugins/jquery/jquery-1.12.4.js"></script>
+
+<!-- jquary ui -->
+<script src="http://php-etl.github.io/plugins/jquery/jquery-ui.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="http://php-etl.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- match-height JS -->
+<script src="http://php-etl.github.io/plugins/match-height/jquery.matchHeight-min.js"></script>
+
+<!-- highlight -->
+<script src="http://php-etl.github.io/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</head>
+  
+  <body>
+    
+    <!-- header -->
+    <header class="shadow-bottom sticky-top bg-white">
+      <nav class="navbar navbar-expand-md navbar-light">
+  <div class="container">
+    <a class="navbar-brand px-2" href="/">
+      
+      
+      
+      
+      <div class="navbar-brand">
+        <img class="img-fluid" src="http://php-etl.github.io/logo-web.svg" alt="Middleware"> Middleware
+      </div>
+      
+      
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/">Home</a>
+        </li>
+        
+        
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/system-requirements">System Requirements</a>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Installation
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/installation/bare-metal">Bare metal</a>
+            
+            <a class="dropdown-item" href="/installation/symfony">Symfony</a>
+            
+            <a class="dropdown-item" href="/installation/laravel">Laravel</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Documentation
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/components/contracts">Contracts</a>
+            
+            <a class="dropdown-item" href="/components/pipeline">Pipeline</a>
+            
+            <a class="dropdown-item" href="/components/fast-map">Fast Map</a>
+            
+            <a class="dropdown-item" href="/components/promise">Promise</a>
+            
+            <a class="dropdown-item" href="/components/satellite">Satellite</a>
+            
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+    </header>
+    <!-- /header -->
+    
+    
+
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <ul class="list-styled">
+            
+            <a class="back-btn" href="/"></a>
+            
+              
+              
+
+
+
+
+
+
+
+
+<li data-nav-id="http://php-etl.github.io/components/" title="Components" class="sidelist
+  ">
+  <a href="http://php-etl.github.io/components/">
+    Components
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="http://php-etl.github.io/components/contracts/" title="Contracts" class="sidelist
+  ">
+  <a href="http://php-etl.github.io/components/contracts/">
+    Contracts
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="http://php-etl.github.io/components/discovery/" title="Discovery" class="sidelist
+  ">
+  <a href="http://php-etl.github.io/components/discovery/">
+    Discovery
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="http://php-etl.github.io/components/fast-map/" title="Fast Map" class="sidelist
+  ">
+  <a href="http://php-etl.github.io/components/fast-map/">
+    Fast Map
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="http://php-etl.github.io/components/pipeline/" title="Pipeline" class="sidelist
+  ">
+  <a href="http://php-etl.github.io/components/pipeline/">
+    Pipeline
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="http://php-etl.github.io/components/satellite/" title="Satellite" class="sidelist
+  active">
+  <a href="http://php-etl.github.io/components/satellite/">
+    Satellite
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
+            
+              
+            
+              
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4 bg-white">
+          <h2 class="mb-5">Satellite</h2>
+          
+          <div class="content"><h2 id="definition-of-a-satellite">Definition of a Satellite</h2>
+<p>A satellite is a micro-service running in the cloud, packaged as a docker image.
+It can be deployed in any Docker infrastructure, including Kubernetes clusters.</p>
+<p>There is 3 types of runtimes, depending on your needs:</p>
+<ul>
+<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered</li>
+<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route</li>
+<li><code>pipeline</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job</li>
+</ul>
+<h2 id="building-your-own-satellite">Building your own satellite</h2>
+<p>We will build your satellite micro-service in a few steps. In this example, we will use the <code>pipeline</code> runtime.</p>
+<p>First of all, let&rsquo;s declare the base image on which we want to buyild our micro-service.</p>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">image</span>: kiboko/php:<span style="color:#ae81ff">7.4</span>-fpm
+</code></pre></div></div></div>
+
+<p>Here, we chose to use the <code>kiboko/php:7.4-fpm</code> base image on which our code will be executed.
+You could use any docker image of your choice, however you will need to have a PHP runtime
+available, in a compatible version.</p>
+<p>Next, as a second step, we need to declare the dependencies our microservice will have.
+We will require them through composer, and we need to declare the dependencies.</p>
+<ul class="nav nav-tabs" id="basic_with_composer" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_with_composer-0" role="tab" aria-controls="basic_with_composer-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_with_composer"><div id="basic_with_composer-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_with_composer-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+<span style="color:#75715e">#...</span>
+  <span style="color:#66d9ef">composer</span>:
+    <span style="color:#66d9ef">require</span>:
+      - <span style="color:#e6db74">&#34;php-etl/pipeline:@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/fast-map:@dev&#34;</span>
+</code></pre></div></div></div>
+
+<p>Now that we have a fully-functioning environment prepared for our satellite, we will declare
+the way we want our pipeline to handle our data flows.</p>
+<h2 id="configuration-format">Configuration format</h2>
+<h3 id="the-image-field">The <code>image</code> field</h3>
+<p>In this field you will be able to specify the base docker image on which the
+satellite will be built. We recommend either the official PHP images based on
+Alpine Linux, the ones in <code>kiboko/php</code> or any of your custom brewed image.</p>
+<h3 id="the-composer-section">The <code>composer</code> section</h3>
+<p>This section makes you able to specify some parameters that will be transmitted
+to composer at build time.</p>
+<h3 id="the-runtime-section">The <code>runtime</code> section</h3>
+<h4 id="the-http-api-runtime">The <code>http-api</code> runtime</h4>
+<h4 id="the-http-hook-runtime">The <code>http-hook</code> runtime</h4>
+<h4 id="the-pipeline-runtime">The <code>pipeline</code> runtime</h4>
+<h3 id="examples">Examples</h3>
+<ul class="nav nav-tabs" id="tab_with_code" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#tab_with_code-0" role="tab" aria-controls="tab_with_code-0" aria-selected="true">YAML</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tab_with_code-1" role="tab" aria-controls="tab_with_code-1">PHP</a></li></ul>
+<div class="tab-content" id="tab_with_code"><div id="tab_with_code-0" class="tab-pane show active" role="tabpanel" aria-labelledby="tab_with_code-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">image</span>: kiboko/php:<span style="color:#ae81ff">7.4</span>-fpm
+  <span style="color:#66d9ef">composer</span>:
+<span style="color:#75715e">#    from-local: true</span>
+    <span style="color:#66d9ef">require</span>:
+      - <span style="color:#e6db74">&#34;psr/http-message:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;psr/http-factory:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;psr/http-server-handler:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/uuid:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/base-path:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/request-handler:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/fast-route:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;nyholm/psr7:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;nyholm/psr7-server:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;laminas/laminas-httphandlerrunner:1.2.x-dev&#34;</span>
+  <span style="color:#66d9ef">runtime</span>:
+    <span style="color:#66d9ef">type</span>: http-api
+    <span style="color:#66d9ef">path</span>: /foo
+    <span style="color:#66d9ef">routes</span>:
+      - <span style="color:#66d9ef">path</span>: /hello
+        <span style="color:#66d9ef">function</span>: hello.php
+      - <span style="color:#66d9ef">path</span>: /events/products
+        <span style="color:#66d9ef">function</span>: events/products.php
+</code></pre></div></div>
+  <div id="tab_with_code-1" class="tab-pane" role="tabpanel" aria-labelledby="tab_with_code-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+satellite:
+  image: kiboko/php:7.4-fpm
+  composer:
+#    from-local: true
+    require:
+      - &#34;psr/http-message:^1.0@dev&#34;
+      - &#34;psr/http-factory:^1.0@dev&#34;
+      - &#34;psr/http-server-handler:^1.0@dev&#34;
+      - &#34;middlewares/uuid:dev-master&#34;
+      - &#34;middlewares/base-path:dev-master&#34;
+      - &#34;middlewares/request-handler:dev-master&#34;
+      - &#34;middlewares/fast-route:dev-master&#34;
+      - &#34;nyholm/psr7:^1.0@dev&#34;
+      - &#34;nyholm/psr7-server:dev-master&#34;
+      - &#34;laminas/laminas-httphandlerrunner:1.2.x-dev&#34;
+  runtime:
+    type: http-api
+    path: /foo
+    routes:
+      - path: /hello
+        function: hello.php
+      - path: /events/products
+        function: events/products.php
+</code></pre></div></div></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">image</span>: kiboko/php:<span style="color:#ae81ff">7.4</span>-fpm
+  <span style="color:#66d9ef">composer</span>:
+<span style="color:#75715e">#    from-local: true</span>
+    <span style="color:#66d9ef">require</span>:
+      - <span style="color:#e6db74">&#34;psr/http-message:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;psr/http-factory:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;psr/http-server-handler:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/uuid:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/base-path:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/request-handler:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;middlewares/fast-route:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;nyholm/psr7:^1.0@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;nyholm/psr7-server:dev-master&#34;</span>
+      - <span style="color:#e6db74">&#34;laminas/laminas-httphandlerrunner:1.2.x-dev&#34;</span>
+  <span style="color:#66d9ef">runtime</span>:
+    <span style="color:#66d9ef">type</span>: http-hook
+    <span style="color:#66d9ef">path</span>: /bar/hello
+    <span style="color:#66d9ef">function</span>: hello.php
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">image</span>: kiboko/php:<span style="color:#ae81ff">7.4</span>-cli
+  <span style="color:#66d9ef">composer</span>:
+<span style="color:#75715e">#    from-local: true</span>
+    <span style="color:#66d9ef">autoload</span>:
+      <span style="color:#66d9ef">psr-4</span>:
+        <span style="color:#66d9ef">&#34;Pipeline\\&#34;: </span><span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">require</span>:
+      - <span style="color:#e6db74">&#34;php-etl/pipeline:@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/fast-map:@dev&#34;</span>
+  <span style="color:#66d9ef">runtime</span>:
+    <span style="color:#66d9ef">type</span>: pipeline
+    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">extract</span>: Pipeline\FooExtractor
+    - <span style="color:#66d9ef">transform</span>: Pipeline\FastMapTransformer
+      <span style="color:#66d9ef">array</span>:
+      - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+        <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+      - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+        <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
+      - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+        <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+      - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
+        <span style="color:#66d9ef">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.&#39;</span>
+      - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[descriptions]&#39;</span>
+        <span style="color:#66d9ef">class</span>: <span style="color:#e6db74">&#39;Pipeline\\Usage&#39;</span>
+        <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+        <span style="color:#66d9ef">object</span>:
+        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;usage&#39;</span>
+          <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;&#34;Usage: &#34; ~ input[&#34;usage&#34;]&#39;</span>
+        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;warning&#39;</span>
+          <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[warning]&#39;</span>
+        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
+          <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
+    - <span style="color:#66d9ef">load</span>: Pipeline\BarLoader
+</code></pre></div></div>
+          
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <nav class="pagination mt-3">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <a class="nav nav-prev" href="http://php-etl.github.io/components/pipeline/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Pipeline</span></a>
+            
+            
+            <a class="nav nav-next" href="http://php-etl.github.io/installation/"> <span class="d-none d-md-block">Installations</span><i class="ti-arrow-right ml-2"></i></a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /details page -->
+
+
+
+
+
+    <!-- footer -->
+<footer class="section pb-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-md-left text-center">
+       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+      </div>
+      <div class="col-md-4 text-md-right text-center">
+        <ul class="list-inline">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- Main Script -->
+
+<script src="http://php-etl.github.io/js/script.min.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://php-etl.github.io/installation/bare-metal/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/components/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/components/contracts/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/components/discovery/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/components/fast-map/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/installation/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/components/pipeline/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/components/satellite/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/system-requirements/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/lorem/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://php-etl.github.io/tags/</loc>
+  </url>
+  
+</urlset>

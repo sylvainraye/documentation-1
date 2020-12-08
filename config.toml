@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://php-etl.github.io/"
 languageCode = "en-us"
 # theme
 theme = "dot"
@@ -8,7 +8,7 @@ title = "Middleware"
 disableLanguages = []
 # google analytics
 googleAnalytics = "" # paste your analytics ID here. (Ex: UA-123-45)
-
+publishDir = "docs"
 
 [[menu.main]]
 name = "System Requirements"
