@@ -92,7 +92,7 @@ languageName = "English"
 languageCode = "en-us"
 weight = 1
 home = "Home"
-copyright = "The Hugo Documents are copyright © [gethugothemes](https://gethugothemes.com/) 2020."
+copyright = "The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020."
 
 # banner
 [Languages.en.params.banner]
@@ -104,7 +104,7 @@ placeholder = "Have a question? Just ask here or enter terms"
 [Languages.en.params.cta]
 enable = true
 title = "Didn't find an answer to your question?"
-content = "Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam."
+content = "You can reach our sales team we will find together the best way to provide you support."
 
 # call to action button
 [Languages.en.params.cta.button]
@@ -117,8 +117,8 @@ link = "contact"
 enable = true
 title = "A data-centric framework for the cloud"
 content = '''
-A framework built for synchronizing your applications in the cloud, written taking advantage of
-the PHP ecosystem.
+A cloud-friendly framework built for synchronizing your applications over the Internet.
+Built to take advantage of the PHP ecosystem.
 
 Build your data flows around APIs, message queues flat files or search engines to make them work
 together smoothly. With integrated reporting and logging, get insights on what is going on and
