@@ -1,7 +1,7 @@
 baseURL = "https://php-etl.github.io/documentation/"
 languageCode = "en-us"
 # theme
-theme = "dot"
+theme = "middleware"
 # site title
 title = "Middleware"
 # disable language
@@ -105,8 +105,22 @@ placeholder = "Have a question? Just ask here or enter terms"
 enable = true
 title = "Didn't find an answer to your question?"
 content = "Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam."
+
 # call to action button
 [Languages.en.params.cta.button]
 enable = true
 label = "contact us"
 link = "contact"
+
+# Heading in the home page
+[Languages.en.params.heading]
+enable = true
+title = "A data-centric framework for the cloud"
+content = '''
+A framework built for synchronizing your applications in the cloud, written taking advantage of
+the PHP ecosystem.
+
+Build your data flows around APIs, message queues flat files or search engines to make them work
+together smoothly. With integrated reporting and logging, get insights on what is going on and
+keep control.
+'''

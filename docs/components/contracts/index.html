@@ -191,6 +191,54 @@
   </a>
   
   
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/contracts/configurator/" title="Configurator Contracts" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/contracts/configurator/">
+    Configurator Contracts
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/dashboard/" title="Dashboard" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/dashboard/">
+    Dashboard
+  </a>
+  
+  
 </li>
 
 
@@ -272,12 +320,60 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/components/promise/" title="Promise" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/promise/">
+    Promise
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/components/satellite/">
     Satellite
   </a>
   
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
+    The YAML configuration format
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
   
 </li>
 
@@ -302,25 +398,60 @@
         <div class="p-lg-5 p-4 bg-white">
           <h2 class="mb-5">Contracts</h2>
           
-          <div class="content"><h2 id="code-contracts">Code contracts</h2>
-<h3 id="introduction">Introduction</h3>
+          <div class="content">
+
+
+
+
+<div style="margin-top: 10px; margin-bottom: 10px;">
+<b>FEATURE STATE:</b> <code>Middleware 0.1 [alpha]</code>
+</div>
+
+
+<h3 id="code-contracts">Code contracts</h3>
+<h4 id="introduction">Introduction</h4>
 <p>Code contracts are a set of abstraction interfaces made to help you build compatible code between all your pipelines, using common semantics.</p>
-<h3 id="installation">Installation</h3>
+<h4 id="installation">Installation</h4>
 <p>Contracts are provided as separate packages, so you can install only the ones your projects really need:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/discovery-contracts
-composer require php-etl/lambda-contracts
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">composer require php-etl/contracts
+composer require php-etl/configurator-contracts
+composer require php-etl/discovery-contracts
+composer require php-etl/function-contracts
 composer require php-etl/mapping-contracts
 composer require php-etl/messenger-contracts
 composer require php-etl/pipeline-contracts
-</code></pre></div><h3 id="usage">Usage</h3>
+composer require php-etl/reporting-contracts
+</code></pre></div><h4 id="usage">Usage</h4>
 <p>The abstractions in those packages are useful to achieve loose coupling and interoperability.
 By using the provided interfaces as type hints, you are able to build any implementations that match the contracts.
 It could be a native Middleware component, or another package provided by the PHP community at large.</p>
-<h3 id="design-principles">Design principles</h3>
+<h4 id="design-principles">Design principles</h4>
 <ul>
 <li>Contracts are split by domain, each into their own sub-namespaces</li>
 <li>Contracts are small and consistent sets of PHP interfaces</li>
 </ul>
+<h4 id="package-php-etlcontracts">Package <code>php-etl/contracts</code></h4>
+<p>This package is a meta-package, containing all the packages described in the next paragraphs.</p>
+<h4 id="package-php-etlconfigurator-contracts">Package <code>php-etl/configurator-contracts</code></h4>
+<p>This package is for packages describing their own .</p>
+<p>See <a href="configurator">Configurator Contracts</a></p>
+<h4 id="package-php-etldiscovery-contracts">Package <code>php-etl/discovery-contracts</code></h4>
+<p>This package is for packages built for discovering the structure of the data and the API endpoints.</p>
+<p>Get more info at <a href="../discovery">the Discovery documentation</a></p>
+<h4 id="package-php-etlfunction-contracts">Package <code>php-etl/function-contracts</code></h4>
+<p>This package is for packages built for declaring and executing serverless functions/lambda in the cloud.</p>
+<p>Get more info at <a href="../satellite">the Satellite documentation</a></p>
+<h4 id="package-php-etlmapping-contracts">Package <code>php-etl/mapping-contracts</code></h4>
+<p>This package is for packages built for declaring data mapping and data transformation.</p>
+<p>Get more info at <a href="../fast-map">the Fast Map documentation</a></p>
+<h4 id="package-php-etlmessenger-contracts">Package <code>php-etl/messenger-contracts</code></h4>
+<p>This package is for packages built for declaring application messaging services.</p>
+<h4 id="package-php-etlpipeline-contracts">Package <code>php-etl/pipeline-contracts</code></h4>
+<p>This package is for packages built for declaring data pipelines, using the Extract-Transform-Load pattern.</p>
+<p>Get more info at <a href="../pipeline">the Pipeline documentation</a></p>
+<h4 id="package-php-etlreporting-contracts">Package <code>php-etl/reporting-contracts</code></h4>
+<p>This package is for packages built for managing logging and reporting of execution states and results.</p>
+<p>Get more info at <a href="../dashboard">the Dashboard documentation</a></p>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
@@ -383,6 +514,22 @@ It could be a native Middleware component, or another package provided by the PH
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -439,6 +586,54 @@ It could be a native Middleware component, or another package provided by the PH
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -504,7 +699,7 @@ It could be a native Middleware component, or another package provided by the PH
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Components</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/discovery/"> <span class="d-none d-md-block">Discovery</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/contracts/configurator/"> <span class="d-none d-md-block">Configurator Contracts</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

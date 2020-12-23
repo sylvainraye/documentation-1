@@ -13,7 +13,17 @@
   </url>
   
   <url>
+    <loc>https://php-etl.github.io/documentation/components/contracts/configurator/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://php-etl.github.io/documentation/components/contracts/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://php-etl.github.io/documentation/components/dashboard/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
@@ -43,12 +53,22 @@
   </url>
   
   <url>
+    <loc>https://php-etl.github.io/documentation/components/promise/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://php-etl.github.io/documentation/components/satellite/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://php-etl.github.io/documentation/system-requirements/</loc>
+    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://php-etl.github.io/documentation/components/satellite/yaml-format/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   

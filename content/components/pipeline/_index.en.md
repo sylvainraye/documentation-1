@@ -7,7 +7,9 @@ icon: "ti-plug"
 description: "Data stream processing at high rate and low memory consuming"
 ---
 
-Definition of a Pipeline
----
+{{< feature-state for_mw_version="0.1" state="alpha" >}}
+
+### Definition of a Pipeline
+
 
 

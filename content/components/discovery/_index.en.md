@@ -7,7 +7,8 @@ icon: "ti-search"
 description: "API discovery, with data modeling and structure metadata"
 ---
 
-Definition of a Pipeline
----
+{{< feature-state for_mw_version="0.1" state="alpha" >}}
+
+### Data structure discovery
 
 
