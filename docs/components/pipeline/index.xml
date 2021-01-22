@@ -6,11 +6,7 @@
     <description>Recent content in Pipeline on Middleware</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>The Hugo Documents are copyright © [gethugothemes](https://gethugothemes.com/) 2020.</copyright>
-    <lastBuildDate>Sun, 12 Jul 2020 15:21:02 +0200</lastBuildDate>
-    
-	<atom:link href="https://php-etl.github.io/documentation/components/pipeline/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020.</copyright>
+    <lastBuildDate>Sun, 12 Jul 2020 15:21:02 +0200</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/components/pipeline/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

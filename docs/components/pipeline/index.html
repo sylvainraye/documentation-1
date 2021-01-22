@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Pipeline</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -131,6 +131,16 @@
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
+            <a class="dropdown-item" href="/documentation/components/csv-plugin">CSV Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-plugin">Akeneo Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-expression-language">Akeneo Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            
           </div>
         </li>
         
@@ -173,6 +183,28 @@
   
   
     <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/csv-plugin/" title="CSV Plugin" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/csv-plugin/">
+    CSV Plugin
+  </a>
+  
+  
+</li>
+
+
+        
       
         
           
@@ -408,8 +440,30 @@
 </div>
 
 
-<h3 id="definition-of-a-pipeline">Definition of a Pipeline</h3>
-</div>
+<h3 id="definition">Definition</h3>
+<p>A pipeline is a series of processes that filter or transform data.
+A pipeline consists of zero, one or more stages/processes.
+The first process takes raw input data, in fact something,
+then sends its results to the second process, and so on, ending with the final result produced by the last process in progress.
+The pipelines are fast, taking anywhere from a few seconds to a few hours to process a set of data.</p>
+<p><img src="etl-pipeline.png" alt="Example image"></p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/pipeline
+</code></pre><h3 id="usage">Usage</h3>
+<p>In our case, the pipeline is our ETL (Extract, Transform, Load)</p>
+<pre><code>&lt;?php
+
+use Kiboko\Component\Pipeline\PipelineRunner;
+use Kiboko\Component\Pipeline\Pipeline;
+use Kiboko\Component\Flow\Csv\Safe\Extractor;
+use Kiboko\Component\Flow\Csv\Safe\Loader;
+
+$runner = new PipelineRunner;
+$pipeline = (new Pipeline($runner))
+    -&gt;extract(new Extractor('path/to/file'))
+    -&gt;load(new Loader('path/to/file'))
+    -&gt;run();
+</code></pre></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -442,6 +496,22 @@
 
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             
             
             
@@ -678,7 +748,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

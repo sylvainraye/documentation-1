@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Dashboard</title>
+  <title>Array Mappings</title>
 
   <meta name="generator" content="Hugo 0.80.0" />
 
@@ -133,14 +133,6 @@
             
             <a class="dropdown-item" href="/documentation/components/csv-plugin">CSV Plugin</a>
             
-            <a class="dropdown-item" href="/documentation/components/metadata">Metadata</a>
-            
-            <a class="dropdown-item" href="/documentation/components/akeneo-plugin">Akeneo Plugin</a>
-            
-            <a class="dropdown-item" href="/documentation/components/akeneo-expression-language">Akeneo Expression Language</a>
-            
-            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
-            
           </div>
         </li>
         
@@ -265,7 +257,7 @@
 
 
 <li data-nav-id="https://php-etl.github.io/documentation/components/dashboard/" title="Dashboard" class="sidelist
-  active">
+  ">
   <a href="https://php-etl.github.io/documentation/components/dashboard/">
     Dashboard
   </a>
@@ -314,6 +306,98 @@
     Fast Map
   </a>
   
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/fast-map/array_mappings/" title="Array Mappings" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/components/fast-map/array_mappings/">
+    Array Mappings
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/fast-map/compiled_mapper/" title="Automatic Compiled Mapper" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/fast-map/compiled_mapper/">
+    Automatic Compiled Mapper
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/fast-map/custom_compilation/" title="Custom compilation" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/fast-map/custom_compilation/">
+    Custom compilation
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/fast-map/object_mappings/" title="Object Mappings" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/fast-map/object_mappings/">
+    Object Mappings
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
   
 </li>
 
@@ -428,7 +512,7 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Dashboard</h2>
+          <h2 class="mb-5">Array Mappings</h2>
           
           <div class="content">
 
@@ -440,10 +524,98 @@
 </div>
 
 
-<h3 id="logging-and-reporting">Logging and reporting</h3>
-</div>
+<h3 id="copy-a-field-to-another-field">Copy a field to another field</h3>
+<hr>
+<p>If you need to copy the value of an array field to the output array, use the <code>FieldCopyValueMapper</code> mapper.
+This mapper will use <code>symfony/property-access</code> syntax to copy-paste values from the input to the output array.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\Mapping\Field\CopyValueMapper</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\PropertyAccess\PropertyPath</span>;
+
+$input <span style="color:#f92672">=</span> [
+    <span style="color:#e6db74">&#39;customer&#39;</span> <span style="color:#f92672">=&gt;</span> [
+        <span style="color:#e6db74">&#39;first_name&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;John&#39;</span>,
+    ], 
+];
+
+$mapper <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CopyValueMapper</span>(
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[customer][first_name]&#39;</span>)
+);
+<span style="color:#a6e22e">var_dump</span>($mapper($input, [], <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[first_name]&#39;</span>)));
+<span style="color:#75715e">// array(1) { &#34;first_name&#34; =&gt; &#34;John&#34; }
+</span></code></pre></div><h3 id="set-a-field-to-a-constant-value">Set a field to a constant value</h3>
+<hr>
+<p>If you need to set the value of an output array field, use the <code>FieldConstantValueMapper</code> mapper.
+This mapper will use <code>symfony/property-access</code> syntax to set values to the output array.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\Mapping\Field\ConstantValueMapper</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\PropertyAccess\PropertyPath</span>;
+
+$input <span style="color:#f92672">=</span> [];
+
+$mapper <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ConstantValueMapper</span>(<span style="color:#e6db74">&#39;John Doe&#39;</span>);
+$output <span style="color:#f92672">=</span> $mapper($input, [], <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[customer][first_name]&#39;</span>));
+<span style="color:#75715e">// array(1) { &#34;first_name&#34; =&gt; &#34;John&#34; }
+</span></code></pre></div><h3 id="concatenate-fields-to-an-unique-output-field">Concatenate fields to an unique output field</h3>
+<hr>
+<p>If you need to concatenate several values of the input array and set it to an unique field in the output array, use the <code>FieldConcatCopyValuesMapper</code> mapper.
+This mapper will use <code>symfony/property-access</code> syntax to copy-paste values from the input to the output array.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\Mapping\Field\ConcatCopyValuesMapper</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\PropertyAccess\PropertyPath</span>;
+
+$input <span style="color:#f92672">=</span> [
+    <span style="color:#e6db74">&#39;customerAddress&#39;</span> <span style="color:#f92672">=&gt;</span> [
+        <span style="color:#e6db74">&#39;name&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;John P. Doe&#39;</span>,
+        <span style="color:#e6db74">&#39;street&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Main Street, 42&#39;</span>,
+        <span style="color:#e6db74">&#39;city&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Oblivion&#39;</span>,
+        <span style="color:#e6db74">&#39;postcode&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;12345&#39;</span>,
+    ]   
+];
+
+$mapper <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ConcatCopyValuesMapper</span>(
+     <span style="color:#e6db74">&#39;, &#39;</span>,
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[customerAddress][name]&#39;</span>),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[customerAddress][street]&#39;</span>),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[customerAddress][postcode]&#39;</span>),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[customerAddress][city]&#39;</span>)
+);
+$output <span style="color:#f92672">=</span> $mapper($input, [], <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[address]&#39;</span>));
+<span style="color:#75715e">// array(1) { &#34;address&#34; =&gt; &#34;John P. Doe, Main Street, 42, 12345, Oblivion&#34; }
+</span></code></pre></div><h3 id="use-symfonys-expression-language">Use Symfony&rsquo;s Expression Language</h3>
+<hr>
+<p>If you need to do more complex stuff, the integration with the <code>symfony/expression-language</code> is integrated into the <code>FieldExpressionLanguageValueMapper</code> mapper.
+This mapper will use <code>symfony/property-access</code> syntax to copy-paste values from the input to the output array.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\Mapping\Field\ExpressionLanguageValueMapper</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\Expression</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionLanguage</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\PropertyAccess\PropertyPath</span>;
+
+$interpreter <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExpressionLanguage</span>();
+
+$input <span style="color:#f92672">=</span> [
+    <span style="color:#e6db74">&#39;ean&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;1234567890128&#39;</span>,
+    <span style="color:#e6db74">&#39;weight&#39;</span> <span style="color:#f92672">=&gt;</span> [
+        <span style="color:#e6db74">&#39;value&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">5</span>,
+        <span style="color:#e6db74">&#39;unit&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;POUNDS&#39;</span>,
+    ],
+    <span style="color:#e6db74">&#39;qty&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">23</span>,
+];
+
+$mapper <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExpressionLanguageValueMapper</span>(
+    $interpreter,
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Expression</span>(<span style="color:#e6db74">&#39;input[&#34;weight&#34;][&#34;unit&#34;] == &#34;POUNDS&#34; ? (input[&#34;weight&#34;][&#34;value&#34;] / 2.205) : input[&#34;weight&#34;][&#34;value&#34;]&#39;</span>),
+);
+$output <span style="color:#f92672">=</span> $mapper($input, [], <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PropertyPath</span>(<span style="color:#e6db74">&#39;[weight]&#39;</span>));
+<span style="color:#75715e">// array(1) { &#34;weight&#34; =&gt; 2.26796 }
+</span></code></pre></div></div>
           
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 19 Jan 2020</p>
           <nav class="pagination mt-3">
             
             
@@ -537,6 +709,52 @@
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
             
 
             
@@ -605,6 +823,25 @@
             
             
             
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -704,10 +941,10 @@
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/contracts/configurator/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Configurator Contracts</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/fast-map/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Fast Map</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/discovery/"> <span class="d-none d-md-block">Discovery</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/fast-map/compiled_mapper/"> <span class="d-none d-md-block">Automatic Compiled Mapper</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

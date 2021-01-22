@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Satellite</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -131,6 +131,16 @@
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
+            <a class="dropdown-item" href="/documentation/components/csv-plugin">CSV Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-plugin">Akeneo Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-expression-language">Akeneo Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            
           </div>
         </li>
         
@@ -173,6 +183,28 @@
   
   
     <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/csv-plugin/" title="CSV Plugin" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/csv-plugin/">
+    CSV Plugin
+  </a>
+  
+  
+</li>
+
+
+        
       
         
           
@@ -426,13 +458,13 @@ It can be deployed in any Docker infrastructure, including Kubernetes clusters.<
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">image</span>: kiboko/php:<span style="color:#ae81ff">7.4</span>-cli
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kiboko/php:7.4-cli</span>
 </code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
 
@@ -458,21 +490,21 @@ We will require them through composer, with a declarative manner.</p>
 <div class="tab-content" id="basic_with_composer"><div id="basic_with_composer-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_with_composer-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
+<span style="color:#f92672">satellite</span>:
 <span style="color:#75715e">#...</span>
-  <span style="color:#66d9ef">composer</span>:
-    <span style="color:#66d9ef">require</span>:
+  <span style="color:#f92672">composer</span>:
+    <span style="color:#f92672">require</span>:
       - <span style="color:#e6db74">&#34;php-etl/pipeline:@dev&#34;</span>
       - <span style="color:#e6db74">&#34;php-etl/fast-map:@dev&#34;</span>
 </code></pre></div></div>
   <div id="basic_with_composer-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_with_composer-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-$dockerfile-&gt;push(
-    new Docker\PHP\Composer(),
-    new Docker\PHP\ComposerInit(),
-    new Docker\PHP\ComposerMinimumStability(&#39;dev&#39;),
-    new Docker\PHP\ComposerRequire(&#39;php-etl/pipeline:@dev&#39;);
+$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/pipeline:@dev&#39;</span>);
 );
 </code></pre></div></div></div>
 
@@ -485,24 +517,24 @@ the way we want our pipeline to handle our data flows.</p>
 <div class="tab-content" id="dataflows"><div id="dataflows-0" class="tab-pane show active" role="tabpanel" aria-labelledby="dataflows-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
+<span style="color:#f92672">satellite</span>:
 <span style="color:#75715e">#...</span>
-  <span style="color:#66d9ef">runtime</span>:
-    <span style="color:#66d9ef">type</span>: pipeline
-    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">extract</span>: Pipeline\FooExtractor
-    - <span style="color:#66d9ef">transform</span>: Pipeline\FastMapTransformer
+  <span style="color:#f92672">runtime</span>:
+    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">pipeline</span>
+    <span style="color:#f92672">steps</span>:
+    - <span style="color:#f92672">extract</span>: <span style="color:#ae81ff">Pipeline\FooExtractor</span>
+    - <span style="color:#f92672">transform</span>: <span style="color:#ae81ff">Pipeline\FastMapTransformer</span>
 <span style="color:#75715e">#...</span>
-    - <span style="color:#66d9ef">load</span>: Pipeline\BarLoader
+    - <span style="color:#f92672">load</span>: <span style="color:#ae81ff">Pipeline\BarLoader</span>
 </code></pre></div></div>
   <div id="dataflows-1" class="tab-pane" role="tabpanel" aria-labelledby="dataflows-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-$dockerfile-&gt;push(
-    new Docker\PHP\Composer(),
-    new Docker\PHP\ComposerInit(),
-    new Docker\PHP\ComposerMinimumStability(&#39;dev&#39;),
-    new Docker\PHP\ComposerRequire(&#39;php-etl/pipeline:@dev&#39;);
+$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/pipeline:@dev&#39;</span>);
 );
 </code></pre></div></div></div>
 
@@ -545,6 +577,22 @@ $dockerfile-&gt;push(
 
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             
             
             
@@ -781,7 +829,7 @@ $dockerfile-&gt;push(
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

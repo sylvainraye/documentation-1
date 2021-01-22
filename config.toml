@@ -74,6 +74,42 @@ hasChildren = true
   url = "components/satellite"
   weight = 5
 
+  [[menu.main]]
+  parent = "Documentation"
+  name = "CSV Plugin"
+  url = "components/csv-plugin"
+  weight = 6
+
+  [[menu.main]]
+    parent = "Documentation"
+    name = "Metadata"
+    url = "components/metadata"
+    weight = 7
+
+   [[menu.main]]
+      parent = "Documentation"
+      name = "Akeneo Plugin"
+      url = "components/akeneo-plugin"
+      weight = 8
+
+  [[menu.main]]
+        parent = "Documentation"
+        name = "Akeneo Plugin"
+        url = "components/akeneo-plugin"
+        weight = 9
+
+  [[menu.main]]
+          parent = "Documentation"
+          name = "Akeneo Expression Language"
+          url = "components/akeneo-expression-language"
+          weight = 10
+
+   [[menu.main]]
+            parent = "Documentation"
+            name = "Batch"
+            url = "components/batch"
+            weight = 11
+
 [params]
 logo = "logo-web.svg"
 logo_white = "logo-web.svg"

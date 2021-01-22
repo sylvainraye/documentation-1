@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Middleware</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -132,6 +132,16 @@
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
+            <a class="dropdown-item" href="/documentation/components/csv-plugin">CSV Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-plugin">Akeneo Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-expression-language">Akeneo Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            
           </div>
         </li>
         
@@ -157,6 +167,18 @@
 				<script>
 					$(function() {
 					var projects = [
+						
+						{
+							value: "CSV Plugin",
+							label: "<p>Definition This package aims at integrating the CSV reader and writer into the Pipeline stack. This plugin works thanks to the csv-flow package which itself depends on flow-spout.\nInstallation composer require php-etl\/csv-plugin Usage You have to create a yml file which contains all the plugin configuration.\nExample of a config file.\nReading from a CSV file csv: extractor: file_path: input.csv delimiter: \u0026#39;;\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\\\u0026#39; Writing to a file csv: loader: file_path: output.csv delimiter: \u0026#39;,\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\\\u0026#39; Writing logs error in system\u0026rsquo;s stderr csv: logger: type: stderr Your plugin configuration must not contain the config of the loader and the extractor in the same file.\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/components\/csv-plugin\/"
+						},
+						
+						{
+							value: "Middleware",
+							label: "<p></p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/"
+						},
 						
 						{
 							value: "Bare-metal Installation",
@@ -196,7 +218,7 @@
 						
 						{
 							value: "Fast Map",
-							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Definition of a Mapping A mapping is an operation that associates each element of a source of data into a new format of the same data. By this operation, it is possible to transform the way the data is represented.\nThe Abstract Mapping Tree The abstract mapping tree is a representation of the mapping to apply to your data, in order to transform its representation. It is an internal representation build for a computer to understand how it will have to change the data representation during the mapping operation.\nComponents included The php-etl\/fast-map component This component is in charge of representing the Abstract Mapping Tree, and transforming it into compiled PHP code. This compiled PHP code is the actual code that will do the mapping, in an optimized way.\n####php-etl\/fast-map-config\n</p>",
+							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Definition of a Mapping A mapping is an operation that associates each element of a source of data into a new format of the same data. By this operation, it is possible to transform the way the data is represented.\nThe Abstract Mapping Tree The abstract mapping tree is a representation of the mapping to apply to your data, in order to transform its representation. It is an internal representation build for a computer to understand how it will have to change the data representation during the mapping operation.\nComponents included The php-etl\/fast-map component This component is in charge of representing the Abstract Mapping Tree, and transforming it into compiled PHP code. This compiled PHP code is the actual code that will do the mapping, in an optimized way.\nThe php-etl\/fast-map-config component This component allows you to configure your mapper according to the type of data you want to input.\nIf you need to config your mappers, we advise you to use the yml config which will generate a php code usable by the fast-map-config. This code will then be converted into a machine code that can be used by the fast map package.\nInstallation composer require php-etl\/fast-map-plugin Configuration YAML PHP fastmap: map: - field: \u0026#39;products\u0026#39; class: \u0026#39;Model\\\\Product\u0026#39; expression: \u0026#39;merge( input[\u0026#34;items\u0026#34;], input[\u0026#34;shippings\u0026#34;] )\u0026#39; collection: - field: \u0026#39;sku\u0026#39; copy: \u0026#39;[sku]\u0026#39; - field: \u0026#39;price\u0026#39; expression: \u0026#39;input[\u0026#34;price\u0026#34;]\u0026#39; class: \u0026#39;Model\\\\Price\u0026#39; object: - field: \u0026#39;amount\u0026#39; expression: \u0026#39;input[\u0026#34;value\u0026#34;]\u0026#39; - field: \u0026#39;currency\u0026#39; expression: \u0026#39;input[\u0026#34;currency\u0026#34;]\u0026#39;  \u0026lt;?php use Kiboko\\Component\\FastMapConfig\\CompositeBuilder; use Kiboko\\Component\\FastMapConfig\\ObjectBuilder; use Kiboko\\Component\\FastMap\\Compiler; use Kiboko\\Component\\FastMap\\PropertyAccess\\EmptyPropertyPath; use Symfony\\Component\\ExpressionLanguage\\ExpressionFunction; use Model\\Product; use Model\\Price; $mapper = (new ObjectBuilder(Order::class, null, $interpreter)) -\u0026gt;children() -\u0026gt;collection(\u0026#39;products\u0026#39;, \u0026#39;merge( input[\u0026#34;items\u0026#34;], input[\u0026#34;shippings\u0026#34;] )\u0026#39;, Product::class) -\u0026gt;children() -\u0026gt;copy(\u0026#39;sku\u0026#39;, \u0026#39;[sku]\u0026#39;) -\u0026gt;object(\u0026#39;price\u0026#39;, \u0026#39;input[\u0026#34;price\u0026#34;]\u0026#39;, Price::class) -\u0026gt;children() -\u0026gt;expression(\u0026#39;amount\u0026#39;, \u0026#39;input[\u0026#34;value\u0026#34;]\u0026#39;) -\u0026gt;expression(\u0026#39;currency\u0026#39;, \u0026#39;input[\u0026#34;currency\u0026#34;]\u0026#39;) -\u0026gt;end() -\u0026gt;end() -\u0026gt;end() -\u0026gt;end() -\u0026gt;end() -\u0026gt;getMapper();  </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/components\/fast-map\/"
 						},
 						
@@ -207,20 +229,14 @@
 						},
 						
 						{
-							value: "Middleware",
-							label: "<p></p>",
-							url:"https:\/\/php-etl.github.io\/documentation\/"
-						},
-						
-						{
 							value: "Pipeline",
-							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Definition of a Pipeline </p>",
+							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Definition A pipeline is a series of processes that filter or transform data. A pipeline consists of zero, one or more stages\/processes. The first process takes raw input data, in fact something, then sends its results to the second process, and so on, ending with the final result produced by the last process in progress. The pipelines are fast, taking anywhere from a few seconds to a few hours to process a set of data.\nInstallation composer require php-etl\/pipeline Usage In our case, the pipeline is our ETL (Extract, Transform, Load)\n\u0026lt;?php use Kiboko\\Component\\Pipeline\\PipelineRunner; use Kiboko\\Component\\Pipeline\\Pipeline; use Kiboko\\Component\\Flow\\Csv\\Safe\\Extractor; use Kiboko\\Component\\Flow\\Csv\\Safe\\Loader; $runner = new PipelineRunner; $pipeline = (new Pipeline($runner)) -\u0026gt;extract(new Extractor(\u0027path\/to\/file\u0027)) -\u0026gt;load(new Loader(\u0027path\/to\/file\u0027)) -\u0026gt;run(); </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/components\/pipeline\/"
 						},
 						
 						{
 							value: "Promise",
-							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Definition of a Promise </p>",
+							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Definition of a Promise A promise represents a single result of an asynchronous operation.\nTwo operations are called asynchronous when they are independent, i.e. when the second operation does not need to wait for the first to finish before starting.\nThis object allows you to synchronise two (or more) actions that take place in time but not at the same speed.\nCallbacks The then method records reminders to receive either the possible value of a promise and the failure method represents the reason why it cannot be kept.\n\u0026lt;?php use Kiboko\\Component\\Promise\\Promise; $promise = new Promise(); $promise -\u0026gt;then(function ($value) { echo \u0026#34;Hello, \u0026#34;.$value; }) -\u0026gt;failure(function (\\Exception $exception) { echo \u0026#39;Oups, error : \u0026#39;.$exception; }) ; Resolving a promise Promises are fulfilled using the resolve($value) method.\n\u0026lt;?php use Kiboko\\Component\\Promise\\Promise; $promise = new Promise(); $promise -\u0026gt;then(function ($value) { echo \u0026#34;Hello, \u0026#34;.$value; }) -\u0026gt;failure(function (\\Exception $exception) { echo \u0026#39;Oups, error : \u0026#39;.$exception; }) ; $promise-\u0026gt;resolve(\u0026#39;world\u0026#39;); \/\/ Outputs \u0026#39;Hello, world\u0026#39; Promise failure Promises are failed using the fail($exception) method.\n\u0026lt;?php use Kiboko\\Component\\Promise\\Promise; $promise = new Promise(); $promise -\u0026gt;then(function ($value) { echo \u0026#34;Hello, \u0026#34;.$value; }) -\u0026gt;failure(function (\\Exception $exception) { echo \u0026#39;Oups, error : \u0026#39;.$exception; }) ; $promise-\u0026gt;fail(new Exception(\u0026#39;Something went wrong\u0026#39;)); \/\/ Outputs \u0026#39;Oups, error : Exception: Something went wrong\u0026#39; </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/components\/promise\/"
 						},
 						
@@ -238,7 +254,7 @@
 						
 						{
 							value: "The YAML configuration format",
-							label: "<p>The image field In this field you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux, the ones in kiboko\/php or any of your custom brewed image.\nThe composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.\nThe runtime section The http-api runtime The http-hook runtime The pipeline runtime Examples YAML PHP satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-hook path: \/bar\/hello function: hello.php satellite: image: kiboko\/php:7.4-cli composer: # from-local: true autoload: psr-4: \u0026#34;Pipeline\\\\\u0026#34;: \u0026#34;\u0026#34; require: - \u0026#34;php-etl\/pipeline:@dev\u0026#34; - \u0026#34;php-etl\/fast-map:@dev\u0026#34; runtime: type: pipeline steps: - extract: Pipeline\\FooExtractor - transform: Pipeline\\FastMapTransformer array: - field: \u0026#39;[sku]\u0026#39; copy: \u0026#39;[sku]\u0026#39; - field: \u0026#39;[title]\u0026#39; expression: \u0026#39;input[\u0026#34;sku\u0026#34;] ~\u0026#34; | \u0026#34;~ input[\u0026#34;name\u0026#34;]\u0026#39; - field: \u0026#39;[name]\u0026#39; copy: \u0026#39;[name]\u0026#39; - field: \u0026#39;[staticValue]\u0026#39; constant: \u0026#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.\u0026#39; - field: \u0026#39;[descriptions]\u0026#39; class: \u0026#39;Pipeline\\\\Usage\u0026#39; expression: \u0026#39;input\u0026#39; object: - field: \u0026#39;usage\u0026#39; expression: \u0026#39;\u0026#34;Usage: \u0026#34; ~ input[\u0026#34;usage\u0026#34;]\u0026#39; - field: \u0026#39;warning\u0026#39; copy: \u0026#39;[warning]\u0026#39; - field: \u0026#39;notice\u0026#39; copy: \u0026#39;[notice]\u0026#39; - load: Pipeline\\BarLoader </p>",
+							label: "<p>The image field In this field you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux, the ones in kiboko\/php or any of your custom brewed image.\nThe composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.\nThe runtime section The http-api runtime The http-hook runtime The pipeline runtime Examples YAML PHP satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true  require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-hook path: \/bar\/hello function: hello.php satellite: image: kiboko\/php:7.4-cli composer: # from-local: true autoload: psr-4: \u0026#34;Pipeline\\\\\u0026#34;: \u0026#34;\u0026#34; require: - \u0026#34;php-etl\/pipeline:@dev\u0026#34; - \u0026#34;php-etl\/fast-map:@dev\u0026#34; runtime: type: pipeline steps: - extract: Pipeline\\FooExtractor - transform: Pipeline\\FastMapTransformer array: - field: \u0026#39;[sku]\u0026#39; copy: \u0026#39;[sku]\u0026#39; - field: \u0026#39;[title]\u0026#39; expression: \u0026#39;input[\u0026#34;sku\u0026#34;] ~\u0026#34; | \u0026#34;~ input[\u0026#34;name\u0026#34;]\u0026#39; - field: \u0026#39;[name]\u0026#39; copy: \u0026#39;[name]\u0026#39; - field: \u0026#39;[staticValue]\u0026#39; constant: \u0026#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.\u0026#39; - field: \u0026#39;[descriptions]\u0026#39; class: \u0026#39;Pipeline\\\\Usage\u0026#39; expression: \u0026#39;input\u0026#39; object: - field: \u0026#39;usage\u0026#39; expression: \u0026#39;\u0026#34;Usage: \u0026#34; ~ input[\u0026#34;usage\u0026#34;]\u0026#39; - field: \u0026#39;warning\u0026#39; copy: \u0026#39;[warning]\u0026#39; - field: \u0026#39;notice\u0026#39; copy: \u0026#39;[notice]\u0026#39; - load: Pipeline\\BarLoader </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/components\/satellite\/yaml-format\/"
 						},
 						
@@ -289,8 +305,8 @@
         <div class="offset-2 col-8">
           <div class="section px-3 bg-white shadow text-center">
           <h2 class="mb-4">A data-centric framework for the cloud</h2>
-          <p class="mb-6"><p>A framework built for synchronizing your applications in the cloud, written taking advantage of
-the PHP ecosystem.</p>
+          <p class="mb-6"><p>A cloud-friendly framework built for synchronizing your applications over the Internet.
+Built to take advantage of the PHP ecosystem.</p>
 <p>Build your data flows around APIs, message queues flat files or search engines to make them work
 together smoothly. With integrated reporting and logging, get insights on what is going on and
 keep control.</p>
@@ -382,7 +398,7 @@ keep control.</p>
         <div class="col-12">
           <div class="section px-3 bg-white shadow text-center">
           <h2 class="mb-4">Didn&rsquo;t find an answer to your question?</h2>
-          <p class="mb-4">Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam.</p>
+          <p class="mb-4">You can reach our sales team we will find together the best way to provide you support.</p>
           
           
           <a href="/documentation/contact" class="btn btn-primary">contact us</a>
@@ -403,7 +419,7 @@ keep control.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

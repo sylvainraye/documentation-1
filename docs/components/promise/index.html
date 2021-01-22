@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Promise</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -131,6 +131,16 @@
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
+            <a class="dropdown-item" href="/documentation/components/csv-plugin">CSV Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-plugin">Akeneo Plugin</a>
+            
+            <a class="dropdown-item" href="/documentation/components/akeneo-expression-language">Akeneo Expression Language</a>
+            
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            
           </div>
         </li>
         
@@ -173,6 +183,28 @@
   
   
     <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/csv-plugin/" title="CSV Plugin" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/csv-plugin/">
+    CSV Plugin
+  </a>
+  
+  
+</li>
+
+
+        
       
         
           
@@ -409,7 +441,62 @@
 
 
 <h3 id="definition-of-a-promise">Definition of a Promise</h3>
-</div>
+<p>A promise represents a single result of an asynchronous operation.</p>
+<p>Two operations are called asynchronous when they are independent, i.e.
+when the second operation does not need to wait for the first to finish before starting.</p>
+<p>This object allows you to synchronise two (or more) actions that take place in time but not at the same speed.</p>
+<h3 id="callbacks">Callbacks</h3>
+<p>The then method records reminders to receive either the possible value of a promise and the failure method represents the reason why it cannot be kept.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Promise\Promise</span>;
+
+$promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>();
+$promise
+   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> ($value) {
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello, &#34;</span><span style="color:#f92672">.</span>$value;
+   })
+   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">failure</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">\Exception</span> $exception) {
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Oups, error : &#39;</span><span style="color:#f92672">.</span>$exception;
+   })
+;
+</code></pre></div><h3 id="resolving-a-promise">Resolving a promise</h3>
+<p>Promises are fulfilled using the resolve($value) method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Promise\Promise</span>;
+
+$promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>();
+$promise
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> ($value) {
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello, &#34;</span><span style="color:#f92672">.</span>$value;
+    })
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">failure</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">\Exception</span> $exception) {
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Oups, error : &#39;</span><span style="color:#f92672">.</span>$exception;
+    })
+;
+
+$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;world&#39;</span>);
+<span style="color:#75715e">// Outputs &#39;Hello, world&#39;
+</span></code></pre></div><h3 id="promise-failure">Promise failure</h3>
+<p>Promises are failed using the fail($exception) method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Promise\Promise</span>;
+
+$promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>();
+$promise
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> ($value) {
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello, &#34;</span><span style="color:#f92672">.</span>$value;
+    })
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">failure</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">\Exception</span> $exception) {
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Oups, error : &#39;</span><span style="color:#f92672">.</span>$exception;
+    })
+;
+
+$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Something went wrong&#39;</span>));
+<span style="color:#75715e">// Outputs &#39;Oups, error : Exception: Something went wrong&#39;
+</span></code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -442,6 +529,22 @@
 
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             
             
             
@@ -678,7 +781,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Installations</title>
+  <title>CSV Plugin</title>
 
   <meta name="generator" content="Hugo 0.80.0" />
 
@@ -166,8 +166,6 @@
             <a class="back-btn" href="/documentation"></a>
             
               
-            
-              
               
 
 
@@ -177,10 +175,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/installation/" title="Installations" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/installation/">
-    Installations
+<li data-nav-id="https://php-etl.github.io/documentation/components/" title="Components" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/">
+    Components
   </a>
   
   
@@ -196,10 +194,51 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/installation/bare-metal/" title="Bare-metal Installation" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/components/csv-plugin/" title="CSV Plugin" class="sidelist
+  active">
+  <a href="https://php-etl.github.io/documentation/components/csv-plugin/">
+    CSV Plugin
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/contracts/" title="Contracts" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/installation/bare-metal/">
-    Bare-metal Installation
+  <a href="https://php-etl.github.io/documentation/components/contracts/">
+    Contracts
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/contracts/configurator/" title="Configurator Contracts" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/contracts/configurator/">
+    Configurator Contracts
   </a>
   
   
@@ -213,6 +252,173 @@
 </li>
 
 
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/dashboard/" title="Dashboard" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/dashboard/">
+    Dashboard
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/discovery/" title="Discovery" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/discovery/">
+    Discovery
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/fast-map/" title="Fast Map" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/fast-map/">
+    Fast Map
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/pipeline/" title="Pipeline" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/pipeline/">
+    Pipeline
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/promise/" title="Promise" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/promise/">
+    Promise
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/">
+    Satellite
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
+    The YAML configuration format
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+              
+            
               
             
               
@@ -222,59 +428,38 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Installations</h2>
+          <h2 class="mb-5">CSV Plugin</h2>
           
-          <div class="bg-light p-4">
-            <ul class="page-list">
-              
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/installation/" title="Installations" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/installation/">
-    Installations
-  </a>
-  
-  
-    <ul>
-      
-        
+          <div class="content"><h3 id="definition">Definition</h3>
+<p>This package aims at integrating the CSV reader and writer into the Pipeline stack.
+This plugin works thanks to the <code>csv-flow</code> package which itself depends on <code>flow-spout</code>.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/csv-plugin
+</code></pre><h3 id="usage">Usage</h3>
+<p>You have to create a yml file which contains all the plugin configuration.</p>
+<p>Example of a config file.</p>
+<h4 id="reading-from-a-csv-file">Reading from a CSV file</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
+    <span style="color:#f92672">extractor</span>:
+        <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">input.csv</span>
+        <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+        <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+        <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</code></pre></div><h4 id="writing-to-a-file">Writing to a file</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
+    <span style="color:#f92672">loader</span>:
+        <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">output.csv</span>
+        <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+        <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+        <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</code></pre></div><h4 id="writing-logs-error-in-systems-stderr">Writing logs error in system&rsquo;s stderr</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
+    <span style="color:#f92672">logger</span>:
+        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+</code></pre></div><p><code>Your plugin configuration must not contain the config of the loader and the extractor in the same file.</code></p>
+</div>
           
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/installation/bare-metal/" title="Bare-metal Installation" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/installation/bare-metal/">
-    Bare-metal Installation
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-            </ul>
-          </div>
-          
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 19 Jan 2021</p>
           <nav class="pagination mt-3">
             
             
@@ -302,8 +487,6 @@
             
             
             
-            
-            
 
             
             
@@ -312,34 +495,6 @@
             
 
             
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -372,6 +527,22 @@
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -460,7 +631,6 @@
             
             
             
-
             
             
             
@@ -468,31 +638,7 @@
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
-            
-            
-            
-            
-            
-
-            
-            
-            
             
             
             
@@ -520,6 +666,43 @@
             
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -534,10 +717,10 @@
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/satellite/yaml-format/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">The YAML configuration format</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Components</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/installation/bare-metal/"> <span class="d-none d-md-block">Bare-metal Installation</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/contracts/"> <span class="d-none d-md-block">Contracts</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

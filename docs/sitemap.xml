@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://php-etl.github.io/documentation/components/csv-plugin/</loc>
+    <lastmod>2021-01-19T10:02:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://php-etl.github.io/documentation/</loc>
+    <lastmod>2021-01-19T10:02:02+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://php-etl.github.io/documentation/installation/bare-metal/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
@@ -39,11 +49,6 @@
   
   <url>
     <loc>https://php-etl.github.io/documentation/installation/</loc>
-    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://php-etl.github.io/documentation/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url>
   
