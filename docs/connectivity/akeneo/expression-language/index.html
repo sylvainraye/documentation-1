@@ -31,6 +31,7 @@
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
+    --text-color-light:#eee;
     --white-color:#eee;
     --light-color:#fe8507;
     --font-family:Lato;
@@ -60,6 +61,7 @@
 
 
 </head>
+
   
   <body>
     
@@ -228,10 +230,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo connectivity" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
-    Akeneo connectivity
+    Akeneo
   </a>
   
   
@@ -298,10 +300,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV Plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV Plugin
+    CSV
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
+    Fast Map
   </a>
   
   
@@ -340,13 +364,27 @@
 </div>
 
 
-<h3 id="definition">Definition</h3>
-<p>This library implements functions for manupulating Akeneo API data in ExpressionLanguage.</p>
-<p>Its uses the Symfony ExpressionLanguage component.</p>
+<h3 id="goal">Goal</h3>
+<p>This library implements functions for manipulating Akeneo API data through the
+<a href="https://symfony.com/doc/current/components/expression_language.html">Symfony Expression Language</a>.</p>
 <h3 id="installation">Installation</h3>
 <pre><code>composer require php-etl/akeneo-expression-language
 </code></pre><h3 id="usage">Usage</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+- <span style="color:#66d9ef">fastmap</span>:
+    <span style="color:#66d9ef">map</span>:
+    - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+      <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;filter(input[&#34;title&#34;], scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>
+</code></pre></div></div>
+  <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<span style="color:#75715e">&lt;?php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionLanguage</span>;
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider</span>;
@@ -382,7 +420,9 @@ $expression <span style="color:#f92672">=</span> <span style="color:#e6db74">&#3
 
 $interpreter <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExpressionLanguage</span>(<span style="color:#66d9ef">null</span>, [<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AkeneoFilterProvider</span>()]);
 $interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">evaluate</span>($expression, [<span style="color:#e6db74">&#39;input&#39;</span> <span style="color:#f92672">=&gt;</span> $input]);
-</code></pre></div></div>
+</code></pre></div></div></div>
+
+</div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 24 Jan 2021</p>
           <nav class="pagination mt-3">
@@ -496,37 +536,6 @@ $interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -550,84 +559,6 @@ $interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">
             
             
             
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
             
             
 
@@ -640,30 +571,6 @@ $interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">
             
             
 
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
             
             
             
@@ -707,9 +614,142 @@ $interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">
             
             
             
+            
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo connectivity</span></a>
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo</span></a>
             
             
             <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"> <span class="d-none d-md-block">Akeneo plugin</span><i class="ti-arrow-right ml-2"></i></a>

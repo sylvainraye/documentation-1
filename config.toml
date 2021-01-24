@@ -137,6 +137,7 @@ dark_color = "#22014f"
 body_color = "#ddd"
 text_color = "#666"
 text_color_dark = "#333"
+text_color_light = "#eee"
 white_color = "#eee"
 font_family = "lato"
 

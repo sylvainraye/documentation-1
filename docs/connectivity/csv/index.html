@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>CSV Plugin</title>
+  <title>CSV</title>
 
   <meta name="generator" content="Hugo 0.73.0" />
 
@@ -31,6 +31,7 @@
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
+    --text-color-light:#eee;
     --white-color:#eee;
     --light-color:#fe8507;
     --font-family:Lato;
@@ -60,6 +61,7 @@
 
 
 </head>
+
   
   <body>
     
@@ -228,10 +230,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo connectivity" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
-    Akeneo connectivity
+    Akeneo
   </a>
   
   
@@ -298,10 +300,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV Plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   active">
   <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV Plugin
+    CSV
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
+    Fast Map
   </a>
   
   
@@ -328,7 +352,7 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">CSV Plugin</h2>
+          <h2 class="mb-5">CSV</h2>
           
           <div class="content"><h3 id="definition">Definition</h3>
 <p>This package aims at integrating the CSV reader and writer into the Pipeline stack.
@@ -339,24 +363,43 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
 <p>You have to create a yml file which contains all the plugin configuration.</p>
 <p>Example of a config file.</p>
 <h4 id="reading-from-a-csv-file">Reading from a CSV file</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">csv</span>:
-    <span style="color:#66d9ef">extractor</span>:
-        <span style="color:#66d9ef">file_path</span>: input.csv
-        <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
-        <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-        <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-</code></pre></div><h4 id="writing-to-a-file">Writing to a file</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">csv</span>:
-    <span style="color:#66d9ef">loader</span>:
-        <span style="color:#66d9ef">file_path</span>: output.csv
-        <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-        <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-        <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-</code></pre></div><h4 id="writing-logs-error-in-systems-stderr">Writing logs error in system&rsquo;s stderr</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">csv</span>:
-    <span style="color:#66d9ef">logger</span>:
-        <span style="color:#66d9ef">type</span>: stderr
-</code></pre></div><p><code>Your plugin configuration must not contain the config of the loader and the extractor in the same file.</code></p>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">pipeline</span>:
+    <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">csv</span>:
+          <span style="color:#66d9ef">extractor</span>:
+            <span style="color:#66d9ef">file_path</span>: input.csv
+            <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+          <span style="color:#66d9ef">logger</span>:
+            <span style="color:#66d9ef">type</span>: stderr
+</code></pre></div></div></div>
+
+<h4 id="writing-to-a-csv-file">Writing to a CSV file</h4>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">pipeline</span>:
+    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">csv</span>:
+        <span style="color:#66d9ef">loader</span>:
+          <span style="color:#66d9ef">file_path</span>: output.csv
+          <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+          <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+          <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+        <span style="color:#66d9ef">logger</span>:
+          <span style="color:#66d9ef">type</span>: stderr
+</code></pre></div></div></div>
+
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 19 Jan 2021</p>
@@ -473,37 +516,6 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -527,10 +539,22 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
             
             
             
+            
+            
 
             
             
             
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -555,19 +579,6 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -576,6 +587,22 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -616,7 +643,6 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
             
             
             
-
             
             
             
@@ -624,6 +650,23 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
             
             
             
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -689,7 +732,7 @@ This plugin works thanks to the <code>csv-flow</code> package which itself depen
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo plugin</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/"> <span class="d-none d-md-block">Components</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/fast-map/"> <span class="d-none d-md-block">Fast Map</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

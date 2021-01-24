@@ -1,9 +1,10 @@
 ---
 title: "Satellite"
 date: 2020-07-12T15:21:02+02:00
+weight: 1
 draft: false
 type: "docs"
-icon: "ti-cloud"
+logo: "lambda"
 description: "Generated micro-services for data stream processing in the cloud"
 ---
 

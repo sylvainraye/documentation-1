@@ -31,6 +31,7 @@
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
+    --text-color-light:#eee;
     --white-color:#eee;
     --light-color:#fe8507;
     --font-family:Lato;
@@ -60,6 +61,7 @@
 
 
 </head>
+
   
   <body>
     
@@ -228,10 +230,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo connectivity" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
-    Akeneo connectivity
+    Akeneo
   </a>
   
   
@@ -298,10 +300,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV Plugin" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/csv/">
-    CSV Plugin
+    CSV
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
+    Fast Map
   </a>
   
   
@@ -342,98 +366,59 @@
 
 <h3 id="configuration-format">Configuration format</h3>
 <h4 id="building-an-extractor">Building an extractor</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">akeneo</span>:
-  <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">false</span>
-  <span style="color:#66d9ef">extractor</span>:
-    <span style="color:#66d9ef">type</span>: productModel
-    <span style="color:#66d9ef">method</span>: all
-    <span style="color:#66d9ef">search</span>:
-      - { <span style="color:#66d9ef">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
-      - { <span style="color:#66d9ef">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: ecommerce }
-      - { <span style="color:#66d9ef">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: ecommerce }
-      - { <span style="color:#66d9ef">field: categories, operator: IN, value</span>: winter_collection }
-      - { <span style="color:#66d9ef">field: family, operator: IN, value</span>: [camcorders, digital_cameras] }
-  <span style="color:#66d9ef">logger</span>:
-    <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
-  <span style="color:#66d9ef">client</span>:
-    <span style="color:#66d9ef">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
-    <span style="color:#66d9ef">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
-    <span style="color:#66d9ef">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
-    <span style="color:#66d9ef">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-    <span style="color:#66d9ef">password</span>: 516f3e3e5
-</code></pre></div><h4 id="building-a-loader">Building a loader</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">akeneo</span>:
-  <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#66d9ef">loader</span>:
-    <span style="color:#66d9ef">type</span>: productModel
-    <span style="color:#66d9ef">method</span>: upsert
-  <span style="color:#66d9ef">logger</span>:
-    <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
-  <span style="color:#66d9ef">client</span>:
-    <span style="color:#66d9ef">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
-    <span style="color:#66d9ef">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
-    <span style="color:#66d9ef">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
-    <span style="color:#66d9ef">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-    <span style="color:#66d9ef">password</span>: 516f3e3e5
-</code></pre></div><h3 id="usage">Usage</h3>
-<p>This library will build for you either an extractor or a loader, compatible with the Akeneo API.</p>
-<p>You can use the following PHP script to test and print the result of your configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-<span style="color:#66d9ef">require</span> <span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../vendor/autoload.php&#39;</span>;
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">pipeline</span>:
+    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">akeneo</span>:
+        <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">false</span>
+        <span style="color:#66d9ef">extractor</span>:
+          <span style="color:#66d9ef">type</span>: productModel
+          <span style="color:#66d9ef">method</span>: all
+          <span style="color:#66d9ef">search</span>:
+            - { <span style="color:#66d9ef">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
+            - { <span style="color:#66d9ef">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: ecommerce }
+            - { <span style="color:#66d9ef">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: ecommerce }
+            - { <span style="color:#66d9ef">field: categories, operator: IN, value</span>: winter_collection }
+            - { <span style="color:#66d9ef">field: family, operator: IN, value</span>: [camcorders, digital_cameras] }
+        <span style="color:#66d9ef">logger</span>:
+          <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
+        <span style="color:#66d9ef">client</span>:
+          <span style="color:#66d9ef">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
+          <span style="color:#66d9ef">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
+          <span style="color:#66d9ef">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
+          <span style="color:#66d9ef">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+          <span style="color:#66d9ef">password</span>: 516f3e3e5
+</code></pre></div></div></div>
 
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Flow\Akeneo</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">PhpParser\Node</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">PhpParser\PrettyPrinter</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\Console</span>;
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\Yaml</span>;
+<h4 id="building-a-loader">Building a loader</h4>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-$input <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Console\Input\ArgvInput</span>($argv);
-$output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Console\Output\ConsoleOutput</span>();
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">pipeline</span>:
+    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">akeneo</span>:
+        <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">true</span>
+        <span style="color:#66d9ef">loader</span>:
+          <span style="color:#66d9ef">type</span>: productModel
+          <span style="color:#66d9ef">method</span>: upsert
+        <span style="color:#66d9ef">logger</span>:
+          <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
+        <span style="color:#66d9ef">client</span>:
+          <span style="color:#66d9ef">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
+          <span style="color:#66d9ef">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
+          <span style="color:#66d9ef">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
+          <span style="color:#66d9ef">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+          <span style="color:#66d9ef">password</span>: 516f3e3e5
+</code></pre></div></div></div>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DefaultCommand</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Console\Command\Command</span>
-{
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">static</span> $defaultName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test&#39;</span>;
-
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">configure</span>()
-    {
-        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">addArgument</span>(<span style="color:#e6db74">&#39;file&#39;</span>, <span style="color:#a6e22e">Console\Input\InputArgument</span><span style="color:#f92672">::</span><span style="color:#a6e22e">REQUIRED</span>);
-    }
-
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">execute</span>(<span style="color:#a6e22e">Console\Input\InputInterface</span> $input, <span style="color:#a6e22e">Console\Output\OutputInterface</span> $output)
-    {
-        $factory <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Akeneo\Service</span>();
-
-        $style <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Console\Style\SymfonyStyle</span>(
-            $input,
-            $output,
-        );
-
-        $config <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yaml\Yaml</span><span style="color:#f92672">::</span><span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">file_get_contents</span>($input<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getArgument</span>(<span style="color:#e6db74">&#39;file&#39;</span>)));
-
-        $style<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">section</span>(<span style="color:#e6db74">&#39;Validation&#39;</span>);
-        $style<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">writeln</span>($factory<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">validate</span>($config) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;&lt;info&gt;ok&lt;/info&gt;&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&lt;error&gt;failed&lt;/error&gt;&#39;</span>);
-        $style<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">section</span>(<span style="color:#e6db74">&#39;Normalized Config&#39;</span>);
-        $style<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">writeln</span>(<span style="color:#a6e22e">\json_encode</span>($config <span style="color:#f92672">=</span> $factory<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">normalize</span>($config), <span style="color:#a6e22e">JSON_PRETTY_PRINT</span>));
-        $style<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">section</span>(<span style="color:#e6db74">&#39;Generated code&#39;</span>);
-        $style<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">writeln</span>((<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PrettyPrinter\Standard</span>())<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prettyPrintFile</span>([
-            <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Node\Stmt\Return_</span>($factory<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">compile</span>($config)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getNode</span>()),
-        ]));
-
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-}
-
-(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Console\Application</span>())
-    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DefaultCommand</span>())
-    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>($input, $output)
-;
-</code></pre></div><p>See also</p>
-<ul>
-<li><a href="../pipeline/">php-etl/pipeline</a></li>
-<li><a href="../fast-map">php-etl/fast-map</a></li>
-<li><a href="../akeneo-expression-language">php-etl/akeneo-expression-language</a></li>
-</ul>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 24 Jan 2021</p>
@@ -551,37 +536,6 @@ $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</sp
             
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -605,10 +559,22 @@ $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</sp
             
             
             
+            
+            
 
             
             
             
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -633,19 +599,6 @@ $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</sp
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -654,6 +607,22 @@ $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</sp
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
@@ -694,7 +663,6 @@ $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</sp
             
             
             
-
             
             
             
@@ -702,6 +670,23 @@ $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</sp
             
             
             
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -767,7 +752,7 @@ $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</sp
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo expression language functions</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/csv/"> <span class="d-none d-md-block">CSV Plugin</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/csv/"> <span class="d-none d-md-block">CSV</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

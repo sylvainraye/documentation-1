@@ -1,17 +1,15 @@
 ---
 title: "Akeneo expression language functions"
 date: 2021-01-24T09:23:54+01:00
-lastmod: 2021-01-24T09:23:54+01:00
-weight: ""
 draft: false
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
-### Definition
-This library implements functions for manupulating Akeneo API data in ExpressionLanguage.
+### Goal
 
-Its uses the Symfony ExpressionLanguage component.
+This library implements functions for manipulating Akeneo API data through the
+[Symfony Expression Language](https://symfony.com/doc/current/components/expression_language.html).
 
 ### Installation
 
@@ -20,7 +18,17 @@ composer require php-etl/akeneo-expression-language
 ```
 
 ### Usage
-```php
+
+{{< tabs name="basic_definition" >}}
+
+{{< tab name="YAML" codelang="yaml"  >}}
+- fastmap:
+    map:
+    - field: '[title]'
+      expression: 'filter(input["title"], scope("print", "mobile", "web"), first())'
+{{< /tab >}}
+
+{{< tab name="PHP" codelang="php"  >}}
 <?php
 
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
@@ -57,4 +65,6 @@ $expression = 'filter(input, scope("print", "mobile", "web"), first())';
 
 $interpreter = new ExpressionLanguage(null, [new AkeneoFilterProvider()]);
 $interpreter->evaluate($expression, ['input' => $input]);
-```
+{{< /tab >}}
+
+{{< /tabs >}}

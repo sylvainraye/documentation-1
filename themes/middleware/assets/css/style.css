@@ -10,7 +10,7 @@ body {
 
 P {
   color: var(--text-color);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 h1,
@@ -204,6 +204,14 @@ select:focus {
 
 .section-title {
   margin-bottom: 40px;
+}
+
+.section-title.section-dark {
+  color: var(--text-color-dark);
+}
+
+.section-title.section-light {
+  color: var(--text-color-light);
 }
 
 .bg-cover {
@@ -907,4 +915,32 @@ i{
 }
 a:hover i {
   color: var(--primary-color);
+}
+
+
+[class^="logo-"],
+[class*=" logo-"] {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="logo-"] svg,
+[class*=" logo-"] svg {
+  height: 40px;
+  fill: var(--primary-color)!important;
+}
+
+.logo-akeneo,
+.logo-lambda,
+.logo-csv,
+.logo-pipeline,
+.logo-fastmap {
 }

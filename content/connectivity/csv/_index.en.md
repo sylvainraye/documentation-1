@@ -1,7 +1,10 @@
 ---
-title: "CSV Plugin"
+title: "CSV"
 date: 2021-01-19T10:02:02+02:00
 draft: false
+type: "plugins"
+logo: "csv"
+description: "Read and write CSV files in any format"
 ---
 
 ### Definition
@@ -22,30 +25,41 @@ You have to create a yml file which contains all the plugin configuration.
 Example of a config file. 
 
 #### Reading from a CSV file
-```yaml
-csv:
-    extractor:
-        file_path: input.csv
-        delimiter: ';'
-        enclosure: '"'
-        escape: '\\'
-```
 
-#### Writing to a file
-```yaml
-csv:
-    loader:
-        file_path: output.csv
-        delimiter: ','
-        enclosure: '"'
-        escape: '\\'
-```
+{{< tabs name="basic_definition" >}}
 
-#### Writing logs error in system's stderr
-```yaml
-csv:
-    logger:
-        type: stderr
-```
+{{< tab name="YAML" codelang="yaml"  >}}
+satellite:
+  pipeline:
+    steps:
+      - csv:
+          extractor:
+            file_path: input.csv
+            delimiter: ';'
+            enclosure: '"'
+            escape: '\\'
+          logger:
+            type: stderr
+{{< /tab >}}
 
-`Your plugin configuration must not contain the config of the loader and the extractor in the same file.`
+{{< /tabs >}}
+
+#### Writing to a CSV file
+
+{{< tabs name="basic_definition" >}}
+
+{{< tab name="YAML" codelang="yaml"  >}}
+satellite:
+  pipeline:
+    steps:
+    - csv:
+        loader:
+          file_path: output.csv
+          delimiter: ','
+          enclosure: '"'
+          escape: '\\'
+        logger:
+          type: stderr
+{{< /tab >}}
+
+{{< /tabs >}}

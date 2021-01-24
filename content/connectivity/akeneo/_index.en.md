@@ -1,9 +1,10 @@
 ---
-title: "Akeneo connectivity"
+title: "Akeneo"
 date: 2021-01-22T09:23:54+01:00
-lastmod: 2021-01-22T09:23:54+01:00
-weight: ""
 draft: false
+type: "plugins"
+logo: "akeneo"
+description: "Connect your Akeneo PIM through pipelines"
 ---
 
 ### Goal

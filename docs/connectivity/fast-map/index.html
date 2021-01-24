@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Discovery</title>
+  <title>Fast Map</title>
 
   <meta name="generator" content="Hugo 0.73.0" />
 
@@ -173,7 +173,7 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/components/discovery/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/connectivity/fast-map/" selected>English
         </option>
         
         
@@ -202,8 +202,6 @@
             <a class="back-btn" href="/documentation"></a>
             
               
-            
-              
               
 
 
@@ -213,10 +211,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/" title="Components" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/" title="Connectivity" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/components/">
-    Components
+  <a href="https://php-etl.github.io/documentation/connectivity/">
+    Connectivity
   </a>
   
   
@@ -232,10 +230,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/">
-    Satellite
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
+    Akeneo
   </a>
   
   
@@ -251,10 +249,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
-    The YAML configuration format
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -280,58 +300,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/contracts/" title="Contracts" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/components/contracts/">
-    Contracts
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/contracts/configurator/" title="Configurator Contracts" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/contracts/configurator/">
-    Configurator Contracts
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/dashboard/" title="Dashboard" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/dashboard/">
-    Dashboard
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
   </a>
   
   
@@ -350,54 +322,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/discovery/" title="Discovery" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
   active">
-  <a href="https://php-etl.github.io/documentation/components/discovery/">
-    Discovery
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/pipeline/" title="Pipeline" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/pipeline/">
-    Pipeline
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/promise/" title="Promise" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/promise/">
-    Promise
+  <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
+    Fast Map
   </a>
   
   
@@ -411,6 +339,8 @@
 </li>
 
 
+              
+            
               
             
               
@@ -422,7 +352,7 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Discovery</h2>
+          <h2 class="mb-5">Fast Map</h2>
           
           <div class="content">
 
@@ -434,7 +364,80 @@
 </div>
 
 
-<h3 id="data-structure-discovery">Data structure discovery</h3>
+<h3 id="definition-of-a-mapping">Definition of a Mapping</h3>
+<p>A mapping is an operation that associates each element of a source of data into
+a new format of the same data. By this operation, it is possible to transform
+the way the data is represented.</p>
+<h3 id="the-abstract-mapping-tree">The Abstract Mapping Tree</h3>
+<p>The <em>abstract mapping tree</em> is a representation of the mapping to apply to your
+data, in order to transform its representation. It is an internal representation
+build for a computer to understand how it will have to change the data representation
+during the mapping operation.</p>
+<h3 id="components-included">Components included</h3>
+<h4 id="the-php-etlfast-map-component">The <code>php-etl/fast-map</code> component</h4>
+<p>This component is in charge of representing the Abstract Mapping Tree, and transforming
+it into compiled PHP code. This compiled PHP code is the actual code that will do the
+mapping, in an optimized way.</p>
+<h4 id="the-php-etlfast-map-config-component">The <code>php-etl/fast-map-config</code> component</h4>
+<p>This component allows you to configure your mapper according to the type of data you want to input.</p>
+<p>If you need to config your mappers, we advise you to use the yml config which will generate a php code usable by the fast-map-config.
+This code will then be converted into a machine code that can be used by the fast map package.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/fast-map-plugin
+</code></pre><h3 id="configuration">Configuration</h3>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">fastmap</span>:
+  <span style="color:#66d9ef">map</span>:
+    - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;products&#39;</span>
+      <span style="color:#66d9ef">class</span>: <span style="color:#e6db74">&#39;Model\\Product&#39;</span>
+      <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;merge( input[&#34;items&#34;], input[&#34;shippings&#34;] )&#39;</span>
+      <span style="color:#66d9ef">collection</span>:
+        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;sku&#39;</span>
+          <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;price&#39;</span>
+          <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;price&#34;]&#39;</span>
+          <span style="color:#66d9ef">class</span>: <span style="color:#e6db74">&#39;Model\\Price&#39;</span>
+          <span style="color:#66d9ef">object</span>:
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;amount&#39;</span>
+              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;value&#34;]&#39;</span>
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;currency&#39;</span>
+              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;currency&#34;]&#39;</span>
+</code></pre></div></div>
+  <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<span style="color:#75715e">&lt;?php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMapConfig\CompositeBuilder</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMapConfig\ObjectBuilder</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\Compiler</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\PropertyAccess\EmptyPropertyPath</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionFunction</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Model\Product</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Model\Price</span>;
+
+$mapper <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ObjectBuilder</span>(<span style="color:#a6e22e">Order</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>, <span style="color:#66d9ef">null</span>, $interpreter))
+ <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">children</span>()
+     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">collection</span>(<span style="color:#e6db74">&#39;products&#39;</span>, <span style="color:#e6db74">&#39;merge( input[&#34;items&#34;], input[&#34;shippings&#34;] )&#39;</span>, <span style="color:#a6e22e">Product</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>)
+         <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">children</span>()
+             <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">copy</span>(<span style="color:#e6db74">&#39;sku&#39;</span>, <span style="color:#e6db74">&#39;[sku]&#39;</span>)
+             <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">object</span>(<span style="color:#e6db74">&#39;price&#39;</span>, <span style="color:#e6db74">&#39;input[&#34;price&#34;]&#39;</span>, <span style="color:#a6e22e">Price</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>)
+                 <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">children</span>()
+                     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">expression</span>(<span style="color:#e6db74">&#39;amount&#39;</span>, <span style="color:#e6db74">&#39;input[&#34;value&#34;]&#39;</span>)
+                     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">expression</span>(<span style="color:#e6db74">&#39;currency&#39;</span>, <span style="color:#e6db74">&#39;input[&#34;currency&#34;]&#39;</span>)
+                 <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+             <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+         <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+ <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+ <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getMapper</span>();
+</code></pre></div></div></div>
+
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
@@ -465,37 +468,9 @@
             
             
             
-            
-            
 
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
             
             
             
@@ -516,12 +491,6 @@
             
             
 
-            
-            
-            
-            
-            
-            
             
             
             
@@ -565,30 +534,15 @@
             
             
             
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
             
 
+            
+            
+            
+            
             
             
             
@@ -608,6 +562,24 @@
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
             
             
             
@@ -661,6 +633,21 @@
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -673,6 +660,19 @@
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -767,10 +767,10 @@
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/dashboard/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Dashboard</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/csv/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">CSV</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/pipeline/"> <span class="d-none d-md-block">Pipeline</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/"> <span class="d-none d-md-block">Components</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

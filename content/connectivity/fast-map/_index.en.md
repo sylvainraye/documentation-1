@@ -2,8 +2,8 @@
 title: "Fast Map"
 date: 2020-07-12T15:21:02+02:00
 draft: false
-type: "docs"
-icon: "ti-package"
+type: "plugins"
+logo: "fastmap"
 description: "Data transformation and serialization, with compiled and static mappers"
 ---
 

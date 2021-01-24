@@ -22,13 +22,53 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 text-center">
-          <h2 class="section-title">{{ i18n "topics_title" | safeHTML }}</h2>
+          <h2 class="section-title section-light">{{ i18n "topics_title" | safeHTML }}</h2>
         </div>
         {{ "<!-- topic-item -->" | safeHTML }}
         {{ range (where .Site.Pages "Type" "docs") }}
         <div class="col-lg-4 col-sm-6 mb-4">
           <a href="{{ .Permalink }}" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+            {{ if .Params.Icon }}
             <i class="{{ .Params.Icon }} icon text-primary d-block mb-4"></i>
+            {{ end }}
+            {{ if .Params.Logo }}
+            <i class="logo-{{ .Params.Logo }} icon text-primary d-block mb-4">
+              <svg>
+                <use xlink:href="sprites.svg#{{ .Params.Logo }}"></use>
+              </svg>
+            </i>
+            {{ end }}
+            <h3 class="mb-3 mt-0">{{ .Title }}</h3>
+            <p class="mb-0">{{ .Params.Description }}</p>
+          </a>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ "<!-- /topics -->" | safeHTML }}
+
+  {{ "<!-- topics -->" | safeHTML }}
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 text-center">
+          <h2 class="section-title section-light">{{ i18n "plugins_title" | safeHTML }}</h2>
+        </div>
+        {{ "<!-- topic-item -->" | safeHTML }}
+        {{ range (where .Site.Pages "Type" "plugins") }}
+        <div class="col-lg-4 col-sm-6 mb-4">
+          <a href="{{ .Permalink }}" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+            {{ if .Params.Icon }}
+            <i class="{{ .Params.Icon }} icon text-primary d-block mb-4"></i>
+            {{ end }}
+            {{ if .Params.Logo }}
+            <i class="logo-{{ .Params.Logo }} icon text-primary d-block mb-4">
+              <svg>
+                <use xlink:href="sprites.svg#{{ .Params.Logo }}"></use>
+              </svg>
+            </i>
+            {{ end }}
             <h3 class="mb-3 mt-0">{{ .Title }}</h3>
             <p class="mb-0">{{ .Params.Description }}</p>
           </a>
