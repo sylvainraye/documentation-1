@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Middleware</title>
 
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.73.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,18 +91,14 @@
         </li>
         
         
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation/system-requirements">System Requirements</a>
-        </li>
-        
-        
-        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Installation
           </a>
           <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
             
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
@@ -118,7 +114,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Documentation
+            Packages
           </a>
           <div class="dropdown-menu">
             
@@ -132,13 +128,7 @@
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
-            <a class="dropdown-item" href="/documentation/components/csv-plugin">CSV Plugin</a>
-            
             <a class="dropdown-item" href="/documentation/components/metadata">Metadata</a>
-            
-            <a class="dropdown-item" href="/documentation/components/akeneo-plugin">Akeneo Plugin</a>
-            
-            <a class="dropdown-item" href="/documentation/components/akeneo-expression-language">Akeneo Expression Language</a>
             
             <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
             
@@ -146,7 +136,63 @@
         </li>
         
         
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/openapi">Open API</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/database">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
+          </div>
+        </li>
+        
+        
       </ul>
+      
+      <select class="lang-list " id="select-language"
+        onchange="location = this.value;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="en" value="https://php-etl.github.io/documentation/" selected>English
+        </option>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="fr" value="https://php-etl.github.io/documentation/fr/">Français</option>
+        
+        
+        
+        
+      </select>
       
     </div>
   </div>
@@ -169,15 +215,39 @@
 					var projects = [
 						
 						{
-							value: "CSV Plugin",
-							label: "<p>Definition This package aims at integrating the CSV reader and writer into the Pipeline stack. This plugin works thanks to the csv-flow package which itself depends on flow-spout.\nInstallation composer require php-etl\/csv-plugin Usage You have to create a yml file which contains all the plugin configuration.\nExample of a config file.\nReading from a CSV file csv: extractor: file_path: input.csv delimiter: \u0026#39;;\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\\\u0026#39; Writing to a file csv: loader: file_path: output.csv delimiter: \u0026#39;,\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\\\u0026#39; Writing logs error in system\u0026rsquo;s stderr csv: logger: type: stderr Your plugin configuration must not contain the config of the loader and the extractor in the same file.\n</p>",
-							url:"https:\/\/php-etl.github.io\/documentation\/components\/csv-plugin\/"
+							value: "Akeneo expression language functions",
+							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Definition This library implements functions for manupulating Akeneo API data in ExpressionLanguage.\nIts uses the Symfony ExpressionLanguage component.\nInstallation composer require php-etl\/akeneo-expression-language Usage \u0026lt;?php use Symfony\\Component\\ExpressionLanguage\\ExpressionLanguage; use Kiboko\\Component\\ExpressionLanguage\\Akeneo\\AkeneoFilterProvider; $input = [ [ \u0026#39;locale\u0026#39; =\u0026gt; \u0026#39;en_US\u0026#39;, \u0026#39;scope\u0026#39; =\u0026gt; \u0026#39;mobile\u0026#39;, \u0026#39;data\u0026#39; =\u0026gt; \u0026#39;Lorem ipsum dolor sit amet\u0026#39;, ], [ \u0026#39;locale\u0026#39; =\u0026gt; \u0026#39;fr_CA\u0026#39;, \u0026#39;scope\u0026#39; =\u0026gt; \u0026#39;web\u0026#39;, \u0026#39;data\u0026#39; =\u0026gt; \u0026#39;Lorem ipsum dolor sit amet\u0026#39;, ], [ \u0026#39;locale\u0026#39; =\u0026gt; \u0026#39;fr_CA\u0026#39;, \u0026#39;scope\u0026#39; =\u0026gt; \u0026#39;marketplace\u0026#39;, \u0026#39;data\u0026#39; =\u0026gt; \u0026#39;Lorem ipsum dolor sit amet\u0026#39;, ], [ \u0026#39;locale\u0026#39; =\u0026gt; \u0026#39;fr_FR\u0026#39;, \u0026#39;scope\u0026#39; =\u0026gt; \u0026#39;print\u0026#39;, \u0026#39;data\u0026#39; =\u0026gt; \u0026#39;Lorem ipsum dolor sit amet\u0026#39;, ], [ \u0026#39;locale\u0026#39; =\u0026gt; \u0026#39;en_GB\u0026#39;, \u0026#39;scope\u0026#39; =\u0026gt; \u0026#39;mobile\u0026#39;, \u0026#39;data\u0026#39; =\u0026gt; \u0026#39;Lorem ipsum dolor sit amet\u0026#39;, ], ]; $expression = \u0026#39;filter(input, scope(\u0026#34;print\u0026#34;, \u0026#34;mobile\u0026#34;, \u0026#34;web\u0026#34;), first())\u0026#39;; $interpreter = new ExpressionLanguage(null, [new AkeneoFilterProvider()]); $interpreter-\u0026gt;evaluate($expression, [\u0026#39;input\u0026#39; =\u0026gt; $input]); </p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/akeneo\/expression-language\/"
+						},
+						
+						{
+							value: "Akeneo plugin",
+							label: "<p> FEATURE STATE: Middleware 0.1 [alpha]  Configuration format Building an extractor akeneo: enterprise: false extractor: type: productModel method: all search: - { field: enabled, operator: \u0026#39;=\u0026#39;, value: true } - { field: completeness, operator: \u0026#39;\u0026gt;\u0026#39;, value: 70, scope: ecommerce } - { field: completeness, operator: \u0026#39;\u0026lt;\u0026#39;, value: 85, scope: ecommerce } - { field: categories, operator: IN, value: winter_collection } - { field: family, operator: IN, value: [camcorders, digital_cameras] } logger: type: \u0026#39;stderr\u0026#39; client: api_url: \u0026#39;https:\/\/demo.akeneo.com\u0026#39; client_id: \u0026#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8\u0026#39; secret: \u0026#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso\u0026#39; username: \u0026#39;demo_9573\u0026#39; password: 516f3e3e5 Building a loader akeneo: enterprise: true loader: type: productModel method: upsert logger: type: \u0026#39;stderr\u0026#39; client: api_url: \u0026#39;https:\/\/demo.akeneo.com\u0026#39; client_id: \u0026#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8\u0026#39; secret: \u0026#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso\u0026#39; username: \u0026#39;demo_9573\u0026#39; password: 516f3e3e5 Usage This library will build for you either an extractor or a loader, compatible with the Akeneo API.\nYou can use the following PHP script to test and print the result of your configuration.\n\u0026lt;?php require __DIR__ . \u0026#39;\/..\/vendor\/autoload.php\u0026#39;; use Kiboko\\Component\\ETL\\Flow\\Akeneo; use PhpParser\\Node; use PhpParser\\PrettyPrinter; use Symfony\\Component\\Console; use Symfony\\Component\\Yaml; $input = new Console\\Input\\ArgvInput($argv); $output = new Console\\Output\\ConsoleOutput(); class DefaultCommand extends Console\\Command\\Command { protected static $defaultName = \u0026#39;test\u0026#39;; protected function configure() { $this-\u0026gt;addArgument(\u0026#39;file\u0026#39;, Console\\Input\\InputArgument::REQUIRED); } protected function execute(Console\\Input\\InputInterface $input, Console\\Output\\OutputInterface $output) { $factory = new Akeneo\\Service(); $style = new Console\\Style\\SymfonyStyle( $input, $output, ); $config = Yaml\\Yaml::parse(input: file_get_contents($input-\u0026gt;getArgument(\u0026#39;file\u0026#39;))); $style-\u0026gt;section(\u0026#39;Validation\u0026#39;); $style-\u0026gt;writeln($factory-\u0026gt;validate($config) ? \u0026#39;\u0026lt;info\u0026gt;ok\u0026lt;\/info\u0026gt;\u0026#39; : \u0026#39;\u0026lt;error\u0026gt;failed\u0026lt;\/error\u0026gt;\u0026#39;); $style-\u0026gt;section(\u0026#39;Normalized Config\u0026#39;); $style-\u0026gt;writeln(\\json_encode($config = $factory-\u0026gt;normalize($config), JSON_PRETTY_PRINT)); $style-\u0026gt;section(\u0026#39;Generated code\u0026#39;); $style-\u0026gt;writeln((new PrettyPrinter\\Standard())-\u0026gt;prettyPrintFile([ new Node\\Stmt\\Return_($factory-\u0026gt;compile($config)-\u0026gt;getNode()), ])); return 0; } } (new Console\\Application()) -\u0026gt;add(new DefaultCommand()) -\u0026gt;run($input, $output) ; See also\n php-etl\/pipeline php-etl\/fast-map php-etl\/akeneo-expression-language  </p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/akeneo\/plugin\/"
+						},
+						
+						{
+							value: "Connectivity",
+							label: "<p>Hello world\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/"
 						},
 						
 						{
 							value: "Middleware",
 							label: "<p></p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/"
+						},
+						
+						{
+							value: "Akeneo connectivity",
+							label: "<p>Goal The packages listed below aims at the integration of Akeneo PIM into the ETL Pipeline and Satellite stacks.\nThe tools built for Akeneo is composed of ETL capacities and data processing functions to be used in Fast Map.\nThe Akeneo plugin for ETL Pipeline This plugin will enable Akeneo connectivity to the ETL Pipeline, in order to read and write from and to Akeneo PIM. This integration is compatible with both Akeneo Enterprise Edition client and the Akeneo Community Edition client.\nSee detailed documentation\nThe Akeneo expression functions This plugin will extend the Fast Map data processing library with new functions dedicated to Akeneo-specific data formats and concepts.\nSee detailed documentation\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/akeneo\/"
+						},
+						
+						{
+							value: "CSV Plugin",
+							label: "<p>Definition This package aims at integrating the CSV reader and writer into the Pipeline stack. This plugin works thanks to the csv-flow package which itself depends on flow-spout.\nInstallation composer require php-etl\/csv-plugin Usage You have to create a yml file which contains all the plugin configuration.\nExample of a config file.\nReading from a CSV file csv: extractor: file_path: input.csv delimiter: \u0026#39;;\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\\\u0026#39; Writing to a file csv: loader: file_path: output.csv delimiter: \u0026#39;,\u0026#39; enclosure: \u0026#39;\u0026#34;\u0026#39; escape: \u0026#39;\\\\\u0026#39; Writing logs error in system\u0026rsquo;s stderr csv: logger: type: stderr Your plugin configuration must not contain the config of the loader and the extractor in the same file.\n</p>",
+							url:"https:\/\/php-etl.github.io\/documentation\/connectivity\/csv\/"
 						},
 						
 						{
@@ -254,7 +324,7 @@
 						
 						{
 							value: "The YAML configuration format",
-							label: "<p>The image field In this field you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux, the ones in kiboko\/php or any of your custom brewed image.\nThe composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.\nThe runtime section The http-api runtime The http-hook runtime The pipeline runtime Examples YAML PHP satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true  require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-hook path: \/bar\/hello function: hello.php satellite: image: kiboko\/php:7.4-cli composer: # from-local: true autoload: psr-4: \u0026#34;Pipeline\\\\\u0026#34;: \u0026#34;\u0026#34; require: - \u0026#34;php-etl\/pipeline:@dev\u0026#34; - \u0026#34;php-etl\/fast-map:@dev\u0026#34; runtime: type: pipeline steps: - extract: Pipeline\\FooExtractor - transform: Pipeline\\FastMapTransformer array: - field: \u0026#39;[sku]\u0026#39; copy: \u0026#39;[sku]\u0026#39; - field: \u0026#39;[title]\u0026#39; expression: \u0026#39;input[\u0026#34;sku\u0026#34;] ~\u0026#34; | \u0026#34;~ input[\u0026#34;name\u0026#34;]\u0026#39; - field: \u0026#39;[name]\u0026#39; copy: \u0026#39;[name]\u0026#39; - field: \u0026#39;[staticValue]\u0026#39; constant: \u0026#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.\u0026#39; - field: \u0026#39;[descriptions]\u0026#39; class: \u0026#39;Pipeline\\\\Usage\u0026#39; expression: \u0026#39;input\u0026#39; object: - field: \u0026#39;usage\u0026#39; expression: \u0026#39;\u0026#34;Usage: \u0026#34; ~ input[\u0026#34;usage\u0026#34;]\u0026#39; - field: \u0026#39;warning\u0026#39; copy: \u0026#39;[warning]\u0026#39; - field: \u0026#39;notice\u0026#39; copy: \u0026#39;[notice]\u0026#39; - load: Pipeline\\BarLoader </p>",
+							label: "<p>The image field In this field you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux, the ones in kiboko\/php or any of your custom brewed image.\nThe composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.\nThe runtime section The http-api runtime The http-hook runtime The pipeline runtime Examples YAML PHP satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-api path: \/foo routes: - path: \/hello function: hello.php - path: \/events\/products function: events\/products.php  satellite: image: kiboko\/php:7.4-fpm composer: # from-local: true require: - \u0026#34;psr\/http-message:^1.0@dev\u0026#34; - \u0026#34;psr\/http-factory:^1.0@dev\u0026#34; - \u0026#34;psr\/http-server-handler:^1.0@dev\u0026#34; - \u0026#34;middlewares\/uuid:dev-master\u0026#34; - \u0026#34;middlewares\/base-path:dev-master\u0026#34; - \u0026#34;middlewares\/request-handler:dev-master\u0026#34; - \u0026#34;middlewares\/fast-route:dev-master\u0026#34; - \u0026#34;nyholm\/psr7:^1.0@dev\u0026#34; - \u0026#34;nyholm\/psr7-server:dev-master\u0026#34; - \u0026#34;laminas\/laminas-httphandlerrunner:1.2.x-dev\u0026#34; runtime: type: http-hook path: \/bar\/hello function: hello.php satellite: image: kiboko\/php:7.4-cli composer: # from-local: true autoload: psr-4: \u0026#34;Pipeline\\\\\u0026#34;: \u0026#34;\u0026#34; require: - \u0026#34;php-etl\/pipeline:@dev\u0026#34; - \u0026#34;php-etl\/fast-map:@dev\u0026#34; runtime: type: pipeline steps: - extract: Pipeline\\FooExtractor - transform: Pipeline\\FastMapTransformer array: - field: \u0026#39;[sku]\u0026#39; copy: \u0026#39;[sku]\u0026#39; - field: \u0026#39;[title]\u0026#39; expression: \u0026#39;input[\u0026#34;sku\u0026#34;] ~\u0026#34; | \u0026#34;~ input[\u0026#34;name\u0026#34;]\u0026#39; - field: \u0026#39;[name]\u0026#39; copy: \u0026#39;[name]\u0026#39; - field: \u0026#39;[staticValue]\u0026#39; constant: \u0026#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.\u0026#39; - field: \u0026#39;[descriptions]\u0026#39; class: \u0026#39;Pipeline\\\\Usage\u0026#39; expression: \u0026#39;input\u0026#39; object: - field: \u0026#39;usage\u0026#39; expression: \u0026#39;\u0026#34;Usage: \u0026#34; ~ input[\u0026#34;usage\u0026#34;]\u0026#39; - field: \u0026#39;warning\u0026#39; copy: \u0026#39;[warning]\u0026#39; - field: \u0026#39;notice\u0026#39; copy: \u0026#39;[notice]\u0026#39; - load: Pipeline\\BarLoader </p>",
 							url:"https:\/\/php-etl.github.io\/documentation\/components\/satellite\/yaml-format\/"
 						},
 						
@@ -419,7 +489,7 @@ keep control.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

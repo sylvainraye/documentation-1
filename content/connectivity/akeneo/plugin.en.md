@@ -1,23 +1,12 @@
 ---
-title: "Akeneo Plugin"
-date: 2021-01-22T09:23:54+01:00
-lastmod: 2021-01-22T09:23:54+01:00
+title: "Akeneo plugin"
+date: 2021-01-24T09:23:54+01:00
+lastmod: 2021-01-24T09:23:54+01:00
 weight: ""
-draft: true
+draft: false
 ---
 
-### Goal
-
-This package aims at integration the Akeneo PHP clients into the
-[Pipeline](https://github.com/php-etl/pipeline) stack. This integration is
-compatible with both [Akeneo Enterprise Edition client](https://github.com/akeneo/api-php-client-ee)
-and the [Akeneo Community Edition client](https://github.com/akeneo/api-php-client)
-
-### Principles
-
-The tools in this library will produce executable PHP sources, using an intermediate _Abstract Syntax Tree_ from
-[nikic/php-parser](https://github.com/nikic/PHP-Parser). This intermediate format helps you combine 
-the code produced by this library with other packages from [Middleware](https://github.com/php-etl).
+{{< feature-state for_mw_version="0.1" state="alpha" >}}
 
 ### Configuration format
 

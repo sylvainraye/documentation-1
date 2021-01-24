@@ -11,104 +11,122 @@ googleAnalytics = "" # paste your analytics ID here. (Ex: UA-123-45)
 publishDir = "docs"
 
 [[menu.main]]
-name = "System Requirements"
-url = "system-requirements"
-weight = 1
-
-[[menu.main]]
 name = "Installation"
 url = "installation"
-weight = 2
+weight = 1
 hasChildren = true
+
+  [[menu.main]]
+  parent = "Installation"
+  name = "System Requirements"
+  url = "system-requirements"
+  weight = 1
 
   [[menu.main]]
   parent = "Installation"
   name = "Bare metal"
   url = "installation/bare-metal"
-  weight = 1
+  weight = 2
 
   [[menu.main]]
   parent = "Installation"
   name = "Symfony"
   url = "installation/symfony"
-  weight = 2
+  weight = 3
 
   [[menu.main]]
   parent = "Installation"
   name = "Laravel"
   url = "installation/laravel"
-  weight = 3
+  weight = 4
 
 [[menu.main]]
-weight = 3
-name = "Documentation"
+weight = 2
+name = "Packages"
 hasChildren = true
 
   [[menu.main]]
-  parent = "Documentation"
+  parent = "Packages"
   name = "Contracts"
   url = "components/contracts"
   weight = 1
 
   [[menu.main]]
-  parent = "Documentation"
+  parent = "Packages"
   name = "Pipeline"
   url = "components/pipeline"
   weight = 2
 
   [[menu.main]]
-  parent = "Documentation"
+  parent = "Packages"
   name = "Fast Map"
   url = "components/fast-map"
   weight = 3
 
   [[menu.main]]
-  parent = "Documentation"
+  parent = "Packages"
   name = "Promise"
   url = "components/promise"
   weight = 4
 
   [[menu.main]]
-  parent = "Documentation"
+  parent = "Packages"
   name = "Satellite"
   url = "components/satellite"
   weight = 5
 
   [[menu.main]]
-  parent = "Documentation"
-  name = "CSV Plugin"
-  url = "components/csv-plugin"
+  parent = "Packages"
+  name = "Metadata"
+  url = "components/metadata"
+  weight = 7
+
+  [[menu.main]]
+  parent = "Packages"
+  name = "Batch"
+  url = "components/batch"
+  weight = 8
+
+[[menu.main]]
+weight = 3
+name = "Connectivity"
+hasChildren = true
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "Open API"
+  url = "connectivity/openapi"
+  weight = 1
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "JSON schema"
+  url = "connectivity/json-schema"
+  weight = 2
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "Akeneo"
+  url = "connectivity/akeneo"
+  weight = 3
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "SQL database"
+  url = "connectivity/database"
+  weight = 4
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "CSV files"
+  url = "connectivity/csv"
+  weight = 5
+
+  [[menu.main]]
+  parent = "Connectivity"
+  name = "Spreadsheet files"
+  url = "connectivity/spreadsheet"
   weight = 6
-
-  [[menu.main]]
-    parent = "Documentation"
-    name = "Metadata"
-    url = "components/metadata"
-    weight = 7
-
-   [[menu.main]]
-      parent = "Documentation"
-      name = "Akeneo Plugin"
-      url = "components/akeneo-plugin"
-      weight = 8
-
-  [[menu.main]]
-        parent = "Documentation"
-        name = "Akeneo Plugin"
-        url = "components/akeneo-plugin"
-        weight = 9
-
-  [[menu.main]]
-          parent = "Documentation"
-          name = "Akeneo Expression Language"
-          url = "components/akeneo-expression-language"
-          weight = 10
-
-   [[menu.main]]
-            parent = "Documentation"
-            name = "Batch"
-            url = "components/batch"
-            weight = 11
 
 [params]
 logo = "logo-web.svg"
@@ -128,7 +146,7 @@ languageName = "English"
 languageCode = "en-us"
 weight = 1
 home = "Home"
-copyright = "The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020."
+copyright = "The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
 
 # banner
 [Languages.en.params.banner]
@@ -152,6 +170,45 @@ link = "contact"
 [Languages.en.params.heading]
 enable = true
 title = "A data-centric framework for the cloud"
+content = '''
+A cloud-friendly framework built for synchronizing your applications over the Internet.
+Built to take advantage of the PHP ecosystem.
+
+Build your data flows around APIs, message queues flat files or search engines to make them work
+together smoothly. With integrated reporting and logging, get insights on what is going on and
+keep control.
+'''
+
+################################ French Language ######################
+[Languages.fr]
+languageName = "Français"
+languageCode = "fr-fr"
+weight = 2
+home = "Accueil"
+copyright = "La documentation Middleware est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021."
+
+# banner
+[Languages.fr.params.banner]
+title = "Documentation Middleware"
+subtitle = "Browse the documentation and knowledge base to start quickly with Middleware"
+placeholder = "Have a question? Just ask here or enter terms"
+
+# call to action
+[Languages.fr.params.cta]
+enable = true
+title = "Vous n'avez pas trouvé de réponses à vos questions ?"
+content = "Vous pouvez contacter nos équipes commerciales pour trouver le meilleur moyen pour vous acocmpagner."
+
+# call to action button
+[Languages.fr.params.cta.button]
+enable = true
+label = "contactez-nous"
+link = "contact"
+
+# Heading in the home page
+[Languages.fr.params.heading]
+enable = true
+title = "Un framework pour les flux de données conçu pour le cloud"
 content = '''
 A cloud-friendly framework built for synchronizing your applications over the Internet.
 Built to take advantage of the PHP ecosystem.

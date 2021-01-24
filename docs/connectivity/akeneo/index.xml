@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Akeneo connectivity on Middleware</title>
+    <link>https://php-etl.github.io/documentation/connectivity/akeneo/</link>
+    <description>Recent content in Akeneo connectivity on Middleware</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
+    <lastBuildDate>Fri, 22 Jan 2021 09:23:54 +0100</lastBuildDate>
+    
+	<atom:link href="https://php-etl.github.io/documentation/connectivity/akeneo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Akeneo expression language functions</title>
+      <link>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</link>
+      <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
+      
+      <guid>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</guid>
+      <description> FEATURE STATE: Middleware 0.1 [alpha]  Definition This library implements functions for manupulating Akeneo API data in ExpressionLanguage.
+Its uses the Symfony ExpressionLanguage component.
+Installation composer require php-etl/akeneo-expression-language Usage &amp;lt;?php use Symfony\Component\ExpressionLanguage\ExpressionLanguage; use Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider; $input = [ [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;en_US&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;mobile&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;fr_CA&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;web&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;fr_CA&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;marketplace&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;fr_FR&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;print&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;en_GB&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;mobile&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], ]; $expression = &amp;#39;filter(input, scope(&amp;#34;print&amp;#34;, &amp;#34;mobile&amp;#34;, &amp;#34;web&amp;#34;), first())&amp;#39;; $interpreter = new ExpressionLanguage(null, [new AkeneoFilterProvider()]); $interpreter-&amp;gt;evaluate($expression, [&amp;#39;input&amp;#39; =&amp;gt; $input]); </description>
+    </item>
+    
+    <item>
+      <title>Akeneo plugin</title>
+      <link>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</link>
+      <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
+      
+      <guid>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</guid>
+      <description>FEATURE STATE: Middleware 0.1 [alpha]  Configuration format Building an extractor akeneo: enterprise: false extractor: type: productModel method: all search: - { field: enabled, operator: &amp;#39;=&amp;#39;, value: true } - { field: completeness, operator: &amp;#39;&amp;gt;&amp;#39;, value: 70, scope: ecommerce } - { field: completeness, operator: &amp;#39;&amp;lt;&amp;#39;, value: 85, scope: ecommerce } - { field: categories, operator: IN, value: winter_collection } - { field: family, operator: IN, value: [camcorders, digital_cameras] } logger: type: &amp;#39;stderr&amp;#39; client: api_url: &amp;#39;https://demo.</description>
+    </item>
+    
+  </channel>
+</rss>
