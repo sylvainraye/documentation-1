@@ -24,15 +24,6 @@ To use this package in your application, require it via composer:
 composer require php-etl/metadata
 ```
 
-### Run the tests
-
-There are PHPSpec tests declared in this package to ensure everything 
-is running fine.
-
-```bash
-phpspec run
-```
-
 ### Use this package to read metadata of existing code
 
 In order to read the metadata of existing PHP code, you may use the 
@@ -115,17 +106,6 @@ $metadataBuilder = new Metadata\ClassMetadataBuilder(
 
 $metadata = $metadataBuilder->buildFromFQCN('FooBarBundle\\Entity\\Foo');
 ```
-
-### PHP version and typed properties
-
-This package works from php 7.2+.
-
-In case you are running it with a version prior to 7.4, the property
-type hinting is not active and a [dummy metadata reader][dummy native] can replace 
-the standard one.
-
-Additionally, it you don't want the PHPDocs to be considered, you may use another
-[dummy metadata reader][dummy phpdoc] for this specific part.
 
 ### Documentation
 

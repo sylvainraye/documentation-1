@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Akeneo expression language functions</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -376,15 +376,15 @@
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-- <span style="color:#66d9ef">fastmap</span>:
-    <span style="color:#66d9ef">map</span>:
-    - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
-      <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;filter(input[&#34;title&#34;], scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>
+- <span style="color:#f92672">fastmap</span>:
+    <span style="color:#f92672">map</span>:
+    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;filter(input[&#34;title&#34;], scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>
 </code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionLanguage</span>;
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider</span>;

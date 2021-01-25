@@ -6,10 +6,6 @@
     <description>Recent content in Categories on Middleware</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <copyright>La documentation Middleware est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
-    
-	<atom:link href="https://php-etl.github.io/documentation/fr/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>La documentation Middleware est copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright><atom:link href="https://php-etl.github.io/documentation/fr/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

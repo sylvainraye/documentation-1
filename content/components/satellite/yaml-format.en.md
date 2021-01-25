@@ -4,23 +4,24 @@ date: 2020-07-12T15:21:02+02:00
 draft: false
 ---
 
-### The `image` field
+### The `docker` section
 
-In this field you will be able to specify the base docker image on which the
+In this section you will be able to specify the base docker image on which the
 satellite will be built. We recommend either the official PHP images based on
-Alpine Linux, the ones in `kiboko/php` or any of your custom brewed image.
+Alpine Linux.
+
+### The `filesystem` section
+
+In this section you will be able to specify the system file on which the
+satellite will be built.
 
 ### The `composer` section
 
 This section makes you able to specify some parameters that will be transmitted
 to composer at build time.
 
-### The `runtime` section 
-
-
-#### The `http-api` runtime
-#### The `http-hook` runtime
-#### The `pipeline` runtime
+### The `pipeline` section 
+This section will create the Pipeline that corresponds to your config.
 
 ### Examples
 

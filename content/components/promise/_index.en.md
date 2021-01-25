@@ -18,7 +18,7 @@ when the second operation does not need to wait for the first to finish before s
 This object allows you to synchronise two (or more) actions that take place in time but not at the same speed.
 
 ### Callbacks
-The then method records reminders to receive either the possible value of a promise and the failure method represents the reason why it cannot be kept.
+The `then` method records reminders to receive the possible value of a promise, and the `failure` method represents the reason why it cannot be kept.
 ```php
 <?php 
 
@@ -40,18 +40,6 @@ Promises are fulfilled using the resolve($value) method.
 ```php
 <?php
 
-use Kiboko\Component\Promise\Promise;
-
-$promise = new Promise();
-$promise
-    ->then(function ($value) {
-        echo "Hello, ".$value;
-    })
-    ->failure(function (\Exception $exception) {
-        echo 'Oups, error : '.$exception;
-    })
-;
-
 $promise->resolve('world');
 // Outputs 'Hello, world'
 ```
@@ -61,18 +49,6 @@ Promises are failed using the fail($exception) method.
 
 ```php
 <?php
-
-use Kiboko\Component\Promise\Promise;
-
-$promise = new Promise();
-$promise
-    ->then(function ($value) {
-        echo "Hello, ".$value;
-    })
-    ->failure(function (\Exception $exception) {
-        echo 'Oups, error : '.$exception;
-    })
-;
 
 $promise->fail(new Exception('Something went wrong'));
 // Outputs 'Oups, error : Exception: Something went wrong'

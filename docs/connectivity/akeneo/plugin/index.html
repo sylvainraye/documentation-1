@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Akeneo plugin</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -371,28 +371,28 @@
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">pipeline</span>:
-    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">akeneo</span>:
-        <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">false</span>
-        <span style="color:#66d9ef">extractor</span>:
-          <span style="color:#66d9ef">type</span>: productModel
-          <span style="color:#66d9ef">method</span>: all
-          <span style="color:#66d9ef">search</span>:
-            - { <span style="color:#66d9ef">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
-            - { <span style="color:#66d9ef">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: ecommerce }
-            - { <span style="color:#66d9ef">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: ecommerce }
-            - { <span style="color:#66d9ef">field: categories, operator: IN, value</span>: winter_collection }
-            - { <span style="color:#66d9ef">field: family, operator: IN, value</span>: [camcorders, digital_cameras] }
-        <span style="color:#66d9ef">logger</span>:
-          <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
-        <span style="color:#66d9ef">client</span>:
-          <span style="color:#66d9ef">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
-          <span style="color:#66d9ef">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
-          <span style="color:#66d9ef">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
-          <span style="color:#66d9ef">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-          <span style="color:#66d9ef">password</span>: 516f3e3e5
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+    - <span style="color:#f92672">akeneo</span>:
+        <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">false</span>
+        <span style="color:#f92672">extractor</span>:
+          <span style="color:#f92672">type</span>: <span style="color:#ae81ff">productModel</span>
+          <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+          <span style="color:#f92672">search</span>:
+            - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
+            - { <span style="color:#f92672">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
+            - { <span style="color:#f92672">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
+            - { <span style="color:#f92672">field: categories, operator: IN, value</span>: <span style="color:#ae81ff">winter_collection }</span>
+            - { <span style="color:#f92672">field: family, operator: IN, value</span>: [<span style="color:#ae81ff">camcorders, digital_cameras] }</span>
+        <span style="color:#f92672">logger</span>:
+          <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
+        <span style="color:#f92672">client</span>:
+          <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
+          <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
+          <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
+          <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+          <span style="color:#f92672">password</span>: <span style="color:#ae81ff">516f3e3e5</span>
 </code></pre></div></div></div>
 
 <h4 id="building-a-loader">Building a loader</h4>
@@ -401,22 +401,22 @@
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">pipeline</span>:
-    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">akeneo</span>:
-        <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">true</span>
-        <span style="color:#66d9ef">loader</span>:
-          <span style="color:#66d9ef">type</span>: productModel
-          <span style="color:#66d9ef">method</span>: upsert
-        <span style="color:#66d9ef">logger</span>:
-          <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
-        <span style="color:#66d9ef">client</span>:
-          <span style="color:#66d9ef">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
-          <span style="color:#66d9ef">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
-          <span style="color:#66d9ef">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
-          <span style="color:#66d9ef">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
-          <span style="color:#66d9ef">password</span>: 516f3e3e5
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+    - <span style="color:#f92672">akeneo</span>:
+        <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
+        <span style="color:#f92672">loader</span>:
+          <span style="color:#f92672">type</span>: <span style="color:#ae81ff">productModel</span>
+          <span style="color:#f92672">method</span>: <span style="color:#ae81ff">upsert</span>
+        <span style="color:#f92672">logger</span>:
+          <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
+        <span style="color:#f92672">client</span>:
+          <span style="color:#f92672">api_url</span>: <span style="color:#e6db74">&#39;https://demo.akeneo.com&#39;</span>
+          <span style="color:#f92672">client_id</span>: <span style="color:#e6db74">&#39;2_5a3jtcvwi8w0cwk88w04ogkcks00o4wowwgc8gg4w0cow4wsc8&#39;</span>
+          <span style="color:#f92672">secret</span>: <span style="color:#e6db74">&#39;4ww9l30ij2m8wsw8w04sgw4wgkwc8gss0sgc8cc0o0goo4wkso&#39;</span>
+          <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#39;demo_9573&#39;</span>
+          <span style="color:#f92672">password</span>: <span style="color:#ae81ff">516f3e3e5</span>
 </code></pre></div></div></div>
 
 </div>
