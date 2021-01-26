@@ -56,81 +56,78 @@ $dockerfile->push(
     new Docker\PHP\ComposerRequire('laminas/laminas-httphandlerrunner:1.2.x-dev');
 );
 
-$dockerfile->push(
-    new Runtime\Http()
-);
-
 $satellite = new Docker\Satellite(
     'foo/satellite:bar',
     $dockerfile
 );
+
+$httpApi= new Runtime\HttpApi();
+$httpApi->build();
 ```
 
 In this example, the URL `/foo/hello` will show all the data render by the function `hello.php` and the url `/foo/events/products` 
 will show the result of the `products.php` located in the events folder.
 
 #### Using http-hook
-```yaml
-satellite:
-  image: kiboko/php:7.4-fpm
-  composer:
-#    from-local: true
-    require:
-      - "psr/http-message:^1.0@dev"
-      - "psr/http-factory:^1.0@dev"
-      - "psr/http-server-handler:^1.0@dev"
-      - "middlewares/uuid:dev-master"
-      - "middlewares/base-path:dev-master"
-      - "middlewares/request-handler:dev-master"
-      - "middlewares/fast-route:dev-master"
-      - "nyholm/psr7:^1.0@dev"
-      - "nyholm/psr7-server:dev-master"
-      - "laminas/laminas-httphandlerrunner:1.2.x-dev"
-  runtime:
-    type: http-hook
-    path: /bar/hello
-    function: hello.php
+```php
+use Kiboko\Component\ETL\Satellite\Adapter\Docker;
+
+$dockerfile = new Docker\Dockerfile(
+    new Docker\Dockerfile\From('kiboko/php:7.4-cli'),
+    new Docker\Dockerfile\Workdir('/var/www/html/')
+);
+
+$dockerfile->push(
+    new Docker\PHP\Composer(),
+    new Docker\PHP\ComposerInit(),
+    new Docker\PHP\ComposerMinimumStability('dev'),
+    new Docker\PHP\ComposerRequire('psr/http-message:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('psr/http-factory:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('psr/http-server-handler:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('middlewares/uuid:dev-master'),
+    new Docker\PHP\ComposerRequire('middlewares/base-path:dev-master'),
+    new Docker\PHP\ComposerRequire('middlewares/request-handler:dev-master'),
+    new Docker\PHP\ComposerRequire('middlewares/fast-route:dev-master'),
+    new Docker\PHP\ComposerRequire('nyholm/psr7:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('nyholm/psr7-server:dev-master'),
+    new Docker\PHP\ComposerRequire('laminas/laminas-httphandlerrunner:1.2.x-dev');
+);
+
+$satellite = new Docker\Satellite(
+    'foo/satellite:bar',
+    $dockerfile
+);
+
+$httpHook= new Runtime\HttpHook();
+$httpHook->build();
 ```
 
 In this example, the URL `/bar/hello` will show all the data render by the function `hello.php`.
 
 #### Using Pipeline
-```yaml
-satellite:
-  image: kiboko/php:7.4-cli
-  composer:
-#    from-local: true
-    autoload:
-      psr-4:
-        "Pipeline\\": ""
-    require:
-      - "php-etl/pipeline:@dev"
-      - "php-etl/fast-map:@dev"
-  runtime:
-    type: pipeline
-    steps:
-    - extract: Pipeline\FooExtractor
-    - transform: Pipeline\FastMapTransformer
-      array:
-      - field: '[sku]'
-        copy: '[sku]'
-      - field: '[title]'
-        expression: 'input["sku"] ~" | "~ input["name"]'
-      - field: '[name]'
-        copy: '[name]'
-      - field: '[staticValue]'
-        constant: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.'
-      - field: '[descriptions]'
-        class: 'Pipeline\\Usage'
-        expression: 'input'
-        object:
-        - field: 'usage'
-          expression: '"Usage: " ~ input["usage"]'
-        - field: 'warning'
-          copy: '[warning]'
-        - field: 'notice'
-          copy: '[notice]'
-    - load: Pipeline\BarLoader
+```php
+use Kiboko\Component\ETL\Satellite\Adapter\Docker;
+
+$dockerfile = new Docker\Dockerfile(
+    new Docker\Dockerfile\From('kiboko/php:7.4-cli'),
+    new Docker\Dockerfile\Workdir('/var/www/html/')
+);
+
+$dockerfile->push(
+    new Docker\PHP\Composer(),
+    new Docker\PHP\ComposerInit(),
+    new Docker\PHP\ComposerMinimumStability('dev'),
+    new Docker\PHP\ComposerRequire('php-etl/pipeline:@dev'),
+    new Docker\PHP\ComposerRequire('php-etl/fast-map:@dev')
+);
+
+$satellite = new Docker\Satellite(
+    'foo/satellite:bar',
+    $dockerfile
+);
+
+$pipeline= new Runtime\Pipeline();
+$pipeline->build();
 ```
 
 In this example, the config create a pipeline that the Satellite will use.

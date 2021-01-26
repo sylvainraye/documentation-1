@@ -165,13 +165,10 @@ satellite:
 {{< /tab >}}
 
 {{< tab name="PHP" codelang="php"  >}}
-$dockerfile->push(
-    new Runtime\Pipeline();
-);
-
 /** @var array $config */ 
 $pipeline = new Runtime\Pipeline($config);
 $pipeline->build();
+
 {{< /tab >}}
 
 {{< /tabs >}}
