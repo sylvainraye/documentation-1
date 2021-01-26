@@ -56,6 +56,8 @@ $satellite = (new Docker\Satellite(
     'foo/satellite:bar',
     $dockerfile,
 ))->addTags("kiboko/satellite:foo", "kiboko/satellite:bar");
+?>
+
 {{< /tab >}}
 
 {{< /tabs >}}
