@@ -16,16 +16,17 @@ A satellite is a micro-service running in the cloud, packaged as a docker image.
 It can be deployed in any Docker infrastructure, including Kubernetes clusters.
 
 There is 3 types of runtimes, depending on your needs:
- * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered
- * `http-hook`: the micro-service will be operating an API on a single URL route
- * `pipeline`: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job
+ * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `Http-api` is used for REST API.
+ * `http-hook`: the micro-service will be operating an API on a single URL route. `Http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
+a means for one application to provide other applications with real-time information
+ * `pipeline`: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
 
 ### Building your own satellite
 
 Make sure that you have a yaml file in your root folder which will contain all your configuration.  
 Then, let's declare the docker image (or the file) on which we want to build our micro-service. 
 
-#### Using Docker : 
+#### Using Docker 
 To use a docker image to build your micro-service, implement the `docker` key.
 
 {{< tabs name="basic_definition" >}}
@@ -81,6 +82,7 @@ Here, we chose to use the `php:8.0-cli-alpine` base image on which our code will
 You could use any docker image of your choice, however you will need to have a PHP runtime 
 available, in a compatible version: >=8.0 with the CLI SAPI.
 
+#### Configure composer 
 Next, as a second step, we need to declare the composer dependencies our microservice will have.
 We will require them through composer, with a declarative manner.
 
@@ -90,17 +92,14 @@ We will require them through composer, with a declarative manner.
 satellite:
 #...
   composer:
+#    from_local: true
     autoload:
       psr4:
       - namespace: "Pipeline\\"
         paths: [""]
     require:
-      - "php-etl/pipeline:^0.2"
-      - "php-etl/fast-map:^0.2"
-      - "php-etl/csv-flow:^0.1"
-      - "akeneo/api-php-client-ee"
-      - "laminas/laminas-diactoros"
-      - "php-http/guzzle7-adapter"
+      - "php-etl/pipeline:@dev"
+      - "php-etl/fast-map:@dev"
 {{< /tab >}}
 
 {{< tab name="PHP" codelang="php"  >}}
@@ -115,17 +114,19 @@ $dockerfile->push(
 
 {{< /tabs >}}
 
+You can add the `from_local` option in your configuration. This option copies an existing composer.json and composer.lock.
+
+#### Configure the runtime
 Now that we have made our environment prepared for our satellite, we will declare 
 the way we want our pipeline to handle our data flows.
-
-Now, we configure our pipeline.
 
 {{< tabs name="dataflows" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
 #...
-   pipeline:
+   runtime:
+      type: pipeline
       steps:
       - akeneo:
           enterprise: true
@@ -164,17 +165,21 @@ satellite:
 {{< /tab >}}
 
 {{< tab name="PHP" codelang="php"  >}}
+$dockerfile->push(
+    new Runtime\Pipeline();
+);
 
+/** @var array $config */ 
+$pipeline = new Runtime\Pipeline($config);
+$pipeline->build();
 {{< /tab >}}
 
 {{< /tabs >}}
 
-For more information on pipelines, see [Pipeline](../pipeline/).
-
 ### Configuration formats
 
 There are 2 ways to declare satellites :
-* Use the PHP objects
+* Use the [PHP objects](php-objects)
 * Use the [YAML configuration Syntax](yaml-format)
 
 ### Executing the command

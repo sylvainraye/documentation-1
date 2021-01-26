@@ -1,6 +1,6 @@
 ---
-title: "The YAML configuration format"
-date: 2020-07-12T15:21:02+02:00
+title: "PHP Objects"
+date: 2021-26-01T15:21:02+02:00
 draft: false
 ---
 
@@ -31,30 +31,39 @@ Thanks to our package, 3 runtimes are avaible :
 ### Examples
 
 #### Using http-api
-```yaml
-satellite:
-  image: kiboko/php:7.4-fpm
-  composer:
-#    from-local: true
-    require:
-      - "psr/http-message:^1.0@dev"
-      - "psr/http-factory:^1.0@dev"
-      - "psr/http-server-handler:^1.0@dev"
-      - "middlewares/uuid:dev-master"
-      - "middlewares/base-path:dev-master"
-      - "middlewares/request-handler:dev-master"
-      - "middlewares/fast-route:dev-master"
-      - "nyholm/psr7:^1.0@dev"
-      - "nyholm/psr7-server:dev-master"
-      - "laminas/laminas-httphandlerrunner:1.2.x-dev"
-  runtime:
-    type: http-api
-    path: /foo
-    routes:
-      - path: /hello
-        function: hello.php
-      - path: /events/products
-        function: events/products.php
+```php
+
+use Kiboko\Component\ETL\Satellite\Adapter\Docker;
+
+$dockerfile = new Docker\Dockerfile(
+    new Docker\Dockerfile\From('kiboko/php:7.4-cli'),
+    new Docker\Dockerfile\Workdir('/var/www/html/')
+);
+
+$dockerfile->push(
+    new Docker\PHP\Composer(),
+    new Docker\PHP\ComposerInit(),
+    new Docker\PHP\ComposerMinimumStability('dev'),
+    new Docker\PHP\ComposerRequire('psr/http-message:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('psr/http-factory:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('psr/http-server-handler:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('middlewares/uuid:dev-master'),
+    new Docker\PHP\ComposerRequire('middlewares/base-path:dev-master'),
+    new Docker\PHP\ComposerRequire('middlewares/request-handler:dev-master'),
+    new Docker\PHP\ComposerRequire('middlewares/fast-route:dev-master'),
+    new Docker\PHP\ComposerRequire('nyholm/psr7:^1.0@dev'),
+    new Docker\PHP\ComposerRequire('nyholm/psr7-server:dev-master'),
+    new Docker\PHP\ComposerRequire('laminas/laminas-httphandlerrunner:1.2.x-dev');
+);
+
+$dockerfile->push(
+    new Runtime\Http()
+);
+
+$satellite = new Docker\Satellite(
+    'foo/satellite:bar',
+    $dockerfile
+);
 ```
 
 In this example, the URL `/foo/hello` will show all the data render by the function `hello.php` and the url `/foo/events/products` 
