@@ -19,5 +19,16 @@ The filesystem section In this section you will be able to specify the system fi
 The composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.</description>
     </item>
     
+    <item>
+      <title>PHP Objects</title>
+      <link>https://php-etl.github.io/documentation/components/satellite/php-objects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://php-etl.github.io/documentation/components/satellite/php-objects/</guid>
+      <description>The docker section In this section you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux.
+The filesystem section In this section you will be able to specify the system file on which the satellite will be built.
+The composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.</description>
+    </item>
+    
   </channel>
 </rss>

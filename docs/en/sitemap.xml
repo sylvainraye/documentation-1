@@ -127,6 +127,10 @@
   </url>
   
   <url>
+    <loc>https://php-etl.github.io/documentation/components/satellite/php-objects/</loc>
+  </url>
+  
+  <url>
     <loc>https://php-etl.github.io/documentation/tags/</loc>
     <xhtml:link
                 rel="alternate"

@@ -263,6 +263,28 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
+    PHP Objects
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -434,16 +456,17 @@ satellite will be built.</p>
 <h3 id="the-composer-section">The <code>composer</code> section</h3>
 <p>This section makes you able to specify some parameters that will be transmitted
 to composer at build time.</p>
-<h3 id="the-pipeline-section">The <code>pipeline</code> section</h3>
+<h3 id="the-runtime-section">The <code>runtime</code> section</h3>
 <p>This section will create the Pipeline that corresponds to your config.</p>
+<p>Thanks to our package, 3 runtimes are avaible :</p>
+<ul>
+<li>http-api</li>
+<li>http-hook</li>
+<li>pipeline</li>
+</ul>
 <h3 id="examples">Examples</h3>
-<ul class="nav nav-tabs" id="tab_with_code" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#tab_with_code-0" role="tab" aria-controls="tab_with_code-0" aria-selected="true">YAML</a></li>
-	  
-		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tab_with_code-1" role="tab" aria-controls="tab_with_code-1">PHP</a></li></ul>
-<div class="tab-content" id="tab_with_code"><div id="tab_with_code-0" class="tab-pane show active" role="tabpanel" aria-labelledby="tab_with_code-0">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#f92672">satellite</span>:
+<h4 id="using-http-api">Using http-api</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kiboko/php:7.4-fpm</span>
   <span style="color:#f92672">composer</span>:
 <span style="color:#75715e">#    from-local: true</span>
@@ -466,35 +489,9 @@ to composer at build time.</p>
         <span style="color:#f92672">function</span>: <span style="color:#ae81ff">hello.php</span>
       - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/events/products</span>
         <span style="color:#f92672">function</span>: <span style="color:#ae81ff">events/products.php</span>
-</code></pre></div></div>
-  <div id="tab_with_code-1" class="tab-pane" role="tabpanel" aria-labelledby="tab_with_code-1">
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#a6e22e">satellite</span><span style="color:#f92672">:</span>
-  <span style="color:#a6e22e">image</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">kiboko</span><span style="color:#f92672">/</span><span style="color:#a6e22e">php</span><span style="color:#f92672">:</span><span style="color:#ae81ff">7.4</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fpm</span>
-  <span style="color:#a6e22e">composer</span><span style="color:#f92672">:</span>
-<span style="color:#75715e">#    from-local: true
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">require</span><span style="color:#f92672">:</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;psr/http-message:^1.0@dev&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;psr/http-factory:^1.0@dev&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;psr/http-server-handler:^1.0@dev&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;middlewares/uuid:dev-master&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;middlewares/base-path:dev-master&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;middlewares/request-handler:dev-master&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;middlewares/fast-route:dev-master&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;nyholm/psr7:^1.0@dev&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;nyholm/psr7-server:dev-master&#34;</span>
-      <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;laminas/laminas-httphandlerrunner:1.2.x-dev&#34;</span>
-  <span style="color:#a6e22e">runtime</span><span style="color:#f92672">:</span>
-    <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">http</span><span style="color:#f92672">-</span><span style="color:#a6e22e">api</span>
-    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">foo</span>
-    <span style="color:#a6e22e">routes</span><span style="color:#f92672">:</span>
-      <span style="color:#f92672">-</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">hello</span>
-        <span style="color:#a6e22e">function</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
-      <span style="color:#f92672">-</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">events</span><span style="color:#f92672">/</span><span style="color:#a6e22e">products</span>
-        <span style="color:#a6e22e">function</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">events</span><span style="color:#f92672">/</span><span style="color:#a6e22e">products</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
-</code></pre></div></div></div>
-
+</code></pre></div><p>In this example, the URL <code>/foo/hello</code> will show all the data render by the function <code>hello.php</code> and the url <code>/foo/events/products</code>
+will show the result of the <code>products.php</code> located in the events folder.</p>
+<h4 id="using-http-hook">Using http-hook</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kiboko/php:7.4-fpm</span>
   <span style="color:#f92672">composer</span>:
@@ -514,7 +511,9 @@ to composer at build time.</p>
     <span style="color:#f92672">type</span>: <span style="color:#ae81ff">http-hook</span>
     <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/bar/hello</span>
     <span style="color:#f92672">function</span>: <span style="color:#ae81ff">hello.php</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
+</code></pre></div><p>In this example, the URL <code>/bar/hello</code> will show all the data render by the function <code>hello.php</code>.</p>
+<h4 id="using-pipeline">Using Pipeline</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">satellite</span>:
   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kiboko/php:7.4-cli</span>
   <span style="color:#f92672">composer</span>:
 <span style="color:#75715e">#    from-local: true</span>
@@ -549,7 +548,8 @@ to composer at build time.</p>
         - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;notice&#39;</span>
           <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[notice]&#39;</span>
     - <span style="color:#f92672">load</span>: <span style="color:#ae81ff">Pipeline\BarLoader</span>
-</code></pre></div></div>
+</code></pre></div><p>In this example, the config create a pipeline that the Satellite will use.</p>
+</div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -729,6 +729,22 @@ to composer at build time.</p>
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -882,7 +898,7 @@ to composer at build time.</p>
             <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/satellite/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Satellite</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/contracts/"> <span class="d-none d-md-block">Contracts</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/satellite/php-objects/"> <span class="d-none d-md-block">PHP Objects</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

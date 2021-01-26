@@ -263,6 +263,28 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
+    PHP Objects
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
   
 </li>
@@ -439,14 +461,15 @@
 It can be deployed in any Docker infrastructure, including Kubernetes clusters.</p>
 <p>There is 3 types of runtimes, depending on your needs:</p>
 <ul>
-<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered</li>
-<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route</li>
-<li><code>pipeline</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job</li>
+<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered. <code>Http-api</code> is used for REST API.</li>
+<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route. <code>Http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
+a means for one application to provide other applications with real-time information</li>
+<li><code>pipeline</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job. For more information on pipelines, see <a href="../pipeline/">Pipeline</a>.</li>
 </ul>
 <h3 id="building-your-own-satellite">Building your own satellite</h3>
 <p>Make sure that you have a yaml file in your root folder which will contain all your configuration.<br>
 Then, let&rsquo;s declare the docker image (or the file) on which we want to build our micro-service.</p>
-<h4 id="using-docker-">Using Docker :</h4>
+<h4 id="using-docker">Using Docker</h4>
 <p>To use a docker image to build your micro-service, implement the <code>docker</code> key.</p>
 <ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
 	  
@@ -503,6 +526,7 @@ $satellite <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new
 <p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
 You could use any docker image of your choice, however you will need to have a PHP runtime
 available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
+<h4 id="configure-composer">Configure composer</h4>
 <p>Next, as a second step, we need to declare the composer dependencies our microservice will have.
 We will require them through composer, with a declarative manner.</p>
 <ul class="nav nav-tabs" id="basic_with_composer" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_with_composer-0" role="tab" aria-controls="basic_with_composer-0" aria-selected="true">YAML</a></li>
@@ -514,17 +538,14 @@ We will require them through composer, with a declarative manner.</p>
 <span style="color:#f92672">satellite</span>:
 <span style="color:#75715e">#...</span>
   <span style="color:#f92672">composer</span>:
+<span style="color:#75715e">#    from_local: true</span>
     <span style="color:#f92672">autoload</span>:
       <span style="color:#f92672">psr4</span>:
       - <span style="color:#f92672">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
         <span style="color:#f92672">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
     <span style="color:#f92672">require</span>:
-      - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.1&#34;</span>
-      - <span style="color:#e6db74">&#34;akeneo/api-php-client-ee&#34;</span>
-      - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
-      - <span style="color:#e6db74">&#34;php-http/guzzle7-adapter&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/pipeline:@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/fast-map:@dev&#34;</span>
 </code></pre></div></div>
   <div id="basic_with_composer-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_with_composer-1">
 
@@ -538,9 +559,10 @@ $dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">p
 );
 </code></pre></div></div></div>
 
+<p>You can add the <code>from_local</code> option in your configuration. This option copies an existing composer.json and composer.lock.</p>
+<h4 id="configure-the-runtime">Configure the runtime</h4>
 <p>Now that we have made our environment prepared for our satellite, we will declare
 the way we want our pipeline to handle our data flows.</p>
-<p>Now, we configure our pipeline.</p>
 <ul class="nav nav-tabs" id="dataflows" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dataflows-0" role="tab" aria-controls="dataflows-0" aria-selected="true">YAML</a></li>
 	  
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dataflows-1" role="tab" aria-controls="dataflows-1">PHP</a></li></ul>
@@ -549,7 +571,8 @@ the way we want our pipeline to handle our data flows.</p>
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 <span style="color:#f92672">satellite</span>:
 <span style="color:#75715e">#...</span>
-   <span style="color:#f92672">pipeline</span>:
+   <span style="color:#f92672">runtime</span>:
+      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">pipeline</span>
       <span style="color:#f92672">steps</span>:
       - <span style="color:#f92672">akeneo</span>:
           <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
@@ -589,14 +612,16 @@ the way we want our pipeline to handle our data flows.</p>
   <div id="dataflows-1" class="tab-pane" role="tabpanel" aria-labelledby="dataflows-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<span style="color:#e6db74">/** @var array $config */</span> 
+$pipeline <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\Pipeline</span>($config);
+$pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
 
 </code></pre></div></div></div>
 
-<p>For more information on pipelines, see <a href="../pipeline/">Pipeline</a>.</p>
 <h3 id="configuration-formats">Configuration formats</h3>
 <p>There are 2 ways to declare satellites :</p>
 <ul>
-<li>Use the PHP objects</li>
+<li>Use the <a href="php-objects">PHP objects</a></li>
 <li>Use the <a href="yaml-format">YAML configuration Syntax</a></li>
 </ul>
 <h3 id="executing-the-command">Executing the command</h3>
@@ -742,6 +767,22 @@ the way we want our pipeline to handle our data flows.</p>
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
             
             
             
