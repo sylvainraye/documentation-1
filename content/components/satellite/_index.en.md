@@ -15,12 +15,12 @@ description: "Generated micro-services for data stream processing in the cloud"
 A satellite is a micro-service running in the cloud, packaged as a docker image.
 It can be deployed in any Docker infrastructure, including Kubernetes clusters.
 
-There is 3 types of runtimes, depending on your needs:
- * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `Http-api` is used for REST API.
- * `http-hook`: the micro-service will be operating an API on a single URL route. `Http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
+There are 4 types of runtimes, depending on your needs you will have to choose one of:
+ * `http-api`: the micro-service will be operating an API, on which several URL routes can be registered. `http-api` is used for REST API.
+ * `http-hook`: the micro-service will be operating an API on a single URL route. `http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
 a means for one application to provide other applications with real-time information
- * `pipeline`: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
-* `batch`: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job
+ * `pipeline`: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
+ * `batch`: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job
 
 ### Building your own satellite
 
