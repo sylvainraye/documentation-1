@@ -6,6 +6,10 @@
     <description>Recent content in Tags on Middleware</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright><atom:link href="https://php-etl.github.io/documentation/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
+    
+	<atom:link href="https://php-etl.github.io/documentation/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>

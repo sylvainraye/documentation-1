@@ -2,8 +2,10 @@
 title: "Batch"
 date: 2021-01-22T14:05:39+01:00
 lastmod: 2021-01-22T14:05:39+01:00
-weight: ""
 draft: true
+type: "component"
+icon: "ti-server"
+description: "Orchestrate your data processing pipelines"
 ---
 
 ### What is Batch ? 

@@ -7,7 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
-    <lastBuildDate>Sun, 24 Jan 2021 09:23:54 +0100</lastBuildDate><atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jan 2021 09:23:54 +0100</lastBuildDate>
+    
+	<atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Akeneo expression language functions</title>
       <link>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</link>
@@ -25,15 +29,6 @@ Installation composer require php-etl/akeneo-expression-language Usage YAML PHP 
       
       <guid>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</guid>
       <description>FEATURE STATE: Middleware 0.1 [alpha]  Configuration format Building an extractor YAML  satellite: pipeline: steps: - akeneo: enterprise: false extractor: type: productModel method: all search: - { field: enabled, operator: &amp;#39;=&amp;#39;, value: true } - { field: completeness, operator: &amp;#39;&amp;gt;&amp;#39;, value: 70, scope: ecommerce } - { field: completeness, operator: &amp;#39;&amp;lt;&amp;#39;, value: 85, scope: ecommerce } - { field: categories, operator: IN, value: winter_collection } - { field: family, operator: IN, value: [camcorders, digital_cameras] } logger: type: &amp;#39;stderr&amp;#39; client: api_url: &amp;#39;https://demo.</description>
-    </item>
-    
-    <item>
-      <title>Configurator Contracts</title>
-      <link>https://php-etl.github.io/documentation/components/contracts/configurator/</link>
-      <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
-      
-      <guid>https://php-etl.github.io/documentation/components/contracts/configurator/</guid>
-      <description> FEATURE STATE: Middleware 0.1 [alpha]  </description>
     </item>
     
     <item>

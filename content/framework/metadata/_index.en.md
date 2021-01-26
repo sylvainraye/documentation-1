@@ -1,7 +1,10 @@
 ---
 title: "Metadata"
 date: 2021-01-20T12:03:47+01:00
-draft: true
+draft: false
+type: "dev_guide"
+icon: "ti-ruler-pencil"
+description: "Data structure description to help scaffolding data efficiently"
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
@@ -37,7 +40,7 @@ use Phpactor\Docblock\DocblockFactory;
 use PhpParser\ParserFactory;
 
 $typeGuesser = new TypeGuesser\CompositeTypeGuesser(
-    new TypeGuesser\Native\Php74TypeGuesser(),
+    new TypeGuesser\Native\NativeTypeGuesser(),
     new TypeGuesser\Docblock\DocblockTypeGuesser(
         (new ParserFactory())->create(ParserFactory::ONLY_PHP7),
         new DocblockFactory()

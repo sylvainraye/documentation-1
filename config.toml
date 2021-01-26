@@ -47,48 +47,53 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Packages"
-  name = "Contracts"
-  url = "components/contracts"
-  weight = 1
-
-  [[menu.main]]
-  parent = "Packages"
   name = "Pipeline"
   url = "components/pipeline"
-  weight = 2
+  weight = 1
 
   [[menu.main]]
   parent = "Packages"
   name = "Fast Map"
   url = "components/fast-map"
-  weight = 3
-
-  [[menu.main]]
-  parent = "Packages"
-  name = "Promise"
-  url = "components/promise"
-  weight = 4
+  weight = 2
 
   [[menu.main]]
   parent = "Packages"
   name = "Satellite"
   url = "components/satellite"
-  weight = 5
-
-  [[menu.main]]
-  parent = "Packages"
-  name = "Metadata"
-  url = "components/metadata"
-  weight = 7
+  weight = 3
 
   [[menu.main]]
   parent = "Packages"
   name = "Batch"
   url = "components/batch"
-  weight = 8
+  weight = 4
 
 [[menu.main]]
 weight = 3
+name = "Framework"
+hasChildren = true
+
+  [[menu.main]]
+  parent = "Framework"
+  name = "Contracts"
+  url = "framework/contracts"
+  weight = 1
+
+  [[menu.main]]
+  parent = "Framework"
+  name = "Metadata"
+  url = "framework/metadata"
+  weight = 2
+
+  [[menu.main]]
+  parent = "Framework"
+  name = "Promise"
+  url = "framework/promise"
+  weight = 3
+
+[[menu.main]]
+weight = 4
 name = "Connectivity"
 hasChildren = true
 

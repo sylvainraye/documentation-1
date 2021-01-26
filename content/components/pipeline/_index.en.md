@@ -2,7 +2,7 @@
 title: "Pipeline"
 date: 2020-07-12T15:21:02+02:00
 draft: false
-type: "docs"
+type: "component"
 logo: "pipeline"
 description: "Data stream processing at high rate and low memory consuming"
 ---
@@ -10,6 +10,7 @@ description: "Data stream processing at high rate and low memory consuming"
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
 ### Definition
+
 A pipeline is a series of processes, also called steps, that filter or transform data.
 The first process takes raw input data, uses it and then
 sends the results to the second process, and so on, ending with the final result produced by the last process in progress.
@@ -17,6 +18,7 @@ sends the results to the second process, and so on, ending with the final result
 The steps of our pipeline are `extract`, `transform` or `load`.
 
 ### Installation
+
 ``` 
 composer require php-etl/pipeline
 ```

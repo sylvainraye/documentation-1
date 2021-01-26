@@ -3,7 +3,7 @@ title: "Satellite"
 date: 2020-07-12T15:21:02+02:00
 weight: 1
 draft: false
-type: "docs"
+type: "component"
 logo: "lambda"
 description: "Generated micro-services for data stream processing in the cloud"
 ---
@@ -20,6 +20,7 @@ There is 3 types of runtimes, depending on your needs:
  * `http-hook`: the micro-service will be operating an API on a single URL route. `Http-hook` is used for webhooks. A webhook is a POST request sent to a URL. It's considered to be 
 a means for one application to provide other applications with real-time information
  * `pipeline`: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job. For more information on pipelines, see [Pipeline](../pipeline/).
+* `batch`: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job
 
 ### Building your own satellite
 
@@ -56,8 +57,6 @@ $satellite = (new Docker\Satellite(
     'foo/satellite:bar',
     $dockerfile,
 ))->addTags("kiboko/satellite:foo", "kiboko/satellite:bar");
-?>
-
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -85,6 +84,7 @@ You could use any docker image of your choice, however you will need to have a P
 available, in a compatible version: >=8.0 with the CLI SAPI.
 
 #### Configure composer 
+
 Next, as a second step, we need to declare the composer dependencies our microservice will have.
 We will require them through composer, with a declarative manner.
 
@@ -94,14 +94,17 @@ We will require them through composer, with a declarative manner.
 satellite:
 #...
   composer:
-#    from_local: true
     autoload:
       psr4:
       - namespace: "Pipeline\\"
         paths: [""]
     require:
-      - "php-etl/pipeline:@dev"
-      - "php-etl/fast-map:@dev"
+      - "php-etl/pipeline:^0.2"
+      - "php-etl/fast-map:^0.2"
+      - "php-etl/csv-flow:^0.1"
+      - "akeneo/api-php-client-ee"
+      - "laminas/laminas-diactoros"
+      - "php-http/guzzle7-adapter"
 {{< /tab >}}
 
 {{< tab name="PHP" codelang="php"  >}}
@@ -119,6 +122,7 @@ $dockerfile->push(
 You can add the `from_local` option in your configuration. This option copies an existing composer.json and composer.lock.
 
 #### Configure the runtime
+
 Now that we have made our environment prepared for our satellite, we will declare 
 the way we want our pipeline to handle our data flows.
 
@@ -127,8 +131,7 @@ the way we want our pipeline to handle our data flows.
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
 #...
-   runtime:
-      type: pipeline
+   pipeline:
       steps:
       - akeneo:
           enterprise: true
@@ -167,6 +170,8 @@ satellite:
 {{< /tab >}}
 
 {{< tab name="PHP" codelang="php"  >}}
+<?php
+
 /** @var array $config */ 
 $pipeline = new Runtime\Pipeline($config);
 $pipeline->build();

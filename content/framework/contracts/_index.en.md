@@ -2,7 +2,7 @@
 title: "Contracts"
 date: 2020-07-12T15:21:02+02:00
 draft: false
-type: "docs"
+type: "dev_guide"
 icon: "ti-medall"
 description: "Code contracts for building compatible pipelines in the middleware"
 ---

@@ -22,10 +22,10 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 text-center">
-          <h2 class="section-title section-light">{{ i18n "topics_title" | safeHTML }}</h2>
+          <h2 class="section-title section-light">{{ i18n "components_title" | safeHTML }}</h2>
         </div>
         {{ "<!-- topic-item -->" | safeHTML }}
-        {{ range (where .Site.Pages "Type" "docs") }}
+        {{ range (where .Site.Pages "Type" "component") }}
         <div class="col-lg-4 col-sm-6 mb-4">
           <a href="{{ .Permalink }}" class="px-4 py-5 bg-white shadow text-center d-block match-height">
             {{ if .Params.Icon }}

@@ -2,7 +2,7 @@
 title: "Promise"
 date: 2020-07-12T15:21:02+02:00
 draft: false
-type: "docs"
+type: "dev_guide"
 icon: "ti-timer"
 description: "Promises for your asynchronous workloads"
 ---
