@@ -4,11 +4,16 @@ date: 2020-07-12T15:21:02+02:00
 draft: false
 ---
 
-### The `image` field
+### The `docker` section
 
-In this field you will be able to specify the base docker image on which the
+In this section you will be able to specify the base docker image on which the
 satellite will be built. We recommend either the official PHP images based on
-Alpine Linux, the ones in `kiboko/php` or any of your custom brewed image.
+Alpine Linux.
+
+### The `filesystem` section
+
+In this section you will be able to specify the system file on which the
+satellite will be built.
 
 ### The `composer` section
 
@@ -16,17 +21,17 @@ This section makes you able to specify some parameters that will be transmitted
 to composer at build time.
 
 ### The `runtime` section 
+This section will create the Pipeline that corresponds to your config.
 
-
-#### The `http-api` runtime
-#### The `http-hook` runtime
-#### The `pipeline` runtime
+Thanks to our package, 3 runtimes are avaible : 
+- http-api
+- http-hook
+- pipeline
 
 ### Examples
 
-{{< tabs name="tab_with_code" >}}
-
-{{< tab name="YAML" codelang="yaml"  >}}
+#### Using http-api
+```yaml
 satellite:
   image: kiboko/php:7.4-fpm
   composer:
@@ -50,36 +55,12 @@ satellite:
         function: hello.php
       - path: /events/products
         function: events/products.php
-{{< /tab >}}
+```
 
-{{< tab name="PHP" codelang="php"  >}}
-satellite:
-  image: kiboko/php:7.4-fpm
-  composer:
-#    from-local: true
-    require:
-      - "psr/http-message:^1.0@dev"
-      - "psr/http-factory:^1.0@dev"
-      - "psr/http-server-handler:^1.0@dev"
-      - "middlewares/uuid:dev-master"
-      - "middlewares/base-path:dev-master"
-      - "middlewares/request-handler:dev-master"
-      - "middlewares/fast-route:dev-master"
-      - "nyholm/psr7:^1.0@dev"
-      - "nyholm/psr7-server:dev-master"
-      - "laminas/laminas-httphandlerrunner:1.2.x-dev"
-  runtime:
-    type: http-api
-    path: /foo
-    routes:
-      - path: /hello
-        function: hello.php
-      - path: /events/products
-        function: events/products.php
-{{< /tab >}}
+In this example, the URL `/foo/hello` will show all the data render by the function `hello.php` and the url `/foo/events/products` 
+will show the result of the `products.php` located in the events folder.
 
-{{< /tabs >}}
-
+#### Using http-hook
 ```yaml
 satellite:
   image: kiboko/php:7.4-fpm
@@ -102,6 +83,9 @@ satellite:
     function: hello.php
 ```
 
+In this example, the URL `/bar/hello` will show all the data render by the function `hello.php`.
+
+#### Using Pipeline
 ```yaml
 satellite:
   image: kiboko/php:7.4-cli
@@ -139,3 +123,5 @@ satellite:
           copy: '[notice]'
     - load: Pipeline\BarLoader
 ```
+
+In this example, the config create a pipeline that the Satellite will use.

@@ -31,6 +31,7 @@
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
+    --text-color-light:#eee;
     --white-color:#eee;
     --light-color:#fe8507;
     --font-family:Lato;
@@ -60,6 +61,7 @@
 
 
 </head>
+
   
   <body>
     
@@ -90,18 +92,14 @@
         </li>
         
         
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation/system-requirements">System Requirements</a>
-        </li>
-        
-        
-        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Installation
           </a>
           <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
             
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
@@ -117,7 +115,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Documentation
+            Packages
           </a>
           <div class="dropdown-menu">
             
@@ -131,11 +129,59 @@
             
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
             
+            <a class="dropdown-item" href="/documentation/components/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/openapi">Open API</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/database">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
+            
           </div>
         </li>
         
         
       </ul>
+      
+      <select class="lang-list dark" id="select-language"
+        onchange="location = this.value;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="en" value="https://php-etl.github.io/documentation/components/fast-map/" selected>English
+        </option>
+        
+        
+        
+        
+        
+        
+      </select>
       
     </div>
   </div>
@@ -156,6 +202,8 @@
             <a class="back-btn" href="/documentation"></a>
             
               
+            
+              
               
 
 
@@ -173,6 +221,54 @@
   
   
     <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/">
+    Satellite
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
+    The YAML configuration format
+  </a>
+  
+  
+</li>
+
+
+        
+      
+    </ul>
+  
+</li>
+
+
+        
       
         
           
@@ -332,54 +428,6 @@
 
         
       
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/">
-    Satellite
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
-    The YAML configuration format
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-        
-      
     </ul>
   
 </li>
@@ -422,7 +470,66 @@ during the mapping operation.</p>
 <p>This component is in charge of representing the Abstract Mapping Tree, and transforming
 it into compiled PHP code. This compiled PHP code is the actual code that will do the
 mapping, in an optimized way.</p>
-<p>####<code>php-etl/fast-map-config</code></p>
+<h4 id="the-php-etlfast-map-config-component">The <code>php-etl/fast-map-config</code> component</h4>
+<p>This component allows you to configure your mapper according to the type of data you want to input.</p>
+<p>If you need to config your mappers, we advise you to use the yml config which will generate a php code usable by the fast-map-config.
+This code will then be converted into a machine code that can be used by the fast map package.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/fast-map-plugin
+</code></pre><h3 id="configuration">Configuration</h3>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">fastmap</span>:
+  <span style="color:#66d9ef">map</span>:
+    - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;products&#39;</span>
+      <span style="color:#66d9ef">class</span>: <span style="color:#e6db74">&#39;Model\\Product&#39;</span>
+      <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;merge( input[&#34;items&#34;], input[&#34;shippings&#34;] )&#39;</span>
+      <span style="color:#66d9ef">collection</span>:
+        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;sku&#39;</span>
+          <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;price&#39;</span>
+          <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;price&#34;]&#39;</span>
+          <span style="color:#66d9ef">class</span>: <span style="color:#e6db74">&#39;Model\\Price&#39;</span>
+          <span style="color:#66d9ef">object</span>:
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;amount&#39;</span>
+              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;value&#34;]&#39;</span>
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;currency&#39;</span>
+              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;currency&#34;]&#39;</span>
+</code></pre></div></div>
+  <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<span style="color:#75715e">&lt;?php</span>
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMapConfig\CompositeBuilder</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMapConfig\ObjectBuilder</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\Compiler</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMap\PropertyAccess\EmptyPropertyPath</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Symfony\Component\ExpressionLanguage\ExpressionFunction</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Model\Product</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Model\Price</span>;
+
+$mapper <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ObjectBuilder</span>(<span style="color:#a6e22e">Order</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>, <span style="color:#66d9ef">null</span>, $interpreter))
+ <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">children</span>()
+     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">collection</span>(<span style="color:#e6db74">&#39;products&#39;</span>, <span style="color:#e6db74">&#39;merge( input[&#34;items&#34;], input[&#34;shippings&#34;] )&#39;</span>, <span style="color:#a6e22e">Product</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>)
+         <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">children</span>()
+             <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">copy</span>(<span style="color:#e6db74">&#39;sku&#39;</span>, <span style="color:#e6db74">&#39;[sku]&#39;</span>)
+             <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">object</span>(<span style="color:#e6db74">&#39;price&#39;</span>, <span style="color:#e6db74">&#39;input[&#34;price&#34;]&#39;</span>, <span style="color:#a6e22e">Price</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>)
+                 <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">children</span>()
+                     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">expression</span>(<span style="color:#e6db74">&#39;amount&#39;</span>, <span style="color:#e6db74">&#39;input[&#34;value&#34;]&#39;</span>)
+                     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">expression</span>(<span style="color:#e6db74">&#39;currency&#39;</span>, <span style="color:#e6db74">&#39;input[&#34;currency&#34;]&#39;</span>)
+                 <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+             <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+         <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+     <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+ <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">end</span>()
+ <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getMapper</span>();
+</code></pre></div></div></div>
+
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
@@ -453,6 +560,91 @@ mapping, in an optimized way.</p>
             
             
             
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -516,26 +708,6 @@ mapping, in an optimized way.</p>
             
             
             
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             
             
@@ -587,6 +759,26 @@ mapping, in an optimized way.</p>
             
             
             
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -600,7 +792,6 @@ mapping, in an optimized way.</p>
             
             
             
-
             
             
             
@@ -608,6 +799,7 @@ mapping, in an optimized way.</p>
             
             
             
+
             
             
             
@@ -692,7 +884,7 @@ mapping, in an optimized way.</p>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

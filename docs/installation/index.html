@@ -31,6 +31,7 @@
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
+    --text-color-light:#eee;
     --white-color:#eee;
     --light-color:#fe8507;
     --font-family:Lato;
@@ -60,6 +61,7 @@
 
 
 </head>
+
   
   <body>
     
@@ -90,18 +92,14 @@
         </li>
         
         
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation/system-requirements">System Requirements</a>
-        </li>
-        
-        
-        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Installation
           </a>
           <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
             
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
@@ -117,25 +115,85 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Documentation
+            Packages
           </a>
           <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/components/contracts">Contracts</a>
             
             <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
             
             <a class="dropdown-item" href="/documentation/components/fast-map">Fast Map</a>
             
-            <a class="dropdown-item" href="/documentation/components/promise">Promise</a>
-            
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Framework
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/framework/contracts">Contracts</a>
+            
+            <a class="dropdown-item" href="/documentation/framework/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/framework/promise">Promise</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/openapi">Open API</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/database">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
             
           </div>
         </li>
         
         
       </ul>
+      
+      <select class="lang-list dark" id="select-language"
+        onchange="location = this.value;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="en" value="https://php-etl.github.io/documentation/installation/" selected>English
+        </option>
+        
+        
+        
+        
+        
+        
+      </select>
       
     </div>
   </div>
@@ -154,6 +212,10 @@
           <ul class="list-styled">
             
             <a class="back-btn" href="/documentation"></a>
+            
+              
+            
+              
             
               
             
@@ -338,9 +400,6 @@
             
             
             
-            
-            
-            
 
             
             
@@ -349,35 +408,6 @@
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -421,20 +451,12 @@
             
             
             
-
             
             
             
 
             
             
-            
-            
-            
-            
-            
-            
-
             
             
             
@@ -447,19 +469,7 @@
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
-            
-            
             
             
             
@@ -491,6 +501,142 @@
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -508,7 +654,7 @@
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/satellite/yaml-format/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">The YAML configuration format</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/pipeline/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Pipeline</span></a>
             
             
             <a class="nav nav-next" href="https://php-etl.github.io/documentation/installation/bare-metal/"> <span class="d-none d-md-block">Bare-metal Installation</span><i class="ti-arrow-right ml-2"></i></a>
@@ -530,7 +676,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">

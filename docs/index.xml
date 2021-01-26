@@ -6,19 +6,29 @@
     <description>Recent content on Middleware</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>The Hugo Documents are copyright © [gethugothemes](https://gethugothemes.com/) 2020.</copyright>
-    <lastBuildDate>Sun, 12 Jul 2020 15:21:02 +0200</lastBuildDate>
+    <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
+    <lastBuildDate>Sun, 24 Jan 2021 09:23:54 +0100</lastBuildDate>
     
 	<atom:link href="https://php-etl.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Configurator Contracts</title>
-      <link>https://php-etl.github.io/documentation/components/contracts/configurator/</link>
-      <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
+      <title>Akeneo expression language functions</title>
+      <link>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</link>
+      <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
       
-      <guid>https://php-etl.github.io/documentation/components/contracts/configurator/</guid>
-      <description> FEATURE STATE: Middleware 0.1 [alpha]  </description>
+      <guid>https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/</guid>
+      <description> FEATURE STATE: Middleware 0.1 [alpha]  Goal This library implements functions for manipulating Akeneo API data through the Symfony Expression Language.
+Installation composer require php-etl/akeneo-expression-language Usage YAML PHP - fastmap: map: - field: &amp;#39;[title]&amp;#39; expression: &amp;#39;filter(input[&amp;#34;title&amp;#34;], scope(&amp;#34;print&amp;#34;, &amp;#34;mobile&amp;#34;, &amp;#34;web&amp;#34;), first())&amp;#39;  &amp;lt;?php use Symfony\Component\ExpressionLanguage\ExpressionLanguage; use Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider; $input = [ [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;en_US&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;mobile&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;fr_CA&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;web&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;fr_CA&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;marketplace&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;fr_FR&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;print&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], [ &amp;#39;locale&amp;#39; =&amp;gt; &amp;#39;en_GB&amp;#39;, &amp;#39;scope&amp;#39; =&amp;gt; &amp;#39;mobile&amp;#39;, &amp;#39;data&amp;#39; =&amp;gt; &amp;#39;Lorem ipsum dolor sit amet&amp;#39;, ], ]; $expression = &amp;#39;filter(input, scope(&amp;#34;print&amp;#34;, &amp;#34;mobile&amp;#34;, &amp;#34;web&amp;#34;), first())&amp;#39;; $interpreter = new ExpressionLanguage(null, [new AkeneoFilterProvider()]); $interpreter-&amp;gt;evaluate($expression, [&amp;#39;input&amp;#39; =&amp;gt; $input]);  </description>
+    </item>
+    
+    <item>
+      <title>Akeneo plugin</title>
+      <link>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</link>
+      <pubDate>Sun, 24 Jan 2021 09:23:54 +0100</pubDate>
+      
+      <guid>https://php-etl.github.io/documentation/connectivity/akeneo/plugin/</guid>
+      <description>FEATURE STATE: Middleware 0.1 [alpha]  Configuration format Building an extractor YAML  satellite: pipeline: steps: - akeneo: enterprise: false extractor: type: productModel method: all search: - { field: enabled, operator: &amp;#39;=&amp;#39;, value: true } - { field: completeness, operator: &amp;#39;&amp;gt;&amp;#39;, value: 70, scope: ecommerce } - { field: completeness, operator: &amp;#39;&amp;lt;&amp;#39;, value: 85, scope: ecommerce } - { field: categories, operator: IN, value: winter_collection } - { field: family, operator: IN, value: [camcorders, digital_cameras] } logger: type: &amp;#39;stderr&amp;#39; client: api_url: &amp;#39;https://demo.</description>
     </item>
     
     <item>
@@ -27,9 +37,9 @@
       <pubDate>Sun, 12 Jul 2020 15:21:02 +0200</pubDate>
       
       <guid>https://php-etl.github.io/documentation/components/satellite/yaml-format/</guid>
-      <description>The image field In this field you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux, the ones in kiboko/php or any of your custom brewed image.
-The composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.
-The runtime section The http-api runtime The http-hook runtime The pipeline runtime Examples YAML PHP satellite: image: kiboko/php:7.</description>
+      <description>The docker section In this section you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux.
+The filesystem section In this section you will be able to specify the system file on which the satellite will be built.
+The composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.</description>
     </item>
     
     <item>
@@ -40,6 +50,17 @@ The runtime section The http-api runtime The http-hook runtime The pipeline runt
       <guid>https://php-etl.github.io/documentation/lorem/</guid>
       <description>Middleware Documentation Hello world
  (documentation/pipeline.md)[Pipelines]     component status dependencies     php-etl/contracts dev php-etl/configurator-contracts, php-etl/discovery-contracts, php-etl/function-contracts, php-etl/mapping-contracts, php-etl/messenger-contracts, php-etl/pipeline-contracts, php-etl/reporting-contracts   php-etl/configurator-contracts dev    php-etl/discovery-contracts dev    php-etl/function-contracts dev    php-etl/mapping-contracts dev    php-etl/messenger-contracts dev    php-etl/pipeline-contracts dev    php-etl/reporting-contracts dev    php-etl/flow-akeneo dev php-etl/configurator-contracts, php-etl/pipeline-contracts   php-etl/satellite dev php-etl/metadata, php-etl/configurator-contracts, php-etl/function-contracts   php-etl/metadata dev    php-etl/promise dev    php-etl/bucket dev php-etl/pipeline-contracts   php-etl/akeneo-expression-language dev    php-etl/fast-map dev php-etl/mapping-contracts   php-etl/fast-map-config dev    php-etl/phpspec-extension dev    php-etl/pipeline dev php-etl/pipeline-contracts   php-etl/flow-spout dev php-etl/pipeline-contracts   php-etl/batch dev    php-etl/flow-spl-csv dev php-etl/pipeline-contracts    </description>
+    </item>
+    
+    <item>
+      <title>PHP Objects</title>
+      <link>https://php-etl.github.io/documentation/components/satellite/php-objects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://php-etl.github.io/documentation/components/satellite/php-objects/</guid>
+      <description>The docker section In this section you will be able to specify the base docker image on which the satellite will be built. We recommend either the official PHP images based on Alpine Linux.
+The filesystem section In this section you will be able to specify the system file on which the satellite will be built.
+The composer section This section makes you able to specify some parameters that will be transmitted to composer at build time.</description>
     </item>
     
   </channel>

@@ -31,6 +31,7 @@
     --body-color:#ddd;
     --text-color:#666;
     --text-color-dark:#333;
+    --text-color-light:#eee;
     --white-color:#eee;
     --light-color:#fe8507;
     --font-family:Lato;
@@ -60,6 +61,7 @@
 
 
 </head>
+
   
   <body>
     
@@ -90,18 +92,14 @@
         </li>
         
         
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/documentation/system-requirements">System Requirements</a>
-        </li>
-        
-        
-        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Installation
           </a>
           <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/system-requirements">System Requirements</a>
             
             <a class="dropdown-item" href="/documentation/installation/bare-metal">Bare metal</a>
             
@@ -117,25 +115,85 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Documentation
+            Packages
           </a>
           <div class="dropdown-menu">
-            
-            <a class="dropdown-item" href="/documentation/components/contracts">Contracts</a>
             
             <a class="dropdown-item" href="/documentation/components/pipeline">Pipeline</a>
             
             <a class="dropdown-item" href="/documentation/components/fast-map">Fast Map</a>
             
-            <a class="dropdown-item" href="/documentation/components/promise">Promise</a>
-            
             <a class="dropdown-item" href="/documentation/components/satellite">Satellite</a>
+            
+            <a class="dropdown-item" href="/documentation/components/batch">Batch</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Framework
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/framework/contracts">Contracts</a>
+            
+            <a class="dropdown-item" href="/documentation/framework/metadata">Metadata</a>
+            
+            <a class="dropdown-item" href="/documentation/framework/promise">Promise</a>
+            
+          </div>
+        </li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Connectivity
+          </a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/documentation/connectivity/openapi">Open API</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/akeneo">Akeneo</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/database">SQL database</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/csv">CSV files</a>
+            
+            <a class="dropdown-item" href="/documentation/connectivity/spreadsheet">Spreadsheet files</a>
             
           </div>
         </li>
         
         
       </ul>
+      
+      <select class="lang-list dark" id="select-language"
+        onchange="location = this.value;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <option id="en" value="https://php-etl.github.io/documentation/components/satellite/" selected>English
+        </option>
+        
+        
+        
+        
+        
+        
+      </select>
       
     </div>
   </div>
@@ -156,6 +214,10 @@
             <a class="back-btn" href="/documentation"></a>
             
               
+            
+              
+            
+              
               
 
 
@@ -173,164 +235,6 @@
   
   
     <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/contracts/" title="Contracts" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/contracts/">
-    Contracts
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/contracts/configurator/" title="Configurator Contracts" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/contracts/configurator/">
-    Configurator Contracts
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/dashboard/" title="Dashboard" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/dashboard/">
-    Dashboard
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/discovery/" title="Discovery" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/discovery/">
-    Discovery
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/fast-map/" title="Fast Map" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/fast-map/">
-    Fast Map
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/pipeline/" title="Pipeline" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/pipeline/">
-    Pipeline
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/promise/" title="Promise" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/promise/">
-    Promise
-  </a>
-  
-  
-</li>
-
-
-        
       
         
           
@@ -373,7 +277,51 @@
 
         
       
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
+    PHP Objects
+  </a>
+  
+  
+</li>
+
+
+        
+      
     </ul>
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/pipeline/" title="Pipeline" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/pipeline/">
+    Pipeline
+  </a>
+  
   
 </li>
 
@@ -413,13 +361,17 @@
 It can be deployed in any Docker infrastructure, including Kubernetes clusters.</p>
 <p>There is 3 types of runtimes, depending on your needs:</p>
 <ul>
-<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered</li>
-<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route</li>
-<li><code>pipeline</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job</li>
+<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered. <code>Http-api</code> is used for REST API.</li>
+<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route. <code>Http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
+a means for one application to provide other applications with real-time information</li>
+<li><code>pipeline</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job. For more information on pipelines, see <a href="../pipeline/">Pipeline</a>.</li>
+<li><code>batch</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job</li>
 </ul>
 <h3 id="building-your-own-satellite">Building your own satellite</h3>
-<p>We will build your satellite micro-service in a few steps. In this example, we will use the <code>pipeline</code> runtime.</p>
-<p>First of all, let&rsquo;s declare the base image on which we want to build our micro-service.</p>
+<p>Make sure that you have a yaml file in your root folder which will contain all your configuration.<br>
+Then, let&rsquo;s declare the docker image (or the file) on which we want to build our micro-service.</p>
+<h4 id="using-docker">Using Docker</h4>
+<p>To use a docker image to build your micro-service, implement the <code>docker</code> key.</p>
 <ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
 	  
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
@@ -427,7 +379,13 @@ It can be deployed in any Docker infrastructure, including Kubernetes clusters.<
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 <span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">image</span>: kiboko/php:<span style="color:#ae81ff">7.4</span>-cli
+  <span style="color:#66d9ef">docker</span>:
+      <span style="color:#66d9ef">from</span>: php:<span style="color:#ae81ff">8.0</span>-cli-alpine
+      <span style="color:#66d9ef">workdir</span>: /var/www/html
+      <span style="color:#66d9ef">tags</span>:
+        - kiboko/satellite:foo
+        - kiboko/satellite:bar
+<span style="color:#75715e">#...</span>
 </code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
@@ -437,19 +395,39 @@ It can be deployed in any Docker infrastructure, including Kubernetes clusters.<
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
 
 $dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;php:8.0-cli-alpine&#39;</span>),
     <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>),
 );
 
-$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
+$satellite <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
     <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
     $dockerfile,
-);
+))<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">addTags</span>(<span style="color:#e6db74">&#34;kiboko/satellite:foo&#34;</span>, <span style="color:#e6db74">&#34;kiboko/satellite:bar&#34;</span>);
 </code></pre></div></div></div>
 
-<p>Here, we chose to use the <code>kiboko/php:7.4-cli</code> base image on which our code will be executed.
+<h4 id="using-system">Using system</h4>
+<p>To use a system file to build your micro-service, implement the <code>filesystem</code> key.</p>
+<ul class="nav nav-tabs" id="basic_definition_system" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_system-0" role="tab" aria-controls="basic_definition_system-0" aria-selected="true">YAML</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition_system-1" role="tab" aria-controls="basic_definition_system-1">PHP</a></li></ul>
+<div class="tab-content" id="basic_definition_system"><div id="basic_definition_system-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_system-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">filesystem</span>:
+    <span style="color:#66d9ef">path</span>: path/to/file/foo
+<span style="color:#75715e">#...</span>
+</code></pre></div></div>
+  <div id="basic_definition_system-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition_system-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+
+</code></pre></div></div></div>
+
+<p>Here, we chose to use the <code>php:8.0-cli-alpine</code> base image on which our code will be executed.
 You could use any docker image of your choice, however you will need to have a PHP runtime
-available, in a compatible version: &gt;=7.4 with the CLI SAPI.</p>
+available, in a compatible version: &gt;=8.0 with the CLI SAPI.</p>
+<h4 id="configure-composer">Configure composer</h4>
 <p>Next, as a second step, we need to declare the composer dependencies our microservice will have.
 We will require them through composer, with a declarative manner.</p>
 <ul class="nav nav-tabs" id="basic_with_composer" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_with_composer-0" role="tab" aria-controls="basic_with_composer-0" aria-selected="true">YAML</a></li>
@@ -461,9 +439,17 @@ We will require them through composer, with a declarative manner.</p>
 <span style="color:#66d9ef">satellite</span>:
 <span style="color:#75715e">#...</span>
   <span style="color:#66d9ef">composer</span>:
+    <span style="color:#66d9ef">autoload</span>:
+      <span style="color:#66d9ef">psr4</span>:
+      - <span style="color:#66d9ef">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
+        <span style="color:#66d9ef">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
     <span style="color:#66d9ef">require</span>:
-      - <span style="color:#e6db74">&#34;php-etl/pipeline:@dev&#34;</span>
-      - <span style="color:#e6db74">&#34;php-etl/fast-map:@dev&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.2&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
+      - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.1&#34;</span>
+      - <span style="color:#e6db74">&#34;akeneo/api-php-client-ee&#34;</span>
+      - <span style="color:#e6db74">&#34;laminas/laminas-diactoros&#34;</span>
+      - <span style="color:#e6db74">&#34;php-http/guzzle7-adapter&#34;</span>
 </code></pre></div></div>
   <div id="basic_with_composer-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_with_composer-1">
 
@@ -472,13 +458,15 @@ $dockerfile-&gt;push(
     new Docker\PHP\Composer(),
     new Docker\PHP\ComposerInit(),
     new Docker\PHP\ComposerMinimumStability(&#39;dev&#39;),
-    new Docker\PHP\ComposerRequire(&#39;php-etl/pipeline:@dev&#39;);
+    new Docker\PHP\ComposerRequire(&#39;php-etl/pipeline:@dev&#39;)
+    new Docker\PHP\ComposerRequire(&#39;php-etl/fast-map:@dev&#39;);
 );
 </code></pre></div></div></div>
 
+<p>You can add the <code>from_local</code> option in your configuration. This option copies an existing composer.json and composer.lock.</p>
+<h4 id="configure-the-runtime">Configure the runtime</h4>
 <p>Now that we have made our environment prepared for our satellite, we will declare
 the way we want our pipeline to handle our data flows.</p>
-<p>We decide we need</p>
 <ul class="nav nav-tabs" id="dataflows" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dataflows-0" role="tab" aria-controls="dataflows-0" aria-selected="true">YAML</a></li>
 	  
 		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dataflows-1" role="tab" aria-controls="dataflows-1">PHP</a></li></ul>
@@ -487,32 +475,66 @@ the way we want our pipeline to handle our data flows.</p>
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 <span style="color:#66d9ef">satellite</span>:
 <span style="color:#75715e">#...</span>
-  <span style="color:#66d9ef">runtime</span>:
-    <span style="color:#66d9ef">type</span>: pipeline
-    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">extract</span>: Pipeline\FooExtractor
-    - <span style="color:#66d9ef">transform</span>: Pipeline\FastMapTransformer
-<span style="color:#75715e">#...</span>
-    - <span style="color:#66d9ef">load</span>: Pipeline\BarLoader
+   <span style="color:#66d9ef">pipeline</span>:
+      <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">akeneo</span>:
+          <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">true</span>
+          <span style="color:#66d9ef">extractor</span>:
+            <span style="color:#66d9ef">type</span>: productModel
+            <span style="color:#66d9ef">method</span>: all
+            <span style="color:#66d9ef">search</span>:
+              - { <span style="color:#66d9ef">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
+              - { <span style="color:#66d9ef">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: ecommerce }
+              - { <span style="color:#66d9ef">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: ecommerce }
+              - { <span style="color:#66d9ef">field: categories, operator: IN, value</span>: winter_collection }
+              - { <span style="color:#66d9ef">field: family, operator: IN, value</span>: [camcorders, digital_cameras] }
+          <span style="color:#66d9ef">logger</span>:
+            <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
+      - <span style="color:#66d9ef">fastmap</span>:
+          <span style="color:#66d9ef">map</span>:
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+              <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+              <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
+              <span style="color:#66d9ef">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.&#39;</span>
+            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
+              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+              <span style="color:#66d9ef">list</span>:
+                - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+                  <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+      - <span style="color:#66d9ef">csv</span>:
+          <span style="color:#66d9ef">loader</span>:
+            <span style="color:#66d9ef">file_path</span>: output.csv
+            <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+            <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
 </code></pre></div></div>
   <div id="dataflows-1" class="tab-pane" role="tabpanel" aria-labelledby="dataflows-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-$dockerfile-&gt;push(
-    new Docker\PHP\Composer(),
-    new Docker\PHP\ComposerInit(),
-    new Docker\PHP\ComposerMinimumStability(&#39;dev&#39;),
-    new Docker\PHP\ComposerRequire(&#39;php-etl/pipeline:@dev&#39;);
-);
+<span style="color:#75715e">&lt;?php</span>
+
+<span style="color:#e6db74">/** @var array $config */</span> 
+$pipeline <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\Pipeline</span>($config);
+$pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
+
 </code></pre></div></div></div>
 
 <h3 id="configuration-formats">Configuration formats</h3>
 <p>There are 2 ways to declare satellites :</p>
 <ul>
-<li>Use the PHP objects</li>
+<li>Use the <a href="php-objects">PHP objects</a></li>
 <li>Use the <a href="yaml-format">YAML configuration Syntax</a></li>
 </ul>
-</div>
+<h3 id="executing-the-command">Executing the command</h3>
+<p>After configuring your config file, you can run the command which will allow you to create the Dockerfile or the file system :</p>
+<pre><code>php bin/console build
+</code></pre><p>You can also specify the name of the file to be executed :</p>
+<pre><code>php bin/console build `satellite.yaml`
+</code></pre></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
           <nav class="pagination mt-3">
@@ -542,25 +564,11 @@ $dockerfile-&gt;push(
             
             
             
-
-            
-            
-            
             
             
 
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
             
             
             
@@ -578,12 +586,6 @@ $dockerfile-&gt;push(
             
             
 
-            
-            
-            
-            
-            
-            
             
             
             
@@ -615,52 +617,6 @@ $dockerfile-&gt;push(
 
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
             
             
             
@@ -708,6 +664,156 @@ $dockerfile-&gt;push(
             
             
             
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -759,7 +865,7 @@ $dockerfile-&gt;push(
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/promise/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Promise</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Components</span></a>
             
             
             <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/satellite/yaml-format/"> <span class="d-none d-md-block">The YAML configuration format</span><i class="ti-arrow-right ml-2"></i></a>
@@ -781,7 +887,7 @@ $dockerfile-&gt;push(
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-md-left text-center">
-       <p class="mb-md-0 mb-4">The Hugo Documents are copyright © <a href="https://gethugothemes.com/">gethugothemes</a> 2020.</p>
+       <p class="mb-md-0 mb-4">The Middleware Documents are copyright © <a href="https://kiboko.fr/">Kiboko</a> 2020, 2021.</p>
       </div>
       <div class="col-md-4 text-md-right text-center">
         <ul class="list-inline">
