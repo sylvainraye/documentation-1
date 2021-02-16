@@ -359,13 +359,13 @@
 <h3 id="definition-of-a-satellite">Definition of a Satellite</h3>
 <p>A satellite is a micro-service running in the cloud, packaged as a docker image.
 It can be deployed in any Docker infrastructure, including Kubernetes clusters.</p>
-<p>There is 3 types of runtimes, depending on your needs:</p>
+<p>There are 4 types of runtimes, depending on your needs you will have to choose one of:</p>
 <ul>
-<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered. <code>Http-api</code> is used for REST API.</li>
-<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route. <code>Http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
+<li><code>http-api</code>: the micro-service will be operating an API, on which several URL routes can be registered. <code>http-api</code> is used for REST API.</li>
+<li><code>http-hook</code>: the micro-service will be operating an API on a single URL route. <code>http-hook</code> is used for webhooks. A webhook is a POST request sent to a URL. It&rsquo;s considered to be
 a means for one application to provide other applications with real-time information</li>
-<li><code>pipeline</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job. For more information on pipelines, see <a href="../pipeline/">Pipeline</a>.</li>
-<li><code>batch</code>: the micro-service will be operating a data pipeline, runned in the backend that can be executed as a cron job</li>
+<li><code>pipeline</code>: the micro-service will be operating a data pipeline, executed in the backend that can be executed as a cron job. For more information on pipelines, see <a href="../pipeline/">Pipeline</a>.</li>
+<li><code>batch</code>: the micro-service will be orchestrating more than one data pipeline, executed in the backend that can be executed as a cron job</li>
 </ul>
 <h3 id="building-your-own-satellite">Building your own satellite</h3>
 <p>Make sure that you have a yaml file in your root folder which will contain all your configuration.<br>

@@ -391,6 +391,8 @@
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 - <span style="color:#66d9ef">fastmap</span>:
+    <span style="color:#66d9ef">expression_language</span>:
+    - <span style="color:#e6db74">&#39;Kiboko\Component\ExpressionLanguage\Akeneo\AkeneoFilterProvider&#39;</span>
     <span style="color:#66d9ef">map</span>:
     - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
       <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;filter(input[&#34;title&#34;], scope(&#34;print&#34;, &#34;mobile&#34;, &#34;web&#34;), first())&#39;</span>
@@ -436,6 +438,395 @@ $interpreter <span style="color:#f92672">=</span> <span style="color:#66d9ef">ne
 $interpreter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">evaluate</span>($expression, [<span style="color:#e6db74">&#39;input&#39;</span> <span style="color:#f92672">=&gt;</span> $input]);
 </code></pre></div></div></div>
 
+<h3 id="functions-reference">Functions reference</h3>
+<h4 id="attribute-data-manipulation">Attribute data manipulation</h4>
+<p>Akeneo has a specific data format that would make cumbersome the data mapping
+if there were no dedicated tools. In this matter the Expression Language functions
+for Akeneo gives you more control over what you wish to synchronize.</p>
+<p>There are two functions that have to be used in order to filter or extract data
+from your Akeneo attributes:</p>
+<ul>
+<li><code>filter ( data , ...filter )</code>: filter the available values for an attribute</li>
+<li><code>attribute ( data , ...filter )</code>: extract the most accurate value</li>
+</ul>
+<p>Those functions needs som companions in order to be useful. Those companions
+will help you to apply filtering depending on your business logic.</p>
+<h5 id="filter-by-locale">Filter by locale</h5>
+<p><code>locale ( string ...locale )</code></p>
+<p>This filter will extract only the locales that match the provided locale codes,
+with no reordering.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], locale(&quot;fr_CA&quot;, &quot;fr_FR&quot;))</code></p>
+<ul class="nav nav-tabs" id="locale" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#locale-0" role="tab" aria-controls="locale-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#locale-1" role="tab" aria-controls="locale-1">Data Source</a></li></ul>
+<div class="tab-content" id="locale"><div id="locale-0" class="tab-pane show active" role="tabpanel" aria-labelledby="locale-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="locale-1" class="tab-pane" role="tabpanel" aria-labelledby="locale-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+    },
+]
+</code></pre></div></div></div>
+
+<h5 id="filter-by-scope">Filter by scope</h5>
+<p><code>scope ( string ...scope )</code></p>
+<p>This filter will extract only the scopes that match the provided scope codes,
+with no reordering.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], scope(&quot;web&quot;, &quot;print&quot;))</code></p>
+<ul class="nav nav-tabs" id="scope" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#scope-0" role="tab" aria-controls="scope-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#scope-1" role="tab" aria-controls="scope-1">Data Source</a></li></ul>
+<div class="tab-content" id="scope"><div id="scope-0" class="tab-pane show active" role="tabpanel" aria-labelledby="scope-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="scope-1" class="tab-pane" role="tabpanel" aria-labelledby="scope-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+    },
+]
+</code></pre></div></div></div>
+
+<h5 id="combining-results-filter">Combining results filter</h5>
+<p><code>anyOf ( ...filters )</code></p>
+<p>This filter will combine several filters into one result, applying an OR<br>
+to every specified filter. It will result in a list where <strong>at least one</strong>
+filter is true.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], anyOf(scope(&quot;web&quot;), locale(&quot;fr_FR&quot;)))</code></p>
+<ul class="nav nav-tabs" id="anyof" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#anyof-0" role="tab" aria-controls="anyof-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#anyof-1" role="tab" aria-controls="anyof-1">Data Source</a></li></ul>
+<div class="tab-content" id="anyof"><div id="anyof-0" class="tab-pane show active" role="tabpanel" aria-labelledby="anyof-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="anyof-1" class="tab-pane" role="tabpanel" aria-labelledby="anyof-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+    },
+]
+</code></pre></div></div></div>
+
+<h5 id="excluding-results-filter">Excluding results filter</h5>
+<p><code>allOf ( ...filters )</code></p>
+<p>This filter will combine several filters into one result, applying an AND<br>
+to every specified filter. It will result in a list where <strong>all</strong> filters are true.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], allOf(scope(&quot;web&quot;), locale(&quot;fr_FR&quot;)))</code></p>
+<ul class="nav nav-tabs" id="allof" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#allof-0" role="tab" aria-controls="allof-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#allof-1" role="tab" aria-controls="allof-1">Data Source</a></li></ul>
+<div class="tab-content" id="allof"><div id="allof-0" class="tab-pane show active" role="tabpanel" aria-labelledby="allof-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="allof-1" class="tab-pane" role="tabpanel" aria-labelledby="allof-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div></div>
+
+<h5 id="extracting-a-slice-of-the-values-list">Extracting a slice of the values list</h5>
+<p><code>slice ( int offset , int length )</code></p>
+<p>This filter will extract <code>length</code> values, starting at <code>offset</code>.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], slice(1, 2))</code></p>
+<ul class="nav nav-tabs" id="slice" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#slice-0" role="tab" aria-controls="slice-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#slice-1" role="tab" aria-controls="slice-1">Data Source</a></li></ul>
+<div class="tab-content" id="slice"><div id="slice-0" class="tab-pane show active" role="tabpanel" aria-labelledby="slice-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="slice-1" class="tab-pane" role="tabpanel" aria-labelledby="slice-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div></div>
+
+<h5 id="extracting-the-beginning-of-the-values-list">Extracting the beginning of the values list</h5>
+<p><code>head ( int length )</code></p>
+<p>This filter will extract <code>length</code> values, starting at the beginning.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], head(2))</code></p>
+<ul class="nav nav-tabs" id="head" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#head-0" role="tab" aria-controls="head-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#head-1" role="tab" aria-controls="head-1">Data Source</a></li></ul>
+<div class="tab-content" id="head"><div id="head-0" class="tab-pane show active" role="tabpanel" aria-labelledby="head-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="head-1" class="tab-pane" role="tabpanel" aria-labelledby="head-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div></div>
+
+<h5 id="extracting-the-end-of-the-values-list">Extracting the end of the values list</h5>
+<p><code>tail ( int length )</code></p>
+<p>This filter will extract <code>length</code> values, starting at the end.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], tail(2))</code></p>
+<ul class="nav nav-tabs" id="tail" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#tail-0" role="tab" aria-controls="tail-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tail-1" role="tab" aria-controls="tail-1">Data Source</a></li></ul>
+<div class="tab-content" id="tail"><div id="tail-0" class="tab-pane show active" role="tabpanel" aria-labelledby="tail-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="tail-1" class="tab-pane" role="tabpanel" aria-labelledby="tail-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div></div>
+
+<h5 id="other-filters">Other filters</h5>
+<ul>
+<li><code>offset</code></li>
+<li><code>first</code></li>
+<li><code>last</code></li>
+<li><code>coalesce</code></li>
+</ul>
+<h4 id="dates-management-with-datetime-and-datetimezone">Dates management with <code>dateTime</code> and <code>dateTimeZone</code></h4>
+<p>In order to generate date objects, two functions has been created</p>
+<p><code>dateTime ( string date, [ string format ] )</code>
+<code>dateTimeZone ( string date, string timezone [ string format ] )</code></p>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 24 Jan 2021</p>
