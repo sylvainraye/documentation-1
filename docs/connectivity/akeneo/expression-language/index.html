@@ -563,6 +563,51 @@ with no reordering.</p>
 ]
 </code></pre></div></div></div>
 
+<h5 id="take-the-first-available-value-by-scopes">Take the first available value by scopes</h5>
+<p><code>coalesce ( string ...scope )</code></p>
+<p>This filter will extract the first value tat matches a scope in the provided scope codes.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], coalesce(&quot;web&quot;, &quot;print&quot;))</code></p>
+<ul class="nav nav-tabs" id="coalesce" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#coalesce-0" role="tab" aria-controls="coalesce-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#coalesce-1" role="tab" aria-controls="coalesce-1">Data Source</a></li></ul>
+<div class="tab-content" id="coalesce"><div id="coalesce-0" class="tab-pane show active" role="tabpanel" aria-labelledby="coalesce-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="coalesce-1" class="tab-pane" role="tabpanel" aria-labelledby="coalesce-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>,
+    },
+]
+</code></pre></div></div></div>
+
 <h5 id="combining-results-filter">Combining results filter</h5>
 <p><code>anyOf ( ...filters )</code></p>
 <p>This filter will combine several filters into one result, applying an OR<br>
@@ -816,17 +861,156 @@ to every specified filter. It will result in a list where <strong>all</strong> f
 ]
 </code></pre></div></div></div>
 
-<h5 id="other-filters">Other filters</h5>
-<ul>
-<li><code>offset</code></li>
-<li><code>first</code></li>
-<li><code>last</code></li>
-<li><code>coalesce</code></li>
-</ul>
+<h5 id="extracting-the-values-list-after-an-offset">Extracting the values list, after an offset</h5>
+<p><code>offset ( int offset )</code></p>
+<p>This filter will extract all the values after the <code>offset</code> position.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], offset(1))</code></p>
+<ul class="nav nav-tabs" id="offset" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#offset-0" role="tab" aria-controls="offset-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#offset-1" role="tab" aria-controls="offset-1">Data Source</a></li></ul>
+<div class="tab-content" id="offset"><div id="offset-0" class="tab-pane show active" role="tabpanel" aria-labelledby="offset-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="offset-1" class="tab-pane" role="tabpanel" aria-labelledby="offset-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div></div>
+
+<h5 id="extracting-the-first-value-from-the-list">Extracting the first value from the list</h5>
+<p><code>first ( )</code></p>
+<p>This filter will extract the first value of the list.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], first())</code></p>
+<ul class="nav nav-tabs" id="first" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#first-0" role="tab" aria-controls="first-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#first-1" role="tab" aria-controls="first-1">Data Source</a></li></ul>
+<div class="tab-content" id="first"><div id="first-0" class="tab-pane show active" role="tabpanel" aria-labelledby="first-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="first-1" class="tab-pane" role="tabpanel" aria-labelledby="first-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div></div>
+
+<h5 id="extracting-the-last-value-from-the-list">Extracting the last value from the list</h5>
+<p><code>last ( )</code></p>
+<p>This filter will extract the last value of the list.</p>
+<p><code>filter(input[&quot;data&quot;][&quot;description&quot;], first())</code></p>
+<ul class="nav nav-tabs" id="first" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#first-0" role="tab" aria-controls="first-0" aria-selected="true">Filter Result</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#first-1" role="tab" aria-controls="first-1">Data Source</a></li></ul>
+<div class="tab-content" id="first"><div id="first-0" class="tab-pane show active" role="tabpanel" aria-labelledby="first-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div>
+  <div id="first-1" class="tab-pane" role="tabpanel" aria-labelledby="first-1">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+[
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;en_US&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;mobile&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_CA&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    },
+    {
+        <span style="color:#f92672">&#34;locale&#34;</span>: <span style="color:#e6db74">&#34;fr_FR&#34;</span>,
+        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;print&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+    }
+]
+</code></pre></div></div></div>
+
 <h4 id="dates-management-with-datetime-and-datetimezone">Dates management with <code>dateTime</code> and <code>dateTimeZone</code></h4>
-<p>In order to generate date objects, two functions has been created</p>
-<p><code>dateTime ( string date, [ string format ] )</code>
-<code>dateTimeZone ( string date, string timezone [ string format ] )</code></p>
+<p>In order to generate date objects, two functions has been created:</p>
+<p><code>dateTime ( string date, [ string format ] )</code></p>
+<p><code>dateTimeZone ( string date, string timezone [ string format ] )</code></p>
+<p>The results will be <a href="https://www.php.net/manual/fr/class.datetimeimmutable.php"><code>\DateTimeImmutable</code> PHP objects</a>.</p>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 24 Jan 2021</p>

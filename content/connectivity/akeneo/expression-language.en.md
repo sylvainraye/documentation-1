@@ -2,6 +2,7 @@
 title: "Akeneo expression language functions"
 date: 2021-01-24T09:23:54+01:00
 draft: false
+description: "Functions for manipulating Akeneo API data"
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
@@ -172,6 +173,53 @@ with no reordering.
     {
         "locale": "fr_FR",
         "scope": "print",
+        "data": "Lorem ipsum dolor sit amet"
+    }
+]
+{{< /tab >}}
+
+{{< tab name="Data Source" codelang="json"  >}}
+[
+    {
+        "locale": "fr_FR",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "en_US",
+        "scope": "mobile",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_CA",
+        "scope": "print",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_FR",
+        "scope": "print",
+        "data": "Lorem ipsum dolor sit amet",
+    },
+]
+{{< /tab >}}
+
+{{< /tabs >}}
+
+##### Take the first available value by scopes
+
+`coalesce ( string ...scope )`
+
+This filter will extract the first value tat matches a scope in the provided scope codes.
+
+`filter(input["data"]["description"], coalesce("web", "print"))`
+
+{{< tabs name="coalesce" >}}
+
+{{< tab name="Filter Result" codelang="json"  >}}
+[
+    {
+        "locale": "fr_FR",
+        "scope": "web",
         "data": "Lorem ipsum dolor sit amet"
     }
 ]
@@ -467,16 +515,163 @@ This filter will extract `length` values, starting at the end.
 
 {{< /tabs >}}
 
-##### Other filters
+##### Extracting the values list, after an offset
 
-* `offset`
-* `first`
-* `last`
-* `coalesce`
+`offset ( int offset )`
+
+This filter will extract all the values after the `offset` position. 
+
+`filter(input["data"]["description"], offset(1))`
+
+{{< tabs name="offset" >}}
+
+{{< tab name="Filter Result" codelang="json"  >}}
+[
+    {
+        "locale": "en_US",
+        "scope": "mobile",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_CA",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_FR",
+        "scope": "print",
+        "data": "Lorem ipsum dolor sit amet"
+    }
+]
+{{< /tab >}}
+
+{{< tab name="Data Source" codelang="json"  >}}
+[
+    {
+        "locale": "fr_FR",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "en_US",
+        "scope": "mobile",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_CA",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_FR",
+        "scope": "print",
+        "data": "Lorem ipsum dolor sit amet"
+    }
+]
+{{< /tab >}}
+
+{{< /tabs >}}
+
+##### Extracting the first value from the list
+
+`first ( )`
+
+This filter will extract the first value of the list. 
+
+`filter(input["data"]["description"], first())`
+
+{{< tabs name="first" >}}
+
+{{< tab name="Filter Result" codelang="json"  >}}
+[
+    {
+        "locale": "fr_FR",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    }
+]
+{{< /tab >}}
+
+{{< tab name="Data Source" codelang="json"  >}}
+[
+    {
+        "locale": "fr_FR",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "en_US",
+        "scope": "mobile",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_CA",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_FR",
+        "scope": "print",
+        "data": "Lorem ipsum dolor sit amet"
+    }
+]
+{{< /tab >}}
+
+{{< /tabs >}}
+
+##### Extracting the last value from the list
+
+`last ( )`
+
+This filter will extract the last value of the list. 
+
+`filter(input["data"]["description"], first())`
+
+{{< tabs name="first" >}}
+
+{{< tab name="Filter Result" codelang="json"  >}}
+[
+    {
+        "locale": "fr_FR",
+        "scope": "print",
+        "data": "Lorem ipsum dolor sit amet"
+    }
+]
+{{< /tab >}}
+
+{{< tab name="Data Source" codelang="json"  >}}
+[
+    {
+        "locale": "fr_FR",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "en_US",
+        "scope": "mobile",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_CA",
+        "scope": "web",
+        "data": "Lorem ipsum dolor sit amet"
+    },
+    {
+        "locale": "fr_FR",
+        "scope": "print",
+        "data": "Lorem ipsum dolor sit amet"
+    }
+]
+{{< /tab >}}
+
+{{< /tabs >}}
 
 #### Dates management with `dateTime` and `dateTimeZone`
 
-In order to generate date objects, two functions has been created
+In order to generate date objects, two functions has been created:
 
 `dateTime ( string date, [ string format ] )`
+
 `dateTimeZone ( string date, string timezone [ string format ] )`
+
+The results will be [`\DateTimeImmutable` PHP objects](https://www.php.net/manual/fr/class.datetimeimmutable.php).
