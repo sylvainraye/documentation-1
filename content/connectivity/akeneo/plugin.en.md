@@ -1,9 +1,8 @@
 ---
 title: "Akeneo plugin"
 date: 2021-01-24T09:23:54+01:00
-lastmod: 2021-01-24T09:23:54+01:00
-weight: ""
 draft: false
+description: "Akeneo API integration in satellites pipelines"
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
