@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Pipeline</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -370,28 +370,28 @@ sends the results to the second process, and so on, ending with the final result
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">pipeline</span>:
-    <span style="color:#66d9ef">steps</span>:
-      - <span style="color:#66d9ef">csv</span>:
-          <span style="color:#66d9ef">extractor</span>:
-            <span style="color:#66d9ef">file_path</span>: path/to/file/input.csv
-            <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
-            <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-            <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
-          <span style="color:#66d9ef">logger</span>:
-            <span style="color:#66d9ef">type</span>: stderr
-      - <span style="color:#66d9ef">csv</span>:
-          <span style="color:#66d9ef">loader</span>:
-            <span style="color:#66d9ef">file_path</span>: path/to/file/output.csv
-            <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-            <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-            <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">extractor</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/input.csv</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+          <span style="color:#f92672">logger</span>:
+            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">loader</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/output.csv</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
 </code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\PipelineRunner</span>;
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\Pipeline</span>;
@@ -445,6 +445,38 @@ $pipeline <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new<
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             

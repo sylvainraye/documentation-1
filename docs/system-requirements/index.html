@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>System Requirements</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -259,10 +259,10 @@
 <p>Logstash is a tool whose primary goal is to consume logging from other applications, optionally apply transformations to
 it and then transfer it to a log storage.</p>
 <p>In your project, create a file named <code>.docker/logstash/logstash.yml</code> with the following contents:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">pipeline</span>:
-  <span style="color:#66d9ef">batch</span>:
-    <span style="color:#66d9ef">delay</span>: <span style="color:#ae81ff">50</span>
-    <span style="color:#66d9ef">size</span>: <span style="color:#ae81ff">125</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">pipeline</span>:
+  <span style="color:#f92672">batch</span>:
+    <span style="color:#f92672">delay</span>: <span style="color:#ae81ff">50</span>
+    <span style="color:#f92672">size</span>: <span style="color:#ae81ff">125</span>
 </code></pre></div><p>To configure a logging pipeline for logstash, we will create a second file named <code>.docker/logstash/pipeline/tcp.conf</code> with the following content:</p>
 <pre><code>input {
   tcp {
@@ -283,65 +283,65 @@ output {
   }
 }
 </code></pre><p>Now, you will need to add a new logstash service in your <code>docker-compose.yaml</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">logstash</span>:
-    <span style="color:#66d9ef">image</span>: docker.elastic.co/logstash/logstash-oss:<span style="color:#ae81ff">7.8.0</span>
-    <span style="color:#66d9ef">volumes</span>:
-      - ./.docker/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./.docker/logstash/pipeline:/usr/share/logstash/pipeline/
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">logstash</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/logstash/logstash-oss:7.8.0</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./.docker/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml</span>
+      - <span style="color:#ae81ff">./.docker/logstash/pipeline:/usr/share/logstash/pipeline/</span>
 </code></pre></div><h4 id="elasticsearch">ElasticSearch</h4>
 <p>ElasticSearch is a Document oriented database, whose main usage are logs storage and search indexation. We will use if for both.</p>
 <p>In your project, create a file named <code>.docker/elasticsearch/elasticsearch.yml</code> with the following contents:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">cluster.name</span>: <span style="color:#e6db74">&#39;middleware-cluster&#39;</span>
-<span style="color:#66d9ef">bootstrap.memory_lock</span>: <span style="color:#66d9ef">true</span>
-<span style="color:#66d9ef">discovery.type</span>: <span style="color:#e6db74">&#39;single-node&#39;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cluster.name</span>: <span style="color:#e6db74">&#39;middleware-cluster&#39;</span>
+<span style="color:#f92672">bootstrap.memory_lock</span>: <span style="color:#66d9ef">true</span>
+<span style="color:#f92672">discovery.type</span>: <span style="color:#e6db74">&#39;single-node&#39;</span>
 
-<span style="color:#66d9ef">http.host</span>: <span style="color:#e6db74">&#39;0.0.0.0&#39;</span>
-<span style="color:#66d9ef">http.port</span>: <span style="color:#ae81ff">9200</span>
+<span style="color:#f92672">http.host</span>: <span style="color:#e6db74">&#39;0.0.0.0&#39;</span>
+<span style="color:#f92672">http.port</span>: <span style="color:#ae81ff">9200</span>
 
 <span style="color:#75715e"># Uncomment the following lines for a production cluster deployment</span>
 <span style="color:#75715e">#transport.host: 0.0.0.0</span>
 <span style="color:#75715e">#discovery.zen.minimum_master_nodes: 1</span>
 
-<span style="color:#66d9ef">http.cors.enabled </span>: <span style="color:#66d9ef">true</span>
-<span style="color:#66d9ef">http.cors.allow-headers</span>: <span style="color:#e6db74">&#39;X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization&#39;</span>
+<span style="color:#f92672">http.cors.enabled </span>: <span style="color:#66d9ef">true</span>
+<span style="color:#f92672">http.cors.allow-headers</span>: <span style="color:#e6db74">&#39;X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization&#39;</span>
 <span style="color:#75715e"># Uncomment the following if you wish to open access to a 3rd-party application, like Dejavu.</span>
 <span style="color:#75715e">#http.cors.allow-origin: &#34;http://localhost:1234,http://127.0.0.1:1234&#34;</span>
-<span style="color:#66d9ef">http.cors.allow-credentials</span>: <span style="color:#66d9ef">true</span>
-<span style="color:#66d9ef">http.cors.allow-methods </span>: <span style="color:#e6db74">&#39;OPTIONS, HEAD, GET, POST, PUT, DELETE&#39;</span>
+<span style="color:#f92672">http.cors.allow-credentials</span>: <span style="color:#66d9ef">true</span>
+<span style="color:#f92672">http.cors.allow-methods </span>: <span style="color:#e6db74">&#39;OPTIONS, HEAD, GET, POST, PUT, DELETE&#39;</span>
 
-<span style="color:#66d9ef">cluster.routing.allocation.disk.threshold_enabled</span>: <span style="color:#66d9ef">false</span>
+<span style="color:#f92672">cluster.routing.allocation.disk.threshold_enabled</span>: <span style="color:#66d9ef">false</span>
 </code></pre></div><p>Now, you will need to add a new elasticsearch service and a dedicated volume in your <code>docker-compose.yaml</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">elasticsearch</span>:
-    <span style="color:#66d9ef">image</span>: docker.elastic.co/elasticsearch/elasticsearch-oss:<span style="color:#ae81ff">7.8.0</span>
-    <span style="color:#66d9ef">ports</span>:
-      - ${ELASTICSEARCH_PORT}:<span style="color:#ae81ff">9200</span>
-    <span style="color:#66d9ef">environment</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">elasticsearch</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch-oss:7.8.0</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">${ELASTICSEARCH_PORT}:9200</span>
+    <span style="color:#f92672">environment</span>:
       - <span style="color:#e6db74">&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;</span>
-    <span style="color:#66d9ef">volumes</span>:
-      - elasticsearch:/usr/share/elasticsearch/data
-      - ./.docker/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">elasticsearch:/usr/share/elasticsearch/data</span>
+      - <span style="color:#ae81ff">./.docker/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml</span>
 
-<span style="color:#66d9ef">volumes</span>:
-  <span style="color:#66d9ef">elasticsearch</span>:
-    <span style="color:#66d9ef">driver</span>: local
+<span style="color:#f92672">volumes</span>:
+  <span style="color:#f92672">elasticsearch</span>:
+    <span style="color:#f92672">driver</span>: <span style="color:#ae81ff">local</span>
 </code></pre></div><h4 id="kibana">Kibana</h4>
 <p>Kibana is web interface for ElasticSearch storage, capable of building graphic representations of aggregation searches.</p>
 <p>In your project, create a file named <code>.docker/kibana/kibana.yml</code> with the following contents:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">server.port</span>: <span style="color:#ae81ff">5601</span>
-<span style="color:#66d9ef">server.host</span>: <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>
-<span style="color:#66d9ef">elasticsearch.hosts</span>: <span style="color:#e6db74">&#34;http://elasticsearch:9200&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server.port</span>: <span style="color:#ae81ff">5601</span>
+<span style="color:#f92672">server.host</span>: <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>
+<span style="color:#f92672">elasticsearch.hosts</span>: <span style="color:#e6db74">&#34;http://elasticsearch:9200&#34;</span>
 </code></pre></div><p>Now, you will need to add a new kibana service in your <code>docker-compose.yaml</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">kibana</span>:
-    <span style="color:#66d9ef">image</span>: docker.elastic.co/kibana/kibana-oss:<span style="color:#ae81ff">7.8.0</span>
-    <span style="color:#66d9ef">ports</span>:
-      - ${KIBANA_PORT}:<span style="color:#ae81ff">5601</span>
-    <span style="color:#66d9ef">environment</span>:
-      - monitoring.elasticsearch.hosts=http://elasticsearch:<span style="color:#ae81ff">9200</span>
-    <span style="color:#66d9ef">volumes</span>:
-      - ./.docker/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">kibana</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/kibana/kibana-oss:7.8.0</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">${KIBANA_PORT}:5601</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#ae81ff">monitoring.elasticsearch.hosts=http://elasticsearch:9200</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./.docker/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml</span>
 </code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
@@ -381,6 +381,38 @@ output {
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Satellite</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -378,19 +378,19 @@ Then, let&rsquo;s declare the docker image (or the file) on which we want to bui
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">docker</span>:
-      <span style="color:#66d9ef">from</span>: php:<span style="color:#ae81ff">8.0</span>-cli-alpine
-      <span style="color:#66d9ef">workdir</span>: /var/www/html
-      <span style="color:#66d9ef">tags</span>:
-        - kiboko/satellite:foo
-        - kiboko/satellite:bar
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">docker</span>:
+      <span style="color:#f92672">from</span>: <span style="color:#ae81ff">php:8.0-cli-alpine</span>
+      <span style="color:#f92672">workdir</span>: <span style="color:#ae81ff">/var/www/html</span>
+      <span style="color:#f92672">tags</span>:
+        - <span style="color:#ae81ff">kiboko/satellite:foo</span>
+        - <span style="color:#ae81ff">kiboko/satellite:bar</span>
 <span style="color:#75715e">#...</span>
 </code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
 
@@ -413,9 +413,9 @@ $satellite <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new
 <div class="tab-content" id="basic_definition_system"><div id="basic_definition_system-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_system-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">filesystem</span>:
-    <span style="color:#66d9ef">path</span>: path/to/file/foo
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">filesystem</span>:
+    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">path/to/file/foo</span>
 <span style="color:#75715e">#...</span>
 </code></pre></div></div>
   <div id="basic_definition_system-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition_system-1">
@@ -436,14 +436,14 @@ We will require them through composer, with a declarative manner.</p>
 <div class="tab-content" id="basic_with_composer"><div id="basic_with_composer-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_with_composer-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
+<span style="color:#f92672">satellite</span>:
 <span style="color:#75715e">#...</span>
-  <span style="color:#66d9ef">composer</span>:
-    <span style="color:#66d9ef">autoload</span>:
-      <span style="color:#66d9ef">psr4</span>:
-      - <span style="color:#66d9ef">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
-        <span style="color:#66d9ef">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
-    <span style="color:#66d9ef">require</span>:
+  <span style="color:#f92672">composer</span>:
+    <span style="color:#f92672">autoload</span>:
+      <span style="color:#f92672">psr4</span>:
+      - <span style="color:#f92672">namespace</span>: <span style="color:#e6db74">&#34;Pipeline\\&#34;</span>
+        <span style="color:#f92672">paths</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+    <span style="color:#f92672">require</span>:
       - <span style="color:#e6db74">&#34;php-etl/pipeline:^0.2&#34;</span>
       - <span style="color:#e6db74">&#34;php-etl/fast-map:^0.2&#34;</span>
       - <span style="color:#e6db74">&#34;php-etl/csv-flow:^0.1&#34;</span>
@@ -454,12 +454,12 @@ We will require them through composer, with a declarative manner.</p>
   <div id="basic_with_composer-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_with_composer-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-$dockerfile-&gt;push(
-    new Docker\PHP\Composer(),
-    new Docker\PHP\ComposerInit(),
-    new Docker\PHP\ComposerMinimumStability(&#39;dev&#39;),
-    new Docker\PHP\ComposerRequire(&#39;php-etl/pipeline:@dev&#39;)
-    new Docker\PHP\ComposerRequire(&#39;php-etl/fast-map:@dev&#39;);
+$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/pipeline:@dev&#39;</span>)
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/fast-map:@dev&#39;</span>);
 );
 </code></pre></div></div></div>
 
@@ -473,49 +473,49 @@ the way we want our pipeline to handle our data flows.</p>
 <div class="tab-content" id="dataflows"><div id="dataflows-0" class="tab-pane show active" role="tabpanel" aria-labelledby="dataflows-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
+<span style="color:#f92672">satellite</span>:
 <span style="color:#75715e">#...</span>
-   <span style="color:#66d9ef">pipeline</span>:
-      <span style="color:#66d9ef">steps</span>:
-      - <span style="color:#66d9ef">akeneo</span>:
-          <span style="color:#66d9ef">enterprise</span>: <span style="color:#66d9ef">true</span>
-          <span style="color:#66d9ef">extractor</span>:
-            <span style="color:#66d9ef">type</span>: productModel
-            <span style="color:#66d9ef">method</span>: all
-            <span style="color:#66d9ef">search</span>:
-              - { <span style="color:#66d9ef">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
-              - { <span style="color:#66d9ef">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: ecommerce }
-              - { <span style="color:#66d9ef">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: ecommerce }
-              - { <span style="color:#66d9ef">field: categories, operator: IN, value</span>: winter_collection }
-              - { <span style="color:#66d9ef">field: family, operator: IN, value</span>: [camcorders, digital_cameras] }
-          <span style="color:#66d9ef">logger</span>:
-            <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
-      - <span style="color:#66d9ef">fastmap</span>:
-          <span style="color:#66d9ef">map</span>:
-            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-              <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
-              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
-            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
-              <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
-            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
-              <span style="color:#66d9ef">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.&#39;</span>
-            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
-              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
-              <span style="color:#66d9ef">list</span>:
-                - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-                  <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
-      - <span style="color:#66d9ef">csv</span>:
-          <span style="color:#66d9ef">loader</span>:
-            <span style="color:#66d9ef">file_path</span>: output.csv
-            <span style="color:#66d9ef">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
-            <span style="color:#66d9ef">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
-            <span style="color:#66d9ef">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
+   <span style="color:#f92672">pipeline</span>:
+      <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">akeneo</span>:
+          <span style="color:#f92672">enterprise</span>: <span style="color:#66d9ef">true</span>
+          <span style="color:#f92672">extractor</span>:
+            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">productModel</span>
+            <span style="color:#f92672">method</span>: <span style="color:#ae81ff">all</span>
+            <span style="color:#f92672">search</span>:
+              - { <span style="color:#f92672">field: enabled, operator: &#39;=&#39;, value</span>: <span style="color:#66d9ef">true</span> }
+              - { <span style="color:#f92672">field: completeness, operator: &#39;&gt;&#39;, value: 70, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
+              - { <span style="color:#f92672">field: completeness, operator: &#39;&lt;&#39;, value: 85, scope</span>: <span style="color:#ae81ff">ecommerce }</span>
+              - { <span style="color:#f92672">field: categories, operator: IN, value</span>: <span style="color:#ae81ff">winter_collection }</span>
+              - { <span style="color:#f92672">field: family, operator: IN, value</span>: [<span style="color:#ae81ff">camcorders, digital_cameras] }</span>
+          <span style="color:#f92672">logger</span>:
+            <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#39;stderr&#39;</span>
+      - <span style="color:#f92672">fastmap</span>:
+          <span style="color:#f92672">map</span>:
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+              <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[title]&#39;</span>
+              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;sku&#34;] ~&#34; | &#34;~ input[&#34;name&#34;]&#39;</span>
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+              <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[name]&#39;</span>
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[staticValue]&#39;</span>
+              <span style="color:#f92672">constant</span>: <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis efficitur justo, id facilisis elit venenatis et. Sed fermentum posuere convallis. Phasellus lectus neque, bibendum sit amet enim imperdiet, dignissim blandit nisi. Donec nec neque nisi. Vivamus luctus facilisis nibh id rhoncus. Vestibulum eget facilisis tortor. Etiam at cursus enim, vitae mollis ex. Proin at velit at erat bibendum ultricies. Duis ut velit malesuada, placerat nisl a, ultrices tortor.&#39;</span>
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[foo]&#39;</span>
+              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input&#39;</span>
+              <span style="color:#f92672">list</span>:
+                - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+                  <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[bar]&#39;</span>
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">loader</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">output.csv</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\&#39;</span>
 </code></pre></div></div>
   <div id="dataflows-1" class="tab-pane" role="tabpanel" aria-labelledby="dataflows-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#e6db74">/** @var array $config */</span> 
 $pipeline <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\Pipeline</span>($config);
@@ -573,6 +573,38 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             

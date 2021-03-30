@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Components</title>
+  <title>Spreadsheet</title>
 
   <meta name="generator" content="Hugo 0.80.0" />
 
@@ -185,7 +185,7 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/components/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/connectivity/spreadsheet/" selected>English
         </option>
         
         
@@ -214,10 +214,6 @@
             <a class="back-btn" href="/documentation"></a>
             
               
-            
-              
-            
-              
               
 
 
@@ -227,48 +223,51 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/" title="Components" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/" title="Connectivity" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/">
+    Connectivity
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json-schema/" title="JSON Schema" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/json-schema/">
+    JSON Schema
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/spreadsheet/" title="Spreadsheet" class="sidelist
   active">
-  <a href="https://php-etl.github.io/documentation/components/">
-    Components
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/">
-    Satellite
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
-    The YAML configuration format
+  <a href="https://php-etl.github.io/documentation/connectivity/spreadsheet/">
+    Spreadsheet
   </a>
   
   
@@ -287,10 +286,51 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
-    PHP Objects
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
+    Akeneo
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/" title="Akeneo expression language functions" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/">
+    Akeneo expression language functions
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/" title="Akeneo plugin" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/">
+    Akeneo plugin
   </a>
   
   
@@ -316,10 +356,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/components/pipeline/" title="Pipeline" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/csv/" title="CSV" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/components/pipeline/">
-    Pipeline
+  <a href="https://php-etl.github.io/documentation/connectivity/csv/">
+    CSV
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/fast-map/" title="Fast Map" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/fast-map/">
+    Fast Map
   </a>
   
   
@@ -333,6 +395,10 @@
 </li>
 
 
+              
+            
+              
+            
               
             
               
@@ -344,129 +410,59 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Components</h2>
+          <h2 class="mb-5">Spreadsheet</h2>
           
-          <div class="bg-light p-4">
-            <ul class="page-list">
-              
+          <div class="content">
 
 
 
 
+<div style="margin-top: 10px; margin-bottom: 10px;">
+<b>FEATURE STATE:</b> <code>Middleware 0.1 [alpha]</code>
+</div>
 
 
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/" title="Components" class="sidelist
-  active">
-  <a href="https://php-etl.github.io/documentation/components/">
-    Components
-  </a>
-  
-  
-    <ul>
-      
-        
+<h3 id="definition">Definition</h3>
+<p>This package aims at integrating the Spreadsheet or the Opendocument reader and writer into the
+<a href="https://github.com/php-etl/pipeline">Pipeline</a> stack.</p>
+<h3 id="principles">Principles</h3>
+<p>The tools in this library will produce executable PHP sources, using an intermediate <em>Abstract Syntax Tree</em> from
+<a href="https://github.com/nikic/PHP-Parser">nikic/php-parser</a>. This intermediate format helps you combine
+the code produced by this library with other packages from <a href="https://github.com/php-etl">Middleware</a>.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/spreadsheet-plugin
+</code></pre><h3 id="usage">Usage</h3>
+<h4 id="example-for-excel">Example for Excel</h4>
+<p>Reads <code>input.xlsx</code>, writes <code>output.xlsx</code>, logs error in system&rsquo;s <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
+  <span style="color:#f92672">extractor</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
+    <span style="color:#f92672">excel</span>:
+      <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
+      <span style="color:#f92672">skip_line</span>: <span style="color:#ae81ff">1</span>
+<span style="color:#75715e">#  loader:</span>
+<span style="color:#75715e">#    file_path: &#39;output.xlsx&#39;</span>
+<span style="color:#75715e">#    excel:</span>
+<span style="color:#75715e">#      sheet: &#39;sheet2&#39;</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+</code></pre></div><h4 id="example-for-opendocument">Example for OpenDocument</h4>
+<p>Reads <code>input.ods</code>, writes <code>output.ods</code>, logs error in system&rsquo;s <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
+  <span style="color:#f92672">extractor</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.ods&#39;</span>
+    <span style="color:#f92672">open_document</span>:
+      <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
+      <span style="color:#f92672">skip_line</span>: <span style="color:#ae81ff">1</span>
+<span style="color:#75715e">#  loader:</span>
+<span style="color:#75715e">#    file_path: &#39;output.ods&#39;</span>
+<span style="color:#75715e">#    open_document:</span>
+<span style="color:#75715e">#      sheet: &#39;sheet2&#39;</span>
+  <span style="color:#f92672">logger</span>:
+    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+</code></pre></div></div>
           
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/">
-    Satellite
-  </a>
-  
-  
-    <ul>
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
-    The YAML configuration format
-  </a>
-  
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
-    PHP Objects
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-        
-      
-        
-          
-
-
-
-
-
-
-
-
-<li data-nav-id="https://php-etl.github.io/documentation/components/pipeline/" title="Pipeline" class="sidelist
-  ">
-  <a href="https://php-etl.github.io/documentation/components/pipeline/">
-    Pipeline
-  </a>
-  
-  
-</li>
-
-
-        
-      
-    </ul>
-  
-</li>
-
-
-            </ul>
-          </div>
-          
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 30 Mar 2021</p>
           <nav class="pagination mt-3">
             
             
@@ -494,69 +490,9 @@
             
             
             
-            
-            
 
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
             
             
             
@@ -589,8 +525,6 @@
             
             
             
-            
-            
 
             
             
@@ -599,107 +533,6 @@
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
             
             
             
@@ -775,6 +608,170 @@
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -826,10 +823,10 @@
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/framework/promise/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Promise</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/json-schema/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">JSON Schema</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/satellite/"> <span class="d-none d-md-block">Satellite</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/akeneo/"> <span class="d-none d-md-block">Akeneo</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

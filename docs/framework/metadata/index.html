@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Metadata</title>
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -342,7 +342,7 @@ and data manipulation.</p>
 </code></pre></div><h3 id="use-this-package-to-read-metadata-of-existing-code">Use this package to read metadata of existing code</h3>
 <p>In order to read the metadata of existing PHP code, you may use the
 automatic type guesser. It can be initialised with the following code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata\TypeGuesser</span>;
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Phpactor\Docblock\DocblockFactory</span>;
@@ -357,7 +357,7 @@ $typeGuesser <span style="color:#f92672">=</span> <span style="color:#66d9ef">ne
 );
 </code></pre></div><p>Then, use the instance as a functor to automatically discover the types metadata.</p>
 <p>Example of a DTO class metadata fetcher:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata</span>;
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata\TypeGuesser\TypeGuesserInterface</span>;
@@ -388,7 +388,7 @@ $metadata <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new<
 </code></pre></div><h3 id="automatic-class-metadata-guessing">Automatic class metadata guessing</h3>
 <p>In order to simplify the class metadata building, there is a metadata guesser you can
 use to ease the building of metadata.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Metadata</span>;
 
 <span style="color:#e6db74">/** @var Metadata\ClassMetadataBuilder $metadataBuilder */</span>
@@ -448,6 +448,38 @@ $metadata <span style="color:#f92672">=</span> $metadataBuilder<span style="colo
             
             
 
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
             
             
             
