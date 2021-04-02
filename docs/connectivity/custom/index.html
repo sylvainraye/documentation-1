@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Custom</title>
+  <title>Custom connector</title>
 
   <meta name="generator" content="Hugo 0.68.3" />
 
@@ -159,7 +159,7 @@
             
             <a class="dropdown-item" href="/documentation/connectivity/openapi">Open API</a>
             
-            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom code</a>
+            <a class="dropdown-item" href="/documentation/connectivity/custom">Custom connector</a>
             
             <a class="dropdown-item" href="/documentation/connectivity/json-schema">JSON schema</a>
             
@@ -314,10 +314,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
   active">
   <a href="https://php-etl.github.io/documentation/connectivity/custom/">
-    Custom
+    Custom connector
   </a>
   
   
@@ -390,31 +390,20 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Custom</h2>
+          <h2 class="mb-5">Custom connector</h2>
           
           <div class="content"><h3 id="definition">Definition</h3>
-<p>The custom plugin allows to extract, transform, load data either the data file format used into the Pipeline stack.</p>
-<p><code>extract, transform ou load</code> refer to the steps that data undergo at a specific state</p>
-<ul>
-<li>
-<p><code>extractor</code> allows to use raw data in order to extract them</p>
-</li>
-<li>
-<p><code>transformer</code> allows to transform the raw data</p>
-</li>
-<li>
-<p><code>loader</code> allows to use the data following its extraction and transformation</p>
-</li>
-</ul>
+<p>The custom plugin allows you to use your own source code in your <a href="https://php-etl.github.io/documentation/components/pipeline/">pipelines</a>,
+allowing you to connect tools that are not supported by the standard distribution.</p>
 <h3 id="installation">Installation</h3>
 <pre><code>composer require php-etl/custom-plugin
 </code></pre><h3 id="usage">Usage</h3>
 <p>You have to create a yml file which contains all the plugin configuration.</p>
 <p>Example of a config file.</p>
 <h4 id="reading-from-a-custom-file">Reading from a custom file</h4>
-<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+<ul class="nav nav-tabs" id="basic_definition_read" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_read-0" role="tab" aria-controls="basic_definition_read-0" aria-selected="true">YAML</a></li>
 	  </ul>
-<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+<div class="tab-content" id="basic_definition_read"><div id="basic_definition_read-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_read-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 <span style="color:#66d9ef">satellite</span>:
@@ -437,9 +426,9 @@
 </code></pre></div></div></div>
 
 <h4 id="transform-to-a-custom-file">Transform to a custom file</h4>
-<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+<ul class="nav nav-tabs" id="basic_definition_transform" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_transform-0" role="tab" aria-controls="basic_definition_transform-0" aria-selected="true">YAML</a></li>
 	  </ul>
-<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+<div class="tab-content" id="basic_definition_transform"><div id="basic_definition_transform-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_transform-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 <span style="color:#66d9ef">satellite</span>:
@@ -450,14 +439,14 @@
             <span style="color:#66d9ef">services</span>:
               <span style="color:#66d9ef">App\Transformer</span>: 
                 <span style="color:#66d9ef">arguments</span>:
-                  <span style="color:#66d9ef">$logger</span>: <span style="color:#e6db74">&#39;@App\HttpKernel\Log\Logger&#39;</span>
+                  <span style="color:#66d9ef">$logger</span>: <span style="color:#e6db74">&#39;@Psr\Log\LoggerInterface&#39;</span>
             <span style="color:#66d9ef">use</span>: <span style="color:#e6db74">&#39;App\Transformer&#39;</span>
 </code></pre></div></div></div>
 
 <h4 id="writing-to-a-custom-file">Writing to a custom file</h4>
-<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+<ul class="nav nav-tabs" id="basic_definition_write" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_write-0" role="tab" aria-controls="basic_definition_write-0" aria-selected="true">YAML</a></li>
 	  </ul>
-<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
+<div class="tab-content" id="basic_definition_write"><div id="basic_definition_write-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_write-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
 <span style="color:#66d9ef">satellite</span>:
@@ -466,6 +455,9 @@
       - <span style="color:#66d9ef">custom</span>:
           <span style="color:#66d9ef">loader</span>:
             <span style="color:#66d9ef">services</span>:
+              <span style="color:#66d9ef">App\Security\Encrypt</span>:
+                <span style="color:#66d9ef">arguments</span>:
+                  <span style="color:#66d9ef">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
               <span style="color:#66d9ef">App\Loader</span>:
                 <span style="color:#66d9ef">arguments</span>:
                   <span style="color:#66d9ef">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
@@ -479,10 +471,10 @@
 <li>
 <p><code>services:</code>
 A service is a class that allows you to have a solid structure to organize functionalities,
-these services are stored in an easily accessible <a href="https://symfony.com/doc/current/service_container.html#manually-wiring-arguments">container</a> facilement accessible.
+these services are stored in an easily accessible <a href="https://symfony.com/doc/current/service_container.html#manually-wiring-arguments">container</a>.
 The service container relies on the <a href="https://symfony.com/doc/current/components/dependency_injection.html">DependencyInjection</a> injecting the dependencies needed by the service.
 You can define arguments to &ldquo;request&rdquo; a service from the container by specifying the type of an argument.
-Service formats can be xml, json, csv or any custom format</p>
+Service formats can be xml, json, fastmap, csv or any custom format</p>
 </li>
 <li>
 <p><code>use:</code>

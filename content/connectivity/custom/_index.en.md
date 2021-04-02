@@ -1,5 +1,5 @@
 ---
-title: "Custom"
+title: "Custom connector"
 date: 2021-01-22T09:23:54+01:00
 draft: false
 type: "plugins"
@@ -81,7 +81,7 @@ satellite:
       - custom:
           loader:
             services:
-              App\Security\Encrypt: ~
+              App\Security\Encrypt:
                 arguments:
                   $cipher: '%cipher%'
               App\Loader:
@@ -101,7 +101,7 @@ satellite:
   these services are stored in an easily accessible [container](https://symfony.com/doc/current/service_container.html#manually-wiring-arguments).
   The service container relies on the [DependencyInjection](https://symfony.com/doc/current/components/dependency_injection.html) injecting the dependencies needed by the service.
   You can define arguments to "request" a service from the container by specifying the type of an argument.
-  Service formats can be xml, json, csv or any custom format
+  Service formats can be xml, json, fastmap, csv or any custom format
   
 * `use:`
   define the name of the service used.

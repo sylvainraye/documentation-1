@@ -111,7 +111,7 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
-  name = "Custom code"
+  name = "Custom connector"
   url = "connectivity/custom"
   weight = 2
 

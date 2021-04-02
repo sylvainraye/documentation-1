@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Custom on Middleware</title>
+    <title>Custom connector on Middleware</title>
     <link>https://php-etl.github.io/documentation/connectivity/custom/</link>
-    <description>Recent content in Custom on Middleware</description>
+    <description>Recent content in Custom connector on Middleware</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>The Middleware Documents are copyright © [Kiboko](https://kiboko.fr/) 2020, 2021.</copyright>
