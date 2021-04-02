@@ -27,7 +27,7 @@ composer require php-etl/spreadsheet-plugin
 #### Example for Excel
 Reads `input.xlsx`, writes `output.xlsx`, logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
 ```yaml
-csv:
+spreadsheet:
   extractor:
     file_path: 'input.xlsx'
     excel:
