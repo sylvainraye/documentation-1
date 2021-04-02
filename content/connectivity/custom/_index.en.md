@@ -4,20 +4,14 @@ date: 2021-01-22T09:23:54+01:00
 draft: false
 type: "plugins"
 logo: "custom"
-description: "Connect your Akeneo PIM through pipelines"
+description: "Read transform and write files in any format
+"
 ---
 
 ### Definition
 
-The custom plugin allows to extract, transform, load data either the data file format used into the Pipeline stack.
-
-`extract, transform ou load` refer to the steps that data undergo at a specific state
-
-* `extractor` allows to use raw data in order to extract them
-
-* `transformer` allows to transform the raw data
-
-* `loader` allows to use the data following its extraction and transformation
+The custom plugin allows you to use your own source code in your [pipelines](https://php-etl.github.io/documentation/components/pipeline/),
+allowing you to connect tools that are not supported by the standard distribution.
 
 ### Installation
 
@@ -33,7 +27,7 @@ Example of a config file.
 
 #### Reading from a custom file
 
-{{< tabs name="basic_definition" >}}
+{{< tabs name="basic_definition_read" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
@@ -59,7 +53,7 @@ satellite:
 
 #### Transform to a custom file
 
-{{< tabs name="basic_definition" >}}
+{{< tabs name="basic_definition_transform" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
@@ -70,7 +64,7 @@ satellite:
             services:
               App\Transformer: 
                 arguments:
-                  $logger: '@App\HttpKernel\Log\Logger'
+                  $logger: '@Psr\Log\LoggerInterface'
             use: 'App\Transformer'
 {{< /tab >}}
 
@@ -78,7 +72,7 @@ satellite:
 
 #### Writing to a custom file
 
-{{< tabs name="basic_definition" >}}
+{{< tabs name="basic_definition_write" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
@@ -87,6 +81,9 @@ satellite:
       - custom:
           loader:
             services:
+              App\Security\Encrypt: ~
+                arguments:
+                  $cipher: '%cipher%'
               App\Loader:
                 arguments:
                   $client: '@App\Http\Client'
