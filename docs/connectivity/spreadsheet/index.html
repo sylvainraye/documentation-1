@@ -423,7 +423,7 @@
 
 
 <h3 id="definition">Definition</h3>
-<p>This package aims at integrating the Spreadsheet or the Opendocument reader and writer into the
+<p>This package aims at integrating the Excel or the Opendocument reader and writer into the
 <a href="https://github.com/php-etl/pipeline">Pipeline</a> stack.</p>
 <h3 id="principles">Principles</h3>
 <p>The tools in this library will produce executable PHP sources, using an intermediate <em>Abstract Syntax Tree</em> from
@@ -432,34 +432,26 @@ the code produced by this library with other packages from <a href="https://gith
 <h3 id="installation">Installation</h3>
 <pre><code>composer require php-etl/spreadsheet-plugin
 </code></pre><h3 id="usage">Usage</h3>
-<h4 id="example-for-excel">Example for Excel</h4>
-<p>Reads <code>input.xlsx</code>, writes <code>output.xlsx</code>, logs error in system&rsquo;s <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>.</p>
+<p>When you write a yaml configuration file, by default the extraction starts at line 0, but
+you can also choose at which line you want your extraction to start with the <code>skip_lines</code> option</p>
+<p>Regarding the <code>logger:</code> option, it can be set or not. If it&rsquo;s not set, then <code>logger:</code> will be set to <code>\Psr\Log\NullLogger</code>.</p>
+<h4 id="extract-an-excel-file">Extract an Excel file</h4>
+<p>Reads <code>input.xlsx</code> with logs error in system&rsquo;s <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
   <span style="color:#f92672">extractor</span>:
     <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.xlsx&#39;</span>
     <span style="color:#f92672">excel</span>:
       <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
       <span style="color:#f92672">skip_line</span>: <span style="color:#ae81ff">1</span>
-<span style="color:#75715e">#  loader:</span>
-<span style="color:#75715e">#    file_path: &#39;output.xlsx&#39;</span>
-<span style="color:#75715e">#    excel:</span>
-<span style="color:#75715e">#      sheet: &#39;sheet2&#39;</span>
   <span style="color:#f92672">logger</span>:
     <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
-</code></pre></div><h4 id="example-for-opendocument">Example for OpenDocument</h4>
-<p>Reads <code>input.ods</code>, writes <code>output.ods</code>, logs error in system&rsquo;s <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">csv</span>:
-  <span style="color:#f92672">extractor</span>:
-    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;input.ods&#39;</span>
+</code></pre></div><h4 id="load-an-opendocument-file">Load an OpenDocument file</h4>
+<p>Writes <code>output.ods</code> without logs error.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spreadsheet</span>:
+  <span style="color:#f92672">loader</span>:
+    <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#39;output.ods&#39;</span>
     <span style="color:#f92672">open_document</span>:
       <span style="color:#f92672">sheet</span>: <span style="color:#e6db74">&#39;sheet2&#39;</span>
-      <span style="color:#f92672">skip_line</span>: <span style="color:#ae81ff">1</span>
-<span style="color:#75715e">#  loader:</span>
-<span style="color:#75715e">#    file_path: &#39;output.ods&#39;</span>
-<span style="color:#75715e">#    open_document:</span>
-<span style="color:#75715e">#      sheet: &#39;sheet2&#39;</span>
-  <span style="color:#f92672">logger</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
 </code></pre></div></div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 30 Mar 2021</p>

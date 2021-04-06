@@ -23,13 +23,24 @@ composer require php-etl/json-plugin
 ```
 
 ### Usage
-Reads `input.jsonld`, writes `output.jsonld`, logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
+The `logger:` option can be set or not. If it's not set, then `logger:` will be set to `\Psr\Log\NullLogger`.
+
+#### Extract a json file
+Reads `input.jsonld` with logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
 ```yaml
 json:
   extractor:
     file_path: 'input.jsonld'
-#  loader:
-#    file_path: 'output.jsonld'
+  logger:
+    type: stderr
+```
+
+#### Load a json file
+Writes `output.jsonld` with logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
+```yaml
+json:
+  loader:
+    file_path: 'output.jsonld'
   logger:
     type: stderr
 ```

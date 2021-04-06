@@ -9,7 +9,7 @@ description: "Data transformation and serialization, with compiled and static ma
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
 
 ### Definition
-This package aims at integrating the Spreadsheet or the Opendocument reader and writer into the
+This package aims at integrating the Excel or the Opendocument reader and writer into the
 [Pipeline](https://github.com/php-etl/pipeline) stack.
 
 ### Principles
@@ -23,9 +23,14 @@ composer require php-etl/spreadsheet-plugin
 ```
 
 ### Usage
+When you write a yaml configuration file, by default the extraction starts at line 0, but
+you can also choose at which line you want your extraction to start with the `skip_lines` option
 
-#### Example for Excel
-Reads `input.xlsx`, writes `output.xlsx`, logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
+Regarding the `logger:` option, it can be set or not. If it's not set, then `logger:` will be set to `\Psr\Log\NullLogger`.
+
+#### Extract an Excel file
+Reads `input.xlsx` with logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
+
 ```yaml
 spreadsheet:
   extractor:
@@ -33,26 +38,16 @@ spreadsheet:
     excel:
       sheet: 'sheet2'
       skip_line: 1
-#  loader:
-#    file_path: 'output.xlsx'
-#    excel:
-#      sheet: 'sheet2'
   logger:
     type: stderr
 ```
+#### Load an OpenDocument file
+Writes `output.ods` without logs error.
 
-#### Example for OpenDocument
-Reads `input.ods`, writes `output.ods`, logs error in system's [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
 ```yaml
-csv:
-  extractor:
-    file_path: 'input.ods'
+spreadsheet:
+  loader:
+    file_path: 'output.ods'
     open_document:
       sheet: 'sheet2'
-      skip_line: 1
-#  loader:
-#    file_path: 'output.ods'
-#    open_document:
-#      sheet: 'sheet2'
-  logger:
-    type: stderr
+```
