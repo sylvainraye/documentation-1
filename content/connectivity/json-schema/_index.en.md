@@ -3,7 +3,7 @@ title: "JSON Schema"
 date: 2021-03-30T15:55:00+02:00
 draft: false
 type: "plugins"
-description: "Data transformation and serialization, with compiled and static mappers"
+description: "Read and write JSON-LD files"
 ---
 
 {{< feature-state for_mw_version="0.1" state="alpha" >}}
