@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Fast Map</title>
 
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.82.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -244,6 +244,116 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json-schema/" title="JSON Schema" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/json-schema/">
+    JSON Schema
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/spreadsheet/" title="Spreadsheet" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/spreadsheet/">
+    Spreadsheet
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/orocommerce/" title="OroCommerce" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/orocommerce/">
+    OroCommerce
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/orocrm/" title="OroCRM" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/orocrm/">
+    OroCRM
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
@@ -429,27 +539,27 @@ This code will then be converted into a machine code that can be used by the fas
 <div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">fastmap</span>:
-  <span style="color:#66d9ef">map</span>:
-    - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;products&#39;</span>
-      <span style="color:#66d9ef">class</span>: <span style="color:#e6db74">&#39;Model\\Product&#39;</span>
-      <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;merge( input[&#34;items&#34;], input[&#34;shippings&#34;] )&#39;</span>
-      <span style="color:#66d9ef">collection</span>:
-        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;sku&#39;</span>
-          <span style="color:#66d9ef">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
-        - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;price&#39;</span>
-          <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;price&#34;]&#39;</span>
-          <span style="color:#66d9ef">class</span>: <span style="color:#e6db74">&#39;Model\\Price&#39;</span>
-          <span style="color:#66d9ef">object</span>:
-            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;amount&#39;</span>
-              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;value&#34;]&#39;</span>
-            - <span style="color:#66d9ef">field</span>: <span style="color:#e6db74">&#39;currency&#39;</span>
-              <span style="color:#66d9ef">expression</span>: <span style="color:#e6db74">&#39;input[&#34;currency&#34;]&#39;</span>
+<span style="color:#f92672">fastmap</span>:
+  <span style="color:#f92672">map</span>:
+    - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;products&#39;</span>
+      <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Model\\Product&#39;</span>
+      <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;merge( input[&#34;items&#34;], input[&#34;shippings&#34;] )&#39;</span>
+      <span style="color:#f92672">collection</span>:
+        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;sku&#39;</span>
+          <span style="color:#f92672">copy</span>: <span style="color:#e6db74">&#39;[sku]&#39;</span>
+        - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;price&#39;</span>
+          <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;price&#34;]&#39;</span>
+          <span style="color:#f92672">class</span>: <span style="color:#e6db74">&#39;Model\\Price&#39;</span>
+          <span style="color:#f92672">object</span>:
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;amount&#39;</span>
+              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;value&#34;]&#39;</span>
+            - <span style="color:#f92672">field</span>: <span style="color:#e6db74">&#39;currency&#39;</span>
+              <span style="color:#f92672">expression</span>: <span style="color:#e6db74">&#39;input[&#34;currency&#34;]&#39;</span>
 </code></pre></div></div>
   <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMapConfig\CompositeBuilder</span>;
 <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\FastMapConfig\ObjectBuilder</span>;
@@ -509,6 +619,86 @@ $mapper <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</s
 
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             
             
             

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Custom connector</title>
 
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.82.0" />
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -244,6 +244,116 @@
 
 
 
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/json-schema/" title="JSON Schema" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/json-schema/">
+    JSON Schema
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/spreadsheet/" title="Spreadsheet" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/spreadsheet/">
+    Spreadsheet
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/orocommerce/" title="OroCommerce" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/orocommerce/">
+    OroCommerce
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/orocrm/" title="OroCRM" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/orocrm/">
+    OroCRM
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/connectivity/sylius/" title="Sylius" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/connectivity/sylius/">
+    Sylius
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
   ">
   <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
@@ -406,23 +516,23 @@ allowing you to connect tools that are not supported by the standard distributio
 <div class="tab-content" id="basic_definition_read"><div id="basic_definition_read-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_read-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">pipeline</span>:
-    <span style="color:#66d9ef">steps</span>:
-      - <span style="color:#66d9ef">custom</span>:
-          <span style="color:#66d9ef">extractor</span>:
-            <span style="color:#66d9ef">services</span>:
-              <span style="color:#66d9ef">App\Extractor</span>:
-                <span style="color:#66d9ef">arguments</span>:
-                  <span style="color:#66d9ef">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
-                  <span style="color:#66d9ef">$decrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Decrypt&#39;</span>
-              <span style="color:#66d9ef">App\Http\Client</span>: ~
-              <span style="color:#66d9ef">App\Security\Decrypt</span>:
-                <span style="color:#66d9ef">arguments</span>:
-                  <span style="color:#66d9ef">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
-            <span style="color:#66d9ef">use</span>: <span style="color:#e6db74">&#39;App\Extractor&#39;</span>
-            <span style="color:#66d9ef">parameters</span>:
-              <span style="color:#66d9ef">cipher</span>: <span style="color:#e6db74">&#39;14588F18B77FA61EE237D2435A567&#39;</span>
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">custom</span>:
+          <span style="color:#f92672">extractor</span>:
+            <span style="color:#f92672">services</span>:
+              <span style="color:#f92672">App\Extractor</span>:
+                <span style="color:#f92672">arguments</span>:
+                  <span style="color:#f92672">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
+                  <span style="color:#f92672">$decrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Decrypt&#39;</span>
+              <span style="color:#f92672">App\Http\Client</span>: <span style="color:#ae81ff">~</span>
+              <span style="color:#f92672">App\Security\Decrypt</span>:
+                <span style="color:#f92672">arguments</span>:
+                  <span style="color:#f92672">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
+            <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Extractor&#39;</span>
+            <span style="color:#f92672">parameters</span>:
+              <span style="color:#f92672">cipher</span>: <span style="color:#e6db74">&#39;14588F18B77FA61EE237D2435A567&#39;</span>
 </code></pre></div></div></div>
 
 <h4 id="transform-to-a-custom-file">Transform to a custom file</h4>
@@ -431,16 +541,16 @@ allowing you to connect tools that are not supported by the standard distributio
 <div class="tab-content" id="basic_definition_transform"><div id="basic_definition_transform-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_transform-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">pipeline</span>:
-    <span style="color:#66d9ef">steps</span>:
-      - <span style="color:#66d9ef">custom</span>:
-          <span style="color:#66d9ef">transformer</span>:
-            <span style="color:#66d9ef">services</span>:
-              <span style="color:#66d9ef">App\Transformer</span>: 
-                <span style="color:#66d9ef">arguments</span>:
-                  <span style="color:#66d9ef">$logger</span>: <span style="color:#e6db74">&#39;@Psr\Log\LoggerInterface&#39;</span>
-            <span style="color:#66d9ef">use</span>: <span style="color:#e6db74">&#39;App\Transformer&#39;</span>
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">custom</span>:
+          <span style="color:#f92672">transformer</span>:
+            <span style="color:#f92672">services</span>:
+              <span style="color:#f92672">App\Transformer</span>: 
+                <span style="color:#f92672">arguments</span>:
+                  <span style="color:#f92672">$logger</span>: <span style="color:#e6db74">&#39;@Psr\Log\LoggerInterface&#39;</span>
+            <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Transformer&#39;</span>
 </code></pre></div></div></div>
 
 <h4 id="writing-to-a-custom-file">Writing to a custom file</h4>
@@ -449,21 +559,21 @@ allowing you to connect tools that are not supported by the standard distributio
 <div class="tab-content" id="basic_definition_write"><div id="basic_definition_write-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_write-0">
 
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
-<span style="color:#66d9ef">satellite</span>:
-  <span style="color:#66d9ef">pipeline</span>:
-    <span style="color:#66d9ef">steps</span>:
-      - <span style="color:#66d9ef">custom</span>:
-          <span style="color:#66d9ef">loader</span>:
-            <span style="color:#66d9ef">services</span>:
-              <span style="color:#66d9ef">App\Security\Encrypt</span>:
-                <span style="color:#66d9ef">arguments</span>:
-                  <span style="color:#66d9ef">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
-              <span style="color:#66d9ef">App\Loader</span>:
-                <span style="color:#66d9ef">arguments</span>:
-                  <span style="color:#66d9ef">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
-                  <span style="color:#66d9ef">$encrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Encrypt&#39;</span>
-              <span style="color:#66d9ef">App\Http\Client</span>: ~
-            <span style="color:#66d9ef">use</span>: <span style="color:#e6db74">&#39;App\Loader&#39;</span>
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">custom</span>:
+          <span style="color:#f92672">loader</span>:
+            <span style="color:#f92672">services</span>:
+              <span style="color:#f92672">App\Security\Encrypt</span>:
+                <span style="color:#f92672">arguments</span>:
+                  <span style="color:#f92672">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
+              <span style="color:#f92672">App\Loader</span>:
+                <span style="color:#f92672">arguments</span>:
+                  <span style="color:#f92672">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
+                  <span style="color:#f92672">$encrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Encrypt&#39;</span>
+              <span style="color:#f92672">App\Http\Client</span>: <span style="color:#ae81ff">~</span>
+            <span style="color:#f92672">use</span>: <span style="color:#e6db74">&#39;App\Loader&#39;</span>
 </code></pre></div></div></div>
 
 <h3 id="precisions">Precisions</h3>
@@ -520,6 +630,86 @@ Parameters can be of: (string, boolean, array, binary parameters and PHP constan
 
             
             
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             
             
             
