@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Akeneo</title>
+  <title>Custom connector</title>
 
   <meta name="generator" content="Hugo 0.68.3" />
 
@@ -187,7 +187,7 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/connectivity/akeneo/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/connectivity/custom/" selected>English
         </option>
         
         
@@ -245,7 +245,7 @@
 
 
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/akeneo/" title="Akeneo" class="sidelist
-  active">
+  ">
   <a href="https://php-etl.github.io/documentation/connectivity/akeneo/">
     Akeneo
   </a>
@@ -315,7 +315,7 @@
 
 
 <li data-nav-id="https://php-etl.github.io/documentation/connectivity/custom/" title="Custom connector" class="sidelist
-  ">
+  active">
   <a href="https://php-etl.github.io/documentation/connectivity/custom/">
     Custom connector
   </a>
@@ -390,23 +390,103 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Akeneo</h2>
+          <h2 class="mb-5">Custom connector</h2>
           
-          <div class="content"><h3 id="goal">Goal</h3>
-<p>The packages listed below aims at the integration of <a href="https://www.akeneo.com">Akeneo PIM</a> into the <a href="../../components/pipeline">ETL Pipeline</a>
-and <a href="../../components/satellite">Satellite</a> stacks.</p>
-<p>The tools built for Akeneo is composed of ETL capacities and data processing functions to be used in
-<a href="../../components/fast-map">Fast Map</a>.</p>
-<h3 id="the-akeneo-plugin-for-etl-pipeline">The Akeneo plugin for ETL Pipeline</h3>
-<p>This plugin will enable Akeneo connectivity to the <a href="../../components/pipeline">ETL Pipeline</a>, in order to
-read and write from and to Akeneo PIM. This integration is compatible with both
-<a href="https://github.com/akeneo/api-php-client-ee">Akeneo Enterprise Edition client</a>
-and the <a href="https://github.com/akeneo/api-php-client">Akeneo Community Edition client</a>.</p>
-<p><a href="plugin">See detailed documentation</a></p>
-<h3 id="the-akeneo-expression-functions">The Akeneo expression functions</h3>
-<p>This plugin will extend the Fast Map data processing library with new functions dedicated to Akeneo-specific
-data formats and concepts.</p>
-<p><a href="expression-language">See detailed documentation</a></p>
+          <div class="content"><h3 id="definition">Definition</h3>
+<p>The custom plugin allows you to use your own source code in your <a href="https://php-etl.github.io/documentation/components/pipeline/">pipelines</a>,
+allowing you to connect tools that are not supported by the standard distribution.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/custom-plugin
+</code></pre><h3 id="usage">Usage</h3>
+<p>You have to create a yml file which contains all the plugin configuration.</p>
+<p>Example of a config file.</p>
+<h4 id="reading-from-a-custom-file">Reading from a custom file</h4>
+<ul class="nav nav-tabs" id="basic_definition_read" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_read-0" role="tab" aria-controls="basic_definition_read-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition_read"><div id="basic_definition_read-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_read-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">pipeline</span>:
+    <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">custom</span>:
+          <span style="color:#66d9ef">extractor</span>:
+            <span style="color:#66d9ef">services</span>:
+              <span style="color:#66d9ef">App\Extractor</span>:
+                <span style="color:#66d9ef">arguments</span>:
+                  <span style="color:#66d9ef">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
+                  <span style="color:#66d9ef">$decrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Decrypt&#39;</span>
+              <span style="color:#66d9ef">App\Http\Client</span>: ~
+              <span style="color:#66d9ef">App\Security\Decrypt</span>:
+                <span style="color:#66d9ef">arguments</span>:
+                  <span style="color:#66d9ef">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
+            <span style="color:#66d9ef">use</span>: <span style="color:#e6db74">&#39;App\Extractor&#39;</span>
+            <span style="color:#66d9ef">parameters</span>:
+              <span style="color:#66d9ef">cipher</span>: <span style="color:#e6db74">&#39;14588F18B77FA61EE237D2435A567&#39;</span>
+</code></pre></div></div></div>
+
+<h4 id="transform-to-a-custom-file">Transform to a custom file</h4>
+<ul class="nav nav-tabs" id="basic_definition_transform" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_transform-0" role="tab" aria-controls="basic_definition_transform-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition_transform"><div id="basic_definition_transform-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_transform-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">pipeline</span>:
+    <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">custom</span>:
+          <span style="color:#66d9ef">transformer</span>:
+            <span style="color:#66d9ef">services</span>:
+              <span style="color:#66d9ef">App\Transformer</span>: 
+                <span style="color:#66d9ef">arguments</span>:
+                  <span style="color:#66d9ef">$logger</span>: <span style="color:#e6db74">&#39;@Psr\Log\LoggerInterface&#39;</span>
+            <span style="color:#66d9ef">use</span>: <span style="color:#e6db74">&#39;App\Transformer&#39;</span>
+</code></pre></div></div></div>
+
+<h4 id="writing-to-a-custom-file">Writing to a custom file</h4>
+<ul class="nav nav-tabs" id="basic_definition_write" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition_write-0" role="tab" aria-controls="basic_definition_write-0" aria-selected="true">YAML</a></li>
+	  </ul>
+<div class="tab-content" id="basic_definition_write"><div id="basic_definition_write-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition_write-0">
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#66d9ef">satellite</span>:
+  <span style="color:#66d9ef">pipeline</span>:
+    <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">custom</span>:
+          <span style="color:#66d9ef">loader</span>:
+            <span style="color:#66d9ef">services</span>:
+              <span style="color:#66d9ef">App\Security\Encrypt</span>:
+                <span style="color:#66d9ef">arguments</span>:
+                  <span style="color:#66d9ef">$cipher</span>: <span style="color:#e6db74">&#39;%cipher%&#39;</span>
+              <span style="color:#66d9ef">App\Loader</span>:
+                <span style="color:#66d9ef">arguments</span>:
+                  <span style="color:#66d9ef">$client</span>: <span style="color:#e6db74">&#39;@App\Http\Client&#39;</span>
+                  <span style="color:#66d9ef">$encrypt</span>: <span style="color:#e6db74">&#39;@App\Security\Encrypt&#39;</span>
+              <span style="color:#66d9ef">App\Http\Client</span>: ~
+            <span style="color:#66d9ef">use</span>: <span style="color:#e6db74">&#39;App\Loader&#39;</span>
+</code></pre></div></div></div>
+
+<h3 id="precisions">Precisions</h3>
+<ul>
+<li>
+<p><code>services:</code>
+A service is a class that allows you to have a solid structure to organize functionalities,
+these services are stored in an easily accessible <a href="https://symfony.com/doc/current/service_container.html#manually-wiring-arguments">container</a>.
+The service container relies on the <a href="https://symfony.com/doc/current/components/dependency_injection.html">DependencyInjection</a> injecting the dependencies needed by the service.
+You can define arguments to &ldquo;request&rdquo; a service from the container by specifying the type of an argument.
+Service formats can be xml, json, fastmap, csv or any custom format</p>
+</li>
+<li>
+<p><code>use:</code>
+define the name of the service used.</p>
+</li>
+<li>
+<p><code>parameters:</code>
+provides the parameters that the service uses,
+We can define parameters that act as a reusable configuration value.
+Parameters can be of: (string, boolean, array, binary parameters and PHP constants).</p>
+</li>
+</ul>
 </div>
           
           <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 22 Jan 2021</p>
@@ -453,20 +533,6 @@ data formats and concepts.</p>
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
 
@@ -474,44 +540,6 @@ data formats and concepts.</p>
             
             
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
             
             
             
@@ -555,26 +583,15 @@ data formats and concepts.</p>
             
             
             
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
             
 
             
             
             
 
+            
+            
+            
             
             
             
@@ -649,6 +666,72 @@ data formats and concepts.</p>
             
             
             
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -751,10 +834,10 @@ data formats and concepts.</p>
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Connectivity</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/connectivity/akeneo/plugin/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Akeneo plugin</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/akeneo/expression-language/"> <span class="d-none d-md-block">Akeneo expression language functions</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/connectivity/csv/"> <span class="d-none d-md-block">CSV</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
