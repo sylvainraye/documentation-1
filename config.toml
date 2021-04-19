@@ -111,6 +111,12 @@ hasChildren = true
 
   [[menu.main]]
   parent = "Connectivity"
+  name = "Custom connector"
+  url = "connectivity/custom"
+  weight = 2
+
+  [[menu.main]]
+  parent = "Connectivity"
   name = "Akeneo"
   url = "connectivity/akeneo"
   weight = 3
