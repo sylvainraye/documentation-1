@@ -42,6 +42,7 @@ spreadsheet:
     type: stderr
 ```
 #### Load an OpenDocument file
+
 Writes `output.ods` without logs error.
 
 ```yaml
