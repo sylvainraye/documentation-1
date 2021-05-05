@@ -386,87 +386,87 @@ output {
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [ <span style="color:#e6db74">&#34;redis-server&#34;</span>, <span style="color:#e6db74">&#34;/usr/local/etc/redis/redis.conf&#34;</span> ]<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>In your project, create a file named <code>.docker/redis/redis.conf</code> with the following contents:</p>
-<pre><code class="language-conf" data-lang="conf">bind 0.0.0.0
-port 6379
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apacheconf" data-lang="apacheconf">bind <span style="color:#ae81ff">0.0.0.0</span>
+port <span style="color:#ae81ff">6379</span>
 
-protected-mode yes
+<span style="color:#960050;background-color:#1e0010">protected-</span>mode yes
 
-tcp-backlog 511
-timeout 0
-tcp-keepalive 300
+<span style="color:#960050;background-color:#1e0010">tcp-</span>backlog <span style="color:#ae81ff">511</span>
+timeout <span style="color:#ae81ff">0</span>
+<span style="color:#960050;background-color:#1e0010">tcp-</span>keepalive <span style="color:#ae81ff">300</span>
 
 daemonize no
 supervised upstart
 
-pidfile /var/run/redis_6379.pid
+pidfile <span style="color:#e6db74">/var/run/redis_6379.pid</span>
 
-loglevel notice
-logfile &quot;&quot;
+loglevel <span style="color:#66d9ef">notice</span>
+logfile <span style="color:#e6db74">&#34;&#34;</span>
 
-databases 16
+databases <span style="color:#ae81ff">16</span>
 
-always-show-logo yes
+<span style="color:#960050;background-color:#1e0010">always-show-</span>logo yes
 
-save 900 1
-save 300 10
-save 60 10000
+save <span style="color:#ae81ff">900</span> <span style="color:#ae81ff">1</span>
+save <span style="color:#ae81ff">300</span> <span style="color:#ae81ff">10</span>
+save <span style="color:#ae81ff">60</span> <span style="color:#ae81ff">10000</span>
 
-stop-writes-on-bgsave-error yes
+<span style="color:#960050;background-color:#1e0010">stop-writes-on-bgsave-</span>error yes
 rdbcompression yes
 rdbchecksum yes
 dbfilename dump.rdb
 
 dir ./
 
-replica-serve-stale-data yes
-replica-read-only yes
-repl-diskless-sync no
-repl-diskless-sync-delay 5
-repl-disable-tcp-nodelay no
-replica-priority 100
+<span style="color:#960050;background-color:#1e0010">replica-serve-stale-</span>data yes
+<span style="color:#960050;background-color:#1e0010">replica-read-</span>only yes
+<span style="color:#960050;background-color:#1e0010">repl-diskless-</span>sync no
+<span style="color:#960050;background-color:#1e0010">repl-diskless-sync-</span>delay <span style="color:#ae81ff">5</span>
+<span style="color:#960050;background-color:#1e0010">repl-disable-tcp-</span>nodelay no
+<span style="color:#960050;background-color:#1e0010">replica-</span>priority <span style="color:#ae81ff">100</span>
 
-lazyfree-lazy-eviction no
-lazyfree-lazy-expire no
-lazyfree-lazy-server-del no
-replica-lazy-flush no
+<span style="color:#960050;background-color:#1e0010">lazyfree-lazy-</span>eviction no
+<span style="color:#960050;background-color:#1e0010">lazyfree-lazy-</span>expire no
+<span style="color:#960050;background-color:#1e0010">lazyfree-lazy-server-</span>del no
+<span style="color:#960050;background-color:#1e0010">replica-lazy-</span>flush no
 
 appendonly no
-appendfilename &quot;appendonly.aof&quot;
+appendfilename <span style="color:#e6db74">&#34;appendonly.aof&#34;</span>
 appendfsync everysec
-no-appendfsync-on-rewrite no
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
-aof-load-truncated yes
-aof-use-rdb-preamble yes
+<span style="color:#960050;background-color:#1e0010">no-appendfsync-on-</span>rewrite no
+<span style="color:#960050;background-color:#1e0010">auto-aof-rewrite-</span>percentage <span style="color:#ae81ff">100</span>
+<span style="color:#960050;background-color:#1e0010">auto-aof-rewrite-min-</span>size <span style="color:#ae81ff">64</span>mb
+<span style="color:#960050;background-color:#1e0010">aof-load-</span>truncated yes
+<span style="color:#960050;background-color:#1e0010">aof-use-rdb-</span>preamble yes
 
-lua-time-limit 5000
+<span style="color:#960050;background-color:#1e0010">lua-time-</span>limit <span style="color:#ae81ff">5000</span>
 
-slowlog-log-slower-than 10000
-slowlog-max-len 128
+<span style="color:#960050;background-color:#1e0010">slowlog-log-slower-</span>than <span style="color:#ae81ff">10000</span>
+<span style="color:#960050;background-color:#1e0010">slowlog-max-</span>len <span style="color:#ae81ff">128</span>
 
-latency-monitor-threshold 0
+<span style="color:#960050;background-color:#1e0010">latency-monitor-</span>threshold <span style="color:#ae81ff">0</span>
 
-notify-keyspace-events &quot;&quot;
+<span style="color:#960050;background-color:#1e0010">notify-keyspace-</span>events <span style="color:#e6db74">&#34;&#34;</span>
 
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-list-max-ziplist-size -2
-list-compress-depth 0
-set-max-intset-entries 512
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-stream-node-max-bytes 4096
-stream-node-max-entries 100
+<span style="color:#960050;background-color:#1e0010">hash-max-ziplist-</span>entries <span style="color:#ae81ff">512</span>
+<span style="color:#960050;background-color:#1e0010">hash-max-ziplist-</span>value <span style="color:#ae81ff">64</span>
+<span style="color:#960050;background-color:#1e0010">list-max-ziplist-</span>size -2
+<span style="color:#960050;background-color:#1e0010">list-compress-</span>depth <span style="color:#ae81ff">0</span>
+<span style="color:#960050;background-color:#1e0010">set-max-intset-</span>entries <span style="color:#ae81ff">512</span>
+<span style="color:#960050;background-color:#1e0010">zset-max-ziplist-</span>entries <span style="color:#ae81ff">128</span>
+<span style="color:#960050;background-color:#1e0010">zset-max-ziplist-</span>value <span style="color:#ae81ff">64</span>
+<span style="color:#960050;background-color:#1e0010">hll-sparse-max-</span>bytes <span style="color:#ae81ff">3000</span>
+<span style="color:#960050;background-color:#1e0010">stream-node-max-</span>bytes <span style="color:#ae81ff">4096</span>
+<span style="color:#960050;background-color:#1e0010">stream-node-max-</span>entries <span style="color:#ae81ff">100</span>
 activerehashing yes
-client-output-buffer-limit normal 0 0 0
-client-output-buffer-limit replica 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
-hz 10
-dynamic-hz yes
-aof-rewrite-incremental-fsync yes
-rdb-save-incremental-fsync yes
-</code></pre><p>Now, you will need to add a new amqp service in your <code>docker-compose.yaml</code> file:</p>
+<span style="color:#960050;background-color:#1e0010">client-output-buffer-</span>limit normal <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+<span style="color:#960050;background-color:#1e0010">client-output-buffer-</span>limit replica <span style="color:#ae81ff">256</span>mb <span style="color:#ae81ff">64</span>mb <span style="color:#ae81ff">60</span>
+<span style="color:#960050;background-color:#1e0010">client-output-buffer-</span>limit pubsub <span style="color:#ae81ff">32</span>mb <span style="color:#ae81ff">8</span>mb <span style="color:#ae81ff">60</span>
+hz <span style="color:#ae81ff">10</span>
+<span style="color:#960050;background-color:#1e0010">dynamic-</span>hz yes
+<span style="color:#960050;background-color:#1e0010">aof-rewrite-incremental-</span>fsync yes
+<span style="color:#960050;background-color:#1e0010">rdb-save-incremental-</span>fsync yes
+</code></pre></div><p>Now, you will need to add a new amqp service in your <code>docker-compose.yaml</code> file:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
   <span style="color:#f92672">redis</span>:
     <span style="color:#f92672">build</span>:

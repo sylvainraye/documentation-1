@@ -197,7 +197,7 @@ CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
 ```
 In your project, create a file named `.docker/redis/redis.conf` with the following contents:
 
-```conf
+```apacheconf
 bind 0.0.0.0
 port 6379
 
