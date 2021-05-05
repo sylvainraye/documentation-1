@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>PHP Objects</title>
+  <title>Workflow</title>
 
   <meta name="generator" content="Hugo 0.82.0" />
 
@@ -187,7 +187,7 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/components/satellite/php-objects/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/components/workflow/" selected>English
         </option>
         
         
@@ -286,7 +286,7 @@
 
 
 <li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
-  active">
+  ">
   <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
     PHP Objects
   </a>
@@ -315,7 +315,7 @@
 
 
 <li data-nav-id="https://php-etl.github.io/documentation/components/workflow/" title="Workflow" class="sidelist
-  ">
+  active">
   <a href="https://php-etl.github.io/documentation/components/workflow/">
     Workflow
   </a>
@@ -368,120 +368,71 @@
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">PHP Objects</h2>
+          <h2 class="mb-5">Workflow</h2>
           
-          <div class="content"><h3 id="the-docker-section">The <code>docker</code> section</h3>
-<p>In this section you will be able to specify the base docker image on which the
-satellite will be built. We recommend either the official PHP images based on
-Alpine Linux.</p>
-<h3 id="the-filesystem-section">The <code>filesystem</code> section</h3>
-<p>In this section you will be able to specify the system file on which the
-satellite will be built.</p>
-<h3 id="the-composer-section">The <code>composer</code> section</h3>
-<p>This section makes you able to specify some parameters that will be transmitted
-to composer at build time.</p>
-<h3 id="the-runtime-section">The <code>runtime</code> section</h3>
-<p>This section will create the Pipeline that corresponds to your config.</p>
-<p>Thanks to our package, 3 runtimes are avaible :</p>
-<ul>
-<li>http-api</li>
-<li>http-hook</li>
-<li>pipeline</li>
-</ul>
-<h3 id="examples">Examples</h3>
-<h4 id="using-http-api">Using http-api</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
+          <div class="content">
 
-$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
-);
 
-$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-message:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-factory:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-server-handler:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/uuid:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/base-path:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/request-handler:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/fast-route:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7-server:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;laminas/laminas-httphandlerrunner:1.2.x-dev&#39;</span>);
-);
 
-$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
-    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
-    $dockerfile
-);
 
-$httpApi<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\HttpApi</span>();
-$httpApi<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
-</code></pre></div><p>In this example, the URL <code>/foo/hello</code> will show all the data render by the function <code>hello.php</code> and the url <code>/foo/events/products</code>
-will show the result of the <code>products.php</code> located in the events folder.</p>
-<h4 id="using-http-hook">Using http-hook</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
+<div style="margin-top: 10px; margin-bottom: 10px;">
+<b>FEATURE STATE:</b> <code>Middleware 0.1 [alpha]</code>
+</div>
 
-$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
-);
 
-$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-message:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-factory:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;psr/http-server-handler:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/uuid:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/base-path:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/request-handler:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;middlewares/fast-route:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7:^1.0@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;nyholm/psr7-server:dev-master&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;laminas/laminas-httphandlerrunner:1.2.x-dev&#39;</span>);
-);
+<h3 id="definition">Definition</h3>
+<p>A pipeline is a series of processes, also called steps, that filter or transform data.
+The first process takes raw input data, uses it and then
+sends the results to the second process, and so on, ending with the final result produced by the last process in progress.</p>
+<p>The steps of our pipeline are <code>extract</code>, <code>transform</code> or <code>load</code>.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/pipeline
+</code></pre><h3 id="usage">Usage</h3>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
-    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
-    $dockerfile
-);
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">extractor</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/input.csv</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+          <span style="color:#f92672">logger</span>:
+            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">loader</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/output.csv</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</code></pre></div></div>
+  <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
-$httpHook<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\HttpHook</span>();
-$httpHook<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
-</code></pre></div><p>In this example, the URL <code>/bar/hello</code> will show all the data render by the function <code>hello.php</code>.</p>
-<h4 id="using-pipeline">Using Pipeline</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\ETL\Satellite\Adapter\Docker</span>;
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
-$dockerfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\From</span>(<span style="color:#e6db74">&#39;kiboko/php:7.4-cli&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Dockerfile\Workdir</span>(<span style="color:#e6db74">&#39;/var/www/html/&#39;</span>)
-);
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\PipelineRunner</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\Pipeline</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Extractor</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Loader</span>;
 
-$dockerfile<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">push</span>(
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\Composer</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerInit</span>(),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerMinimumStability</span>(<span style="color:#e6db74">&#39;dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/pipeline:@dev&#39;</span>),
-    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\PHP\ComposerRequire</span>(<span style="color:#e6db74">&#39;php-etl/fast-map:@dev&#39;</span>)
-);
+<span style="color:#e6db74">/** @var Psr\Log\LoggerInterface $logger */</span> 
+$runner <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PipelineRunner</span>();
+$pipeline <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Pipeline</span>($runner))
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">extract</span>((<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Extractor</span>(<span style="color:#e6db74">&#39;path/to/file/input.csv&#39;</span>))<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setLogger</span>($logger))
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">load</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Loader</span>(<span style="color:#e6db74">&#39;path/to/file/output.csv&#39;</span>, <span style="color:#a6e22e">delimiter</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;,&#39;</span>))
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>();
+</code></pre></div></div></div>
 
-$satellite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Docker\Satellite</span>(
-    <span style="color:#e6db74">&#39;foo/satellite:bar&#39;</span>,
-    $dockerfile
-);
-
-$pipeline<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Runtime\Pipeline</span>();
-$pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>();
-</code></pre></div><p>In this example, the config create a pipeline that the Satellite will use.</p>
 </div>
           
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 01 Jan 0001</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 19 Apr 2021</p>
           <nav class="pagination mt-3">
             
             
@@ -525,189 +476,6 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
 
@@ -758,27 +526,15 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
 
             
             
             
 
+            
+            
+            
             
             
             
@@ -872,6 +628,200 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
             
             
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -923,10 +873,10 @@ $pipeline<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bui
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/satellite/yaml-format/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">The YAML configuration format</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/satellite/php-objects/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">PHP Objects</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/workflow/"> <span class="d-none d-md-block">Workflow</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/pipeline/"> <span class="d-none d-md-block">Pipeline</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>
