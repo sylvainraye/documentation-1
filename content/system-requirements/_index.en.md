@@ -6,7 +6,8 @@ draft: false
 
 ### Contents of this documentation
 
-In this documentation, we will make sure all your system and application dependencies are correct, before you start using *Middleware*.
+In this documentation, we will make sure all your system and application dependencies are correct, 
+before you start using *Middleware*.
 
 ### Prepare your dependencies in Docker
 
@@ -38,6 +39,7 @@ input {
      codec => json
   }
 }
+
 filter {
   date {
     match => [ "timeMillis", "UNIX_MS" ]
@@ -56,10 +58,13 @@ Now, you will need to add a new logstash service in your `docker-compose.yaml` f
 ```yaml
 services:
   logstash:
-    image: docker.elastic.co/logstash/logstash-oss:7.8.0
+    image: docker.elastic.co/logstash/logstash:7.12.1
     volumes:
       - ./.docker/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./.docker/logstash/pipeline:/usr/share/logstash/pipeline/
+    restart: unless-stopped
+    depends_on:
+      - elasticsearch
 ```
 
 #### ElasticSearch
@@ -69,7 +74,7 @@ ElasticSearch is a Document oriented database, whose main usage are logs storage
 In your project, create a file named `.docker/elasticsearch/elasticsearch.yml` with the following contents:
 
 ```yaml
-cluster.name: 'middleware-cluster'
+cluster.name: 'hackathon-cluster'
 bootstrap.memory_lock: true
 discovery.type: 'single-node'
 
@@ -81,13 +86,11 @@ http.port: 9200
 #discovery.zen.minimum_master_nodes: 1
 
 http.cors.enabled : true
-http.cors.allow-headers: 'X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization'
-# Uncomment the following if you wish to open access to a 3rd-party application, like Dejavu.
-#http.cors.allow-origin: "http://localhost:1234,http://127.0.0.1:1234"
-http.cors.allow-credentials: true
-http.cors.allow-methods : 'OPTIONS, HEAD, GET, POST, PUT, DELETE'
-
+http.cors.allow-origin : "*"
+http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers : X-Requested-With,X-Auth-Token,Content-Type, Content-Length
 cluster.routing.allocation.disk.threshold_enabled: false
+
 ```
 
 Now, you will need to add a new elasticsearch service and a dedicated volume in your `docker-compose.yaml` file:
@@ -95,14 +98,15 @@ Now, you will need to add a new elasticsearch service and a dedicated volume in 
 ```yaml
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.8.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
     ports:
-      - ${ELASTICSEARCH_PORT}:9200
+      - ${ELASTICSEARCH_PORT:-9200}:9200
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - elasticsearch:/usr/share/elasticsearch/data
       - ./.docker/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    restart: unless-stopped
 
 volumes:
   elasticsearch:
@@ -126,13 +130,164 @@ Now, you will need to add a new kibana service in your `docker-compose.yaml` fil
 ```yaml
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana-oss:7.8.0
+    image: docker.elastic.co/kibana/kibana:7.12.1
     ports:
-      - ${KIBANA_PORT}:5601
+      - ${KIBANA_PORT:-5601}:5601
     environment:
       - monitoring.elasticsearch.hosts=http://elasticsearch:9200
     volumes:
       - ./.docker/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    restart: unless-stopped
+    depends_on:
+      - elasticsearch
 ```
 
+### RabbitMQ
 
+RabbitMQ is a message queue service, handling storage, routing and concurrency handling between consumers.
+
+In your project, create a file named `.docker/amqp/Dockerfile` with the following contents:
+
+```dockerfile
+FROM rabbitmq:3.7-management-alpine
+
+RUN set -ex\
+    && apk update \
+    && apk upgrade \
+    && apk add --no-cache --virtual .build-deps \
+        zip \
+        curl \
+    && curl https://dl.bintray.com/rabbitmq/community-plugins/3.7.x/rabbitmq_delayed_message_exchange/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip > $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip \
+    && unzip $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip -d $RABBITMQ_HOME/plugins \
+    && rm $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-20171201-3.7.x.zip \
+    && apk del .build-deps
+
+RUN rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange
+RUN rabbitmq-plugins enable --offline rabbitmq_consistent_hash_exchange
+RUN rabbitmq-plugins enable --offline rabbitmq_management
+```
+
+Now, you will need to add a new amqp service in your `docker-compose.yaml` file:
+
+```yaml
+services:
+  amqp:
+    build:
+      context: .docker/rabbitmq/
+    ports:
+      - ${AMQP_PORT:-15672}:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=${AMQP_USER:-kiboko}
+      - RABBITMQ_DEFAULT_PASS=${AMQP_PASSWORD:-password}
+    restart: unless-stopped
+```
+
+### Redis
+
+RabbitMQ is a message queue service, handling storage, routing and concurrency handling between consumers.
+
+In your project, create a file named `.docker/redis/Dockerfile` with the following contents:
+
+```dockerfile
+FROM redis:5-alpine
+
+COPY redis.conf /usr/local/etc/redis/redis.conf
+
+CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+```
+In your project, create a file named `.docker/redis/redis.conf` with the following contents:
+
+```conf
+bind 0.0.0.0
+port 6379
+
+protected-mode yes
+
+tcp-backlog 511
+timeout 0
+tcp-keepalive 300
+
+daemonize no
+supervised upstart
+
+pidfile /var/run/redis_6379.pid
+
+loglevel notice
+logfile ""
+
+databases 16
+
+always-show-logo yes
+
+save 900 1
+save 300 10
+save 60 10000
+
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+
+dir ./
+
+replica-serve-stale-data yes
+replica-read-only yes
+repl-diskless-sync no
+repl-diskless-sync-delay 5
+repl-disable-tcp-nodelay no
+replica-priority 100
+
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+replica-lazy-flush no
+
+appendonly no
+appendfilename "appendonly.aof"
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+aof-load-truncated yes
+aof-use-rdb-preamble yes
+
+lua-time-limit 5000
+
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+
+latency-monitor-threshold 0
+
+notify-keyspace-events ""
+
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+list-max-ziplist-size -2
+list-compress-depth 0
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+hll-sparse-max-bytes 3000
+stream-node-max-bytes 4096
+stream-node-max-entries 100
+activerehashing yes
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit replica 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+hz 10
+dynamic-hz yes
+aof-rewrite-incremental-fsync yes
+rdb-save-incremental-fsync yes
+```
+
+Now, you will need to add a new amqp service in your `docker-compose.yaml` file:
+
+```yaml
+services:
+  redis:
+    build:
+      context: .docker/redis/
+    restart: unless-stopped
+    ports:
+      - ${REDIS_PORT:-6379}:6379
+```

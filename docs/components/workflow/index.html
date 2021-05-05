@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Promise</title>
+  <title>Workflow</title>
 
   <meta name="generator" content="Hugo 0.82.0" />
 
@@ -183,7 +183,7 @@
         
         
         
-        <option id="en" value="https://php-etl.github.io/documentation/framework/promise/" selected>English
+        <option id="en" value="https://php-etl.github.io/documentation/components/workflow/" selected>English
         </option>
         
         
@@ -212,10 +212,6 @@
             <a class="back-btn" href="/documentation"></a>
             
               
-            
-              
-            
-              
               
 
 
@@ -225,10 +221,10 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/" title="Frameworks" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/components/" title="Components" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/framework/">
-    Frameworks
+  <a href="https://php-etl.github.io/documentation/components/">
+    Components
   </a>
   
   
@@ -244,10 +240,29 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/metadata/" title="Metadata" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/" title="Satellite" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/framework/metadata/">
-    Metadata
+  <a href="https://php-etl.github.io/documentation/components/satellite/">
+    Satellite
+  </a>
+  
+  
+    <ul>
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/yaml-format/" title="The YAML configuration format" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/satellite/yaml-format/">
+    The YAML configuration format
   </a>
   
   
@@ -266,12 +281,19 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/contracts/" title="Contracts" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/components/satellite/php-objects/" title="PHP Objects" class="sidelist
   ">
-  <a href="https://php-etl.github.io/documentation/framework/contracts/">
-    Contracts
+  <a href="https://php-etl.github.io/documentation/components/satellite/php-objects/">
+    PHP Objects
   </a>
   
+  
+</li>
+
+
+        
+      
+    </ul>
   
 </li>
 
@@ -288,10 +310,32 @@
 
 
 
-<li data-nav-id="https://php-etl.github.io/documentation/framework/promise/" title="Promise" class="sidelist
+<li data-nav-id="https://php-etl.github.io/documentation/components/workflow/" title="Workflow" class="sidelist
   active">
-  <a href="https://php-etl.github.io/documentation/framework/promise/">
-    Promise
+  <a href="https://php-etl.github.io/documentation/components/workflow/">
+    Workflow
+  </a>
+  
+  
+</li>
+
+
+        
+      
+        
+          
+
+
+
+
+
+
+
+
+<li data-nav-id="https://php-etl.github.io/documentation/components/pipeline/" title="Pipeline" class="sidelist
+  ">
+  <a href="https://php-etl.github.io/documentation/components/pipeline/">
+    Pipeline
   </a>
   
   
@@ -311,12 +355,16 @@
             
               
             
+              
+            
+              
+            
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
         <div class="p-lg-5 p-4 bg-white">
-          <h2 class="mb-5">Promise</h2>
+          <h2 class="mb-5">Workflow</h2>
           
           <div class="content">
 
@@ -328,41 +376,59 @@
 </div>
 
 
-<h3 id="definition-of-a-promise">Definition of a Promise</h3>
-<p>A promise represents a single result of an asynchronous operation.</p>
-<p>Two operations are called asynchronous when they are independent, i.e.
-when the second operation does not need to wait for the first to finish before starting.</p>
-<p>This object allows you to synchronise two (or more) actions that take place in time but not at the same speed.</p>
-<h3 id="callbacks">Callbacks</h3>
-<p>The <code>then</code> method records reminders to receive the possible value of a promise, and the <code>failure</code> method represents the reason why it cannot be kept.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
+<h3 id="definition">Definition</h3>
+<p>A pipeline is a series of processes, also called steps, that filter or transform data.
+The first process takes raw input data, uses it and then
+sends the results to the second process, and so on, ending with the final result produced by the last process in progress.</p>
+<p>The steps of our pipeline are <code>extract</code>, <code>transform</code> or <code>load</code>.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>composer require php-etl/pipeline
+</code></pre><h3 id="usage">Usage</h3>
+<ul class="nav nav-tabs" id="basic_definition" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#basic_definition-0" role="tab" aria-controls="basic_definition-0" aria-selected="true">YAML</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#basic_definition-1" role="tab" aria-controls="basic_definition-1">PHP</a></li></ul>
+<div class="tab-content" id="basic_definition"><div id="basic_definition-0" class="tab-pane show active" role="tabpanel" aria-labelledby="basic_definition-0">
 
-<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Promise\Promise</span>;
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+<span style="color:#f92672">satellite</span>:
+  <span style="color:#f92672">pipeline</span>:
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">extractor</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/input.csv</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+          <span style="color:#f92672">logger</span>:
+            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">stderr</span>
+      - <span style="color:#f92672">csv</span>:
+          <span style="color:#f92672">loader</span>:
+            <span style="color:#f92672">file_path</span>: <span style="color:#ae81ff">path/to/file/output.csv</span>
+            <span style="color:#f92672">delimiter</span>: <span style="color:#e6db74">&#39;,&#39;</span>
+            <span style="color:#f92672">enclosure</span>: <span style="color:#e6db74">&#39;&#34;&#39;</span>
+            <span style="color:#f92672">escape</span>: <span style="color:#e6db74">&#39;\\&#39;</span>
+</code></pre></div></div>
+  <div id="basic_definition-1" class="tab-pane" role="tabpanel" aria-labelledby="basic_definition-1">
 
-$promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>();
-$promise
-   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> ($value) {
-        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello, &#34;</span><span style="color:#f92672">.</span>$value;
-   })
-   <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">failure</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">\Exception</span> $exception) {
-        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Oups, error : &#39;</span><span style="color:#f92672">.</span>$exception;
-   })
-;
-</code></pre></div><h3 id="resolving-a-promise">Resolving a promise</h3>
-<p>Promises are fulfilled using the resolve($value) method.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
-$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;world&#39;</span>);
-<span style="color:#75715e">// Outputs &#39;Hello, world&#39;
-</span></code></pre></div><h3 id="promise-failure">Promise failure</h3>
-<p>Promises are failed using the fail($exception) method.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\PipelineRunner</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Pipeline\Pipeline</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Extractor</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Kiboko\Component\Flow\Csv\Safe\Loader</span>;
 
-$promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Something went wrong&#39;</span>));
-<span style="color:#75715e">// Outputs &#39;Oups, error : Exception: Something went wrong&#39;
-</span></code></pre></div></div>
+<span style="color:#e6db74">/** @var Psr\Log\LoggerInterface $logger */</span> 
+$runner <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PipelineRunner</span>();
+$pipeline <span style="color:#f92672">=</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Pipeline</span>($runner))
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">extract</span>((<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Extractor</span>(<span style="color:#e6db74">&#39;path/to/file/input.csv&#39;</span>))<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setLogger</span>($logger))
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">load</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Loader</span>(<span style="color:#e6db74">&#39;path/to/file/output.csv&#39;</span>, <span style="color:#a6e22e">delimiter</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;,&#39;</span>))
+    <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>();
+</code></pre></div></div></div>
+
+</div>
           
-          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 12 Jul 2020</p>
+          <p class="post-meta border-bottom pb-3 mb-0 mt-3">Updated on 19 Apr 2021</p>
           <nav class="pagination mt-3">
             
             
@@ -390,37 +456,9 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-            
-            
 
             
             
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-
             
             
             
@@ -441,12 +479,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
 
-            
-            
-            
-            
-            
-            
             
             
             
@@ -490,20 +522,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
             
 
             
@@ -513,6 +531,43 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+
             
             
             
@@ -598,6 +653,22 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+            
+            
+            
+
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
 
             
             
@@ -684,7 +755,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-            
 
             
             
@@ -692,25 +762,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-            
-            
             
             
             
@@ -735,7 +786,6 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
-            
 
             
             
@@ -744,6 +794,19 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+
             
             
             
@@ -806,10 +869,10 @@ $promise<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fail
             
 
             
-            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/framework/contracts/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">Contracts</span></a>
+            <a class="nav nav-prev" href="https://php-etl.github.io/documentation/components/satellite/php-objects/"><i class="ti-arrow-left mr-2"></i> <span class="d-none d-md-block">PHP Objects</span></a>
             
             
-            <a class="nav nav-next" href="https://php-etl.github.io/documentation/installation/"> <span class="d-none d-md-block">Installations</span><i class="ti-arrow-right ml-2"></i></a>
+            <a class="nav nav-next" href="https://php-etl.github.io/documentation/components/pipeline/"> <span class="d-none d-md-block">Pipeline</span><i class="ti-arrow-right ml-2"></i></a>
             
           </nav>
         </div>

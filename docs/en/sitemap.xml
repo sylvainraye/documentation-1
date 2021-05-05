@@ -5,14 +5,11 @@
     <loc>https://php-etl.github.io/documentation/components/satellite/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/</loc>
-    <lastmod>2021-03-30T15:55:00+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/connectivity/json-schema/</loc>
-    <lastmod>2021-03-30T15:55:00+02:00</lastmod>
+    <loc>https://php-etl.github.io/documentation/components/</loc>
+    <lastmod>2021-04-19T11:25:45+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/</loc>
-    <lastmod>2021-03-30T15:55:00+02:00</lastmod>
+    <lastmod>2021-04-19T11:25:45+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -23,6 +20,15 @@
                 hreflang="en"
                 href="https://php-etl.github.io/documentation/"
                 />
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/components/workflow/</loc>
+    <lastmod>2021-04-19T11:25:45+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/</loc>
+    <lastmod>2021-03-30T15:55:00+02:00</lastmod>
+  </url><url>
+    <loc>https://php-etl.github.io/documentation/connectivity/json-schema/</loc>
+    <lastmod>2021-03-30T15:55:00+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/connectivity/spreadsheet/</loc>
     <lastmod>2021-03-30T15:50:22+02:00</lastmod>
@@ -58,9 +64,6 @@
     <lastmod>2021-01-19T10:02:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/installation/bare-metal/</loc>
-    <lastmod>2020-07-12T15:21:02+02:00</lastmod>
-  </url><url>
-    <loc>https://php-etl.github.io/documentation/components/</loc>
     <lastmod>2020-07-12T15:21:02+02:00</lastmod>
   </url><url>
     <loc>https://php-etl.github.io/documentation/framework/contracts/</loc>
