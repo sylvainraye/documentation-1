@@ -378,7 +378,7 @@ output {
       - <span style="color:#ae81ff">RABBITMQ_DEFAULT_PASS=${AMQP_PASSWORD:-password}</span>
     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
 </code></pre></div><h3 id="redis">Redis</h3>
-<p>RabbitMQ is a message queue service, handling storage, routing and concurrency handling between consumers.</p>
+<p>Redis is a NoSQL database service.</p>
 <p>In your project, create a file named <code>.docker/redis/Dockerfile</code> with the following contents:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> redis:5-alpine</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">

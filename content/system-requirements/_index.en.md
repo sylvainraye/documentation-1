@@ -184,7 +184,7 @@ services:
 
 ### Redis
 
-RabbitMQ is a message queue service, handling storage, routing and concurrency handling between consumers.
+Redis is a NoSQL database service.
 
 In your project, create a file named `.docker/redis/Dockerfile` with the following contents:
 
