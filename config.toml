@@ -28,18 +28,6 @@ hasChildren = true
   url = "installation/bare-metal"
   weight = 2
 
-  [[menu.main]]
-  parent = "Installation"
-  name = "Symfony"
-  url = "installation/symfony"
-  weight = 3
-
-  [[menu.main]]
-  parent = "Installation"
-  name = "Laravel"
-  url = "installation/laravel"
-  weight = 4
-
 [[menu.main]]
 weight = 2
 name = "Packages"
