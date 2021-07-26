@@ -121,7 +121,7 @@ $dockerfile->push(
 
 You can add the `from_local` option in your configuration. This option copies an existing composer.json and composer.lock.
 
-{{< tabs name="basic_with_composer" >}}
+{{< tabs name="basic_with_composer_from_local" >}}
 
 {{< tab name="YAML" codelang="yaml"  >}}
 satellite:
